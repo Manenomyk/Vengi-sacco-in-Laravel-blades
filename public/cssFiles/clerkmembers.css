@@ -1,0 +1,123 @@
+.table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-header{
+  text-align: center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+thead{
+  background-color: #0a2558;
+  color: white;
+  font-size: 14px;
+}
+tbody{
+  font-size: 14px;
+}
+#gender{
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+}
+.button{
+  position: relative;
+  display: flex;
+  align-content: flex-end;
+  justify-content: end;
+}
+.btn{
+  background-color: rgb(109, 207, 109);
+  color: white;
+  padding: 8px 8px;
+  font-size: 16px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.btn:hover{
+  background-color: rgb(53, 126, 53);
+}
+span{
+  color: black;
+  font-size: 20px;
+}
+.btn1{
+  background-color:red;
+  color: white;
+  padding: 8px 8px;
+  font-size: 16px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn1:hover{
+  background-color: rgb(153, 25, 25);
+}
+.btn2:hover{
+  background-color: rgb(53, 126, 53);
+}
+.btn2{
+background-color: rgb(109, 207, 109);
+color: white;
+padding: 8px 8px;
+font-size: 16px;
+border: 1px solid grey;
+border-radius: 10px;
+cursor: pointer;
+}
+
+
+/* Add members page */
+
+.adddetails{
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+background-color: white;
+padding: 10px 40px;
+border-radius: 10px;
+}
+
+
+.forminput{
+margin-bottom: 10px;
+font-size: 14px;
+border-radius: 10px;
+border: 1px solid gray;
+width: 23rem;
+}
+
+.addmembtn{
+padding: 10px 10px;
+font-size: 16px;
+background-color: #0a2558;
+color: white;
+border:  2px solid dodgerblue;
+border-radius: 10px;
+cursor: pointer;
+}
+.addmembtn:hover{
+background-color: rgb(86, 86, 243);
+}
+
