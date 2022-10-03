@@ -32,7 +32,7 @@ class ClerkLoansController extends Controller
      */
     public function create()
     {
-        $member=User::where('role',3)->get();
+        $member=User::where('role',3)->where('is_approved',1)->get();
         $type=LoanType::all();
         return view('clerk.clerk-addloans',compact('member','type'));
     }
@@ -51,27 +51,33 @@ class ClerkLoansController extends Controller
             'loans_type_id'=>'required|string',
         ]);
 
+        $not_approved=User::where('id',$request->user_id)->first();
+        if($not_approved->is_approved==0){
+            return back()->with("issue","The user has not been approved, contact the authorizer");
+        }
+    
         $loan_type=LoanType::where('id',$request->loans_type_id)->first();
         $due_date=Carbon::now()->addMonths($loan_type->duration);
 
-        $share=Share::where('user_id',$request->user_id)->first();
-        
-        $value=$share->shares_amount;
+        $share=Share::where('user_id',$request->user_id)->where('is_approved','approve')->sum('shares_amount');
 
-        $eligible_loan=$value/0.5;
+        
+
+        if(!$share){
+            return back()->with("issue","The user does not have any shares");
+        }
+        $eligible_loan=$share/2;
 
         $loan=new Loan();
 
         $loan->user_id=$request->input('user_id');
         $get_amount=$request->loan_amount;
         if ($get_amount>$eligible_loan) {
-            return back()->with("message","The user is eligible to borrow only $eligible_loan shillings");
+            return back()->with("issue","The user is eligible to borrow only $eligible_loan shillings");
         }
         $loan->loan_amount=$request->input('loan_amount');
         $loan->loans_type_id=$request->input('loans_type_id');
         $loan->due_date=$due_date;
-        $loan->share_id=$share->id;
-      
 
         $result=$loan->save();
 

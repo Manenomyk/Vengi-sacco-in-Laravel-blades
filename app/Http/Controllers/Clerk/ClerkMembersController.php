@@ -39,13 +39,13 @@ class ClerkMembersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'=>'required|alpha|max:50|min:4',
+            'name'=>'required|string|max:50|min:3',
             'email'=>'required|email|string|unique:users,email|max:100|min:4',
             'role' => 'required',
             'location'=>'required|string|max:50',
             'gender'=>'required|string|max:10',
-            'id_number'=>'required|unique:users,id_number|string',
-            'phone_number'=>'required|string',
+            'id_number'=>'required|unique:users,id_number|numeric|digits_between:6,8',
+            'phone_number'=>'required|numeric|digits_between:9,10'
         ]);
 
         $member=new User();
@@ -59,7 +59,11 @@ class ClerkMembersController extends Controller
         $member->gender=$request->input('gender');
         $member->phone_number=$request->input('phone_number');
 
-        $member->save();
+        $result=$member->save();
+
+        if($result){
+            return back()->with("message","User created successfully, pending for approval");
+        }
 
        
     }

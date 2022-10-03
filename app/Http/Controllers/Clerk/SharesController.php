@@ -30,7 +30,7 @@ class SharesController extends Controller
      */
     public function create()
     {
-        $member=User::where('role',3)->get();
+        $member=User::where('role',3)->where('is_approved',1)->get();
         $type=ShareType::all();
         return view('clerk.clerk-addshares',compact('member','type'));
     }
@@ -46,8 +46,13 @@ class SharesController extends Controller
         $validated = $request->validate([
             'user_id' => 'required|integer',
             'shares_amount'=>'required|string|max:50',
-            'share_type_id'=>'required|unique:users,id_number|string',
+            'share_type_id'=>'required|string',
         ]);
+
+        $not_approved=User::where('id',$request->user_id)->first();
+        if($not_approved->is_approved==0){
+            return back()->with("issue","The user has not been approved, contact the authorizer");
+        }
 
         $share=new Share();
 
@@ -59,7 +64,7 @@ class SharesController extends Controller
         $result=$share->save();
 
         if($result){
-            return back();
+            return back()->with("message","Shares allocated successfully,pending approval");
         }
         
     }

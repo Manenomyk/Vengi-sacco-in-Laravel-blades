@@ -35,30 +35,6 @@
                 <span class="links_name">My loans</span>
               </a>
             </li>
-            <li>
-              <a href="#">
-                <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Analytics</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class='bx bx-coin-stack' ></i>
-                <span class="links_name">Stock</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class='bx bx-book-alt' ></i>
-                <span class="links_name">Total order</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Setting</span>
-              </a>
-            </li>
             <li class="log_out">
               <form method="POST" action="{{ route('logout') }}" x-data>
                 @csrf
