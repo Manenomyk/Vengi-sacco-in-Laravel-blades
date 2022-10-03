@@ -15,7 +15,9 @@ class AdminLoansController extends Controller
      */
     public function index()
     {
-        $loan=Loan::join('users','users.id','=','loans.user_id')->get();
+        $loan=Loan::join('users','users.id','=','loans.user_id')
+        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        ->get();
         return view('admin.admin-loans',compact('loan'));
     }
 

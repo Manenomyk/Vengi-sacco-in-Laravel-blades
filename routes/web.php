@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLoansController;
+use App\Http\Controllers\Admin\AdminLogsController;
 use App\Http\Controllers\Admin\AdminMembersController;
 use App\Http\Controllers\Admin\AdminSharesController;
 use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
@@ -131,6 +132,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin-shares','index');
         Route::get('admin-unapproved-shares','unapproved_shares');
     });
+
+    Route::get('get-logs',[AdminLogsController::class,'logs']);
 
      //member
      Route::controller(MembersDashboardController::class)->group(function(){

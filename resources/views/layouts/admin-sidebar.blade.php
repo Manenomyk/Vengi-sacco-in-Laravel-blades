@@ -59,6 +59,12 @@
                 <span class="links_name">Unapproved loans</span>
               </a>
             </li>
+            <li>
+              <a href="{{ url('get-logs') }}">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">View User Logs</span>
+              </a>
+            </li>
             <li class="log_out">
               <form method="POST" action="{{ route('logout') }}" x-data>
                 @csrf

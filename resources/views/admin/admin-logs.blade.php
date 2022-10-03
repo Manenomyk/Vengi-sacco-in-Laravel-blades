@@ -23,40 +23,42 @@
       <section class="home-section">
         <div class="home-content">
           <div class="container" >
-            <h3 class="top-header"><b>Pending Shares for Approval</b></h3>
+            <h3 class="top-header"><b>User Logs</b></h3>
             <div class="table">
                 <table>
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>share amount</th>
-                            <th>User allocated </th>
-                            <th>share type</th>
-                            <th>status</th>
-                            
+                            <th>description</th>
+                            <th>subject model </th>
+                            <th>event</th>
+                            <th>subject user id</th>
+                            <th>causer name</th>
+                            <th>causer role</th>
+                            <th>date done</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($share as $item)
+                      @foreach ($activity as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->shares_amount }}</td>
+                        <td>{{ $item->description }}</td>
+                        <td>{{ $item->subject_type }}</td>
+                        <td>{{ $item->event }}</td>
+                        <td>{{ $item->subject_id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>
-                          @if ($item->share_type_id==1)
-                            Institution
-                            @elseif ($item->share_type_id==2)
-                            Bank
-                          @endif
-                       
-                        </td>
-                        <td>
-                          @if ($item->is_approved=="pending")
-                            Pending
-                            @else
-                            Approved
+                          @if ($item->role==0)
+                            administrator
+                          @elseif ($item->role==1)
+                            clerk
+                          @elseif ($item->role==2)
+                            authorizer
+                          @elseif ($item->role==3)
+                            member
                           @endif
                         </td>
+                        <td>{{ $item->created_at }}</td>
                     </tr>
                       @endforeach
                     </tbody>

@@ -34,7 +34,7 @@ class AuthorizerSharesController extends Controller
         $approve=Share::find($id);
 
         if($request->approve==1){
-            $approve->is_approved="approve";
+            $approve->is_approved="approved";
             $result=$approve->update();
             if($result){
                 return back()->with("message", "The share has been approved successfully");

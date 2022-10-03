@@ -51,9 +51,9 @@
                        
                         </td>
                         <td>
-                          @if ($item->is_approved==0)
+                          @if ($item->is_approved=="pending")
                             Pending
-                            @elseif ($item->is_approved==1)
+                            @else
                             Approved
                           @endif
                         </td>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Authorizer;
 
 use App\Models\Loan;
+use App\Models\LoanType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class AuthorizerLoansController extends Controller
@@ -33,9 +35,13 @@ class AuthorizerLoansController extends Controller
     public function approve(Request $request, $id){
         
         $approve=Loan::find($id);
+        
+        $loan_type=LoanType::where('id',$approve->loans_type_id)->first();
+        $due_date=Carbon::now()->addMonths($loan_type->duration);
 
         if($request->approve==1){
             $approve->is_approved=$request->input('approve');
+            $approve->due_date=$due_date;
             $result=$approve->update();
             if($result){
                 return back()->with("message", "The loans has been approved successfully");
