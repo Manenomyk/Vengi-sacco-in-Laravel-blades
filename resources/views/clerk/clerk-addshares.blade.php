@@ -11,18 +11,18 @@
    
     <body>
         
-
+      @extends('layouts.clerk-sidebar')
  
     <x-app-layout>
 
     </x-app-layout>
+    @section('clerk-sidebar')
 
      <section class="home-section">
-      <a href="{{ url('clerk-members') }}" ><--</a>
       <div class="home-content" style="display: flex; justify-content:center;">
         <div class="addcontainer">
           <div class="adddetails">
-            <h1>Add shares</h1>
+            <h1><b>Add shares</b></h1>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul style="color: red">
@@ -54,7 +54,9 @@
                   
             </select>
 
-            <button type="submit" >Add shares</button>
+            <div style="display: flex; justify-content:right; ">
+              <button type="submit" style="background-color: #0A2558; color:white; padding:8px 0px; width:100px; border-radius:10px;" >Add Shares</button>
+            </div>
             </form>
               
          </div>
@@ -63,6 +65,7 @@
       
       
    </section>
+   @endsection
 
     </body>
     </html>

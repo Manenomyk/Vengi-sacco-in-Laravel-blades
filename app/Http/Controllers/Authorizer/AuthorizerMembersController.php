@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Authorizer;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AuthorizerMembersController extends Controller
 {
@@ -14,11 +15,36 @@ class AuthorizerMembersController extends Controller
      */
     public function index()
     {
-        return view('authorizer.authorizer-members');
+        $member=User::where('role',3)->get();
+        return view('authorizer.authorizer-members',compact('member'));
     }
 
     public function unapproved_members(){
-        return view('authorizer.authorizer-memberspending');
+        $member=User::where('role',3)->where('is_approved',0)->get();
+        return view('authorizer.authorizer-memberspending',compact('member'));
+    }
+
+    public function approve(Request $request, $id){
+        
+        $approve=User::find($id);
+
+        if($request->approve==1){
+            $approve->is_approved="1";
+            $result=$approve->update();
+            if($result){
+                return back()->with("message", "The member has been approved successfully");
+            }
+        }
+
+        else{
+            $result=$approve->delete();
+            if($result){
+                return back()->with("message", "The member has been declined successfully");
+            }
+        }
+
+       
+       
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Authorizer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Loan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AuthorizerLoansController extends Controller
 {
@@ -14,12 +15,42 @@ class AuthorizerLoansController extends Controller
      */
     public function index()
     {
-        return view('authorizer.authorizer-loans');
+        $loan=Loan::join('users','users.id','=','loans.user_id')
+        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        ->get();
+        return view('authorizer.authorizer-loans',compact('loan'));
     }
 
     public function unapproved_loans()
     {
-        return view('authorizer.authorizer-loanspending');
+        $loan=Loan::join('users','users.id','=','loans.user_id')
+        ->where('loans.is_approved',0)
+        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        ->get();
+        return view('authorizer.authorizer-loanspending',compact('loan'));
+    }
+
+    public function approve(Request $request, $id){
+        
+        $approve=Loan::find($id);
+
+        if($request->approve==1){
+            $approve->is_approved=$request->input('approve');
+            $result=$approve->update();
+            if($result){
+                return back()->with("message", "The loans has been approved successfully");
+            }
+        }
+
+        else{
+            $result=$approve->delete();
+            if($result){
+                return back()->with("message", "The loans has been declined successfully");
+            }
+        }
+
+       
+       
     }
 
     /**

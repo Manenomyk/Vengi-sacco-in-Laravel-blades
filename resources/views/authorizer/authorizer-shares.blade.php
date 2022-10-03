@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
     <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('cssFiles/clerkmembers.css') }}" >
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +22,47 @@
       
       <section class="home-section">
         <div class="home-content">
-         All shares
+          <div class="container" >
+            <h3 class="top-header"><b>All Shares</b></h3>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>share amount</th>
+                            <th>User allocated </th>
+                            <th>share type</th>
+                            <th>status</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($share as $item)
+                      <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->shares_amount }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>
+                          @if ($item->share_type_id==1)
+                            Institution
+                            @elseif ($item->share_type_id==2)
+                            Bank
+                          @endif
+                       
+                        </td>
+                        <td>
+                          @if ($item->is_approved=="pending")
+                            Pending
+                            @elseif ($item->is_approved=="approve")
+                            Approved
+                          @endif
+                        </td>
+                    </tr>
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div>
         </div>
       </section>
     

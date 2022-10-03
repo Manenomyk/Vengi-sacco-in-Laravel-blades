@@ -26,9 +26,6 @@
         <div class="home-content">
           <div class="container" >
             <h3 class="top-header"><b>Loans allocated</b></h3>
-            {{-- <div class="button">
-              <div class="btn"> <a href="{{ url('clerk-add-members') }}">+ Add members</a></div>
-            </div> --}}
             <div class="table">
                 <table>
                     <thead>

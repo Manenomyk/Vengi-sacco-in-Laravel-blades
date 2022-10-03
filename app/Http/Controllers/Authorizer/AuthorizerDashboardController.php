@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Authorizer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Loan;
+use App\Models\User;
+use App\Models\Share;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AuthorizerDashboardController extends Controller
 {
@@ -14,7 +17,13 @@ class AuthorizerDashboardController extends Controller
      */
     public function index()
     {
-        return view('authorizer.authorizer-dashboard');
+        $members=User::where('role',3)->count();
+        $share=Share::sum('shares_amount');
+        $loans=Loan::sum('loan_amount');
+        $pending_loans=Loan::where('is_approved',0)->count();
+        $pending_shares=Share::where('is_approved','pending')->count();
+        $total_pending=$pending_loans+$pending_shares;
+        return view('authorizer.authorizer-dashboard',compact('members','share','loans','total_pending'));
     }
 
     /**

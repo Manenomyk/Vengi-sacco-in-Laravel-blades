@@ -17,6 +17,7 @@ use App\Http\Controllers\Clerk\SharesController;
 use App\Http\Controllers\Member\MembersDashboardController;
 use App\Http\Controllers\Member\MembersMyloansController;
 use App\Http\Controllers\Member\MembersMysharesController;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,16 +97,19 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(AuthorizerMembersController::class)->group(function(){
         Route::get('authorizer-members','index');
         Route::get('authorizer-unapproved-members','unapproved_members');
+        Route::post('authorizer-approve-member/{id}','approve');
     });
 
     Route::controller(AuthorizerLoansController::class)->group(function(){
         Route::get('authorizer-loans','index');
         Route::get('authorizer-unapproved-loans','unapproved_loans');
+        Route::post('authorizer-approve-loans/{id}','approve');
     });
 
     Route::controller(AuthorizerSharesController::class)->group(function(){
         Route::get('authorizer-shares','index');
         Route::get('authorizer-unapproved-shares','unapproved_shares');
+        Route::post('authorizer-approve-shares/{id}','approve');
     });
 
     //admin
