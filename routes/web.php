@@ -151,8 +151,12 @@ Route::middleware(['auth'])->group(function () {
 
     //pdf controller
     Route::controller(PdfController::class)->group(function(){
-        Route::post('view-pdf','view_pdf');
-        Route::post('download-pdf','download_pdf');
+        Route::post('view-shares-pdf','view_pdf_shares');
+        Route::post('download-shares-pdf','download_pdf_shares');
+        Route::post('view-members-pdf','view_pdf_members');
+        Route::post('download-members-pdf','download_pdf_members');
+        Route::post('view-loans-pdf','view_pdf_loans');
+        Route::post('download-loans-pdf','download_pdf_loans');
     });
 
 

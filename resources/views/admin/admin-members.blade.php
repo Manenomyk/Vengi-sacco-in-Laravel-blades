@@ -14,6 +14,10 @@
         justify-content: flex-end;
         margin-right: 10px;
       }
+      .space-content{
+        display: flex;
+        justify-content: space-between;
+      }
      </style>
    </head>
    
@@ -30,11 +34,23 @@
       
       <section class="home-section">
         <div class="home-content">
+          <div class="space-content">
+          <div class="pdf" style="display: flex; flex-direction:row; ">
+            <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+              @csrf
+              <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
+            </form>
+            <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+              @csrf
+              <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
+            </form>
+          </div>
           <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
             @csrf
             <input type="text" name="name" placeholder="search users"/>
             <button type="submit" style="background-color: #0A2558; color:white" >search</button>
           </form>
+        </div>
           <div class="container" >
             <h3 class="top-header"><b>Sacco members</b></h3>
             <div class="table">

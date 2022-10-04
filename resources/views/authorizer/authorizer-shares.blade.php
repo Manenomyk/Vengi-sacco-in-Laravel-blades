@@ -22,6 +22,16 @@
       
       <section class="home-section">
         <div class="home-content">
+          <div class="pdf" style="display: flex; flex-direction:row; ">
+            <form action="{{ url('view-shares-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+              @csrf
+              <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
+            </form>
+            <form action="{{ url('download-shares-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+              @csrf
+              <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
+            </form>
+          </div>
           <div class="container" >
             <h3 class="top-header"><b>All Shares</b></h3>
             <div class="table">
