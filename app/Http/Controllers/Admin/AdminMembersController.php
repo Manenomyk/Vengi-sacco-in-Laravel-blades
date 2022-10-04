@@ -13,15 +13,21 @@ class AdminMembersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $member=User::where('role',3)->get();
-        return view('admin.admin-members',compact('member'));
+        if ($request->isMethod('post')) {
+            $member = User::where('role', 3)->where('name', 'LIKE', '%' . $request->name . '%')->paginate(10);
+        }
+        elseif($request->isMethod('get')){
+            $member = User::where('role', 3)->paginate(10);
+        }
+        return view('admin.admin-members', compact('member'));
     }
 
-    public function unapproved_members(){
-        $member=User::where('role',3)->where('is_approved',0)->get();
-        return view('admin.admin-memberspending',compact('member'));
+    public function unapproved_members()
+    {
+        $member = User::where('role', 3)->where('is_approved', 0)->paginate(10);
+        return view('admin.admin-memberspending', compact('member'));
     }
 
     /**

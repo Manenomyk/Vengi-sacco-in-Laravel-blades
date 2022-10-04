@@ -16,7 +16,7 @@ class ClerkMembersController extends Controller
      */
     public function index()
     {
-        $member=User::where('role',3)->get();
+        $member=User::where('role',3)->paginate(10);
         return view('clerk.clerk-members',compact('member'));
     }
 

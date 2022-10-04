@@ -19,7 +19,7 @@ class SharesController extends Controller
     {
         $share=Share::join('users','users.id','=','shares.user_id')
         ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->get();
+        ->paginate(10);
         return view('clerk.clerk-shares',compact('share'));
     }
 

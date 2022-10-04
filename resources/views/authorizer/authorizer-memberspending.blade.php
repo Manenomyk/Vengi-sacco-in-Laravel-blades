@@ -71,6 +71,7 @@
                 </table>
             </div>
         </div>
+        {{ $member->onEachSide(2)->links() }}
         </div>
       </section>
     

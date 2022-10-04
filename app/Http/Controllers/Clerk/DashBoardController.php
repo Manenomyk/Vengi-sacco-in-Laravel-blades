@@ -23,6 +23,10 @@ class DashBoardController extends Controller
         $pending_loans=Loan::where('is_approved',0)->count();
         $pending_shares=Share::where('is_approved','pending')->count();
         $total_pending=$pending_loans+$pending_shares;
+        // select date_format(order_date,'%H %p') as hour,
+        // sum(amount) as total_sales
+        // from sales
+        // group by date_format(order_date,'%H %p');
         return view('clerk.clerk-dashboard',compact('members','share','loans','total_pending'));
     }
 

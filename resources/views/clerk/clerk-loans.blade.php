@@ -36,7 +36,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>loan amount</th>
+                            <th>loan amount (+ 5% interest)</th>
                             <th>User allocated </th>
                             <th>loan type</th>
                             <th>due date</th>
@@ -74,6 +74,7 @@
                 </table>
             </div>
             <div>
+              {{ $loan->onEachSide(2)->links() }}
         </div>
      </section>
      @endsection

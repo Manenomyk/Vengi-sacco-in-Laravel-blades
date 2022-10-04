@@ -17,7 +17,7 @@ class AdminSharesController extends Controller
     {
         $share=Share::join('users','users.id','=','shares.user_id')
         ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->get();
+        ->paginate(10);
         return view('admin.admin-shares',compact('share'));
     }
 
@@ -25,7 +25,7 @@ class AdminSharesController extends Controller
         $share=Share::join('users','users.id','=','shares.user_id')
         ->where('shares.is_approved','pending')
         ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->get();
+        ->paginate(10);
         return view('admin.admin-sharespending',compact('share'));
     }
 

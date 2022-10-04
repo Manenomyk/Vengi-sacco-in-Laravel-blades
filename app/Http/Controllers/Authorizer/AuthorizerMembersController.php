@@ -16,12 +16,12 @@ class AuthorizerMembersController extends Controller
      */
     public function index()
     {
-        $member=User::where('role',3)->get();
+        $member=User::where('role',3)->paginate(10);
         return view('authorizer.authorizer-members',compact('member'));
     }
 
     public function unapproved_members(){
-        $member=User::where('role',3)->where('is_approved',0)->get();
+        $member=User::where('role',3)->where('is_approved',0)->paginate(6);
         return view('authorizer.authorizer-memberspending',compact('member'));
     }
 

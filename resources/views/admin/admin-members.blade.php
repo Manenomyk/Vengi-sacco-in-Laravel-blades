@@ -7,6 +7,14 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <style>
+      .sach-form{
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 10px;
+      }
+     </style>
    </head>
    
     <body>
@@ -22,6 +30,11 @@
       
       <section class="home-section">
         <div class="home-content">
+          <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
+            @csrf
+            <input type="text" name="name" placeholder="search users"/>
+            <button type="submit" style="background-color: #0A2558; color:white" >search</button>
+          </form>
           <div class="container" >
             <h3 class="top-header"><b>Sacco members</b></h3>
             <div class="table">
@@ -53,6 +66,7 @@
                 </table>
             </div>
             <div>
+              {{ $member->onEachSide(2)->links() }}
         </div>
       </section>
     

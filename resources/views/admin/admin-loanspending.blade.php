@@ -67,6 +67,7 @@
                 </table>
             </div>
             <div>
+              {{ $loan->onEachSide(2)->links() }}
         </div>
       </section>
     

@@ -8,6 +8,32 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+       google.charts.load('current', {'packages':['corechart']});
+       google.charts.setOnLoadCallback(drawChart);
+ 
+       function drawChart() {
+         var data = google.visualization.arrayToDataTable([
+           ['Year', 'Sales', 'Expenses'],
+           ['2004',  1000,      400],
+           ['2005',  1170,      460],
+           ['2006',  660,       1120],
+           ['2007',  1030,      540]
+         ]);
+ 
+         var options = {
+           title: 'Company Performance',
+           curveType: 'function',
+           legend: { position: 'bottom' }
+         };
+ 
+         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+ 
+         chart.draw(data, options);
+       }
+     </script>
    </head>
    
     <body>
@@ -75,10 +101,7 @@
           <div class="sales-boxes">
             <div class="recent-sales box">
               <div class="title">Graphical content</div>
-              <div class="sales-details">
-               
-              </div>
-              
+              <div id="curve_chart" style="width: 600px; height: 300px"></div>
             </div>
             <div class="top-sales box">
               <div class="title">Doughnuts</div>

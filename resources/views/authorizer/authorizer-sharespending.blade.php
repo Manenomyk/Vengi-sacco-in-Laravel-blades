@@ -72,6 +72,7 @@
                 </table>
             </div>
             <div>
+              {{ $share->onEachSide(2)->links() }}
         </div>
       </section>
     

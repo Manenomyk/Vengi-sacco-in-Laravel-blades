@@ -19,7 +19,7 @@ class AuthorizerLoansController extends Controller
     {
         $loan=Loan::join('users','users.id','=','loans.user_id')
         ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->get();
+        ->paginate(10);
         return view('authorizer.authorizer-loans',compact('loan'));
     }
 
@@ -28,7 +28,7 @@ class AuthorizerLoansController extends Controller
         $loan=Loan::join('users','users.id','=','loans.user_id')
         ->where('loans.is_approved',0)
         ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->get();
+        ->paginate(6);
         return view('authorizer.authorizer-loanspending',compact('loan'));
     }
 

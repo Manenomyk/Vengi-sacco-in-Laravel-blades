@@ -21,7 +21,7 @@ class ClerkLoansController extends Controller
     {
         $loan=Loan::join('users','users.id','=','loans.user_id')
         ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->get();
+        ->paginate(10);
         return view('clerk.clerk-loans',compact('loan'));
     }
 
@@ -68,14 +68,24 @@ class ClerkLoansController extends Controller
         }
         $eligible_loan=$share/2;
 
+        $other_loans=Loan::where('user_id',$request->user_id)->sum('loan_amount');
+
+        $final_eligible=$eligible_loan-$other_loans;
+
+
         $loan=new Loan();
 
         $loan->user_id=$request->input('user_id');
         $get_amount=$request->loan_amount;
-        if ($get_amount>$eligible_loan) {
-            return back()->with("issue","The user is eligible to borrow only $eligible_loan shillings");
+        if ($get_amount>$final_eligible) {
+            return back()->with("issue","The user is eligible to borrow only $final_eligible shillings");
         }
-        $loan->loan_amount=$request->input('loan_amount');
+        //calculate interest
+        $interest_calc=$request->loan_amount;
+        $final_interest_amount=$interest_calc*1.05;
+        $final_amount=round($final_interest_amount);
+
+        $loan->loan_amount=$final_amount;
         $loan->loans_type_id=$request->input('loans_type_id');
         $loan->due_date=$due_date;
 

@@ -65,6 +65,7 @@
                 </table>
             </div>
             <div>
+              {{ $activity->onEachSide(2)->links() }}
         </div>
       </section>
     

@@ -31,27 +31,27 @@ use Illuminate\Support\Facades\Request;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/',[HomeController::class,'CheckUser']);
+Route::get('homepage',[HomeController::class,'CheckUser']);
 
-Route::get('/AdminDash', function () {
-    return view('admin.admin-dashboard');
-})->name('admin.dash');
+// Route::get('/AdminDash', function () {
+//     return view('admin.admin-dashboard');
+// })->name('admin.dash');
 
-Route::get('/ClerkDash', function () {
-    return view('clerk.clerk-dashboard');
-})->name('clerk.dash');
+// Route::get('/ClerkDash', function () {
+//     return view('clerk.clerk-dashboard');
+// })->name('clerk.dash');
 
-Route::get('/AuthorizerDash', function () {
-    return view('authorizer.authorizer-dashboard');
-})->name('authorizer.dash');
+// Route::get('/AuthorizerDash', function () {
+//     return view('authorizer.authorizer-dashboard');
+// })->name('authorizer.dash');
 
-Route::get('/MemberDash', function () {
-    return view('member.member-dashboard');
-})->name('member.dash');
+// Route::get('/MemberDash', function () {
+//     return view('member.member-dashboard');
+// })->name('member.dash');
 
 
 Route::middleware([
@@ -119,7 +119,7 @@ Route::middleware(['auth'])->group(function () {
     });    
 
     Route::controller(AdminMembersController::class)->group(function(){
-        Route::get('admin-members','index');
+        Route::any('admin-members','index');
         Route::get('admin-unapproved-members','unapproved_members');
     });
 
