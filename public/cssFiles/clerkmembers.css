@@ -65,7 +65,7 @@ span{
   background-color:red;
   color: white;
   padding: 8px 8px;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid grey;
   border-radius: 10px;
   cursor: pointer;
@@ -80,7 +80,7 @@ span{
 background-color: rgb(109, 207, 109);
 color: white;
 padding: 8px 8px;
-font-size: 16px;
+font-size: 14px;
 border: 1px solid grey;
 border-radius: 10px;
 cursor: pointer;

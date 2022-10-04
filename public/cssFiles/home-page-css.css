@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+.homebody1{
+    width: 100vw;
+    height: 50vh;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+#welcome{
+    margin-bottom: 0.5rem;
+  }
+  #welcome1{
+    margin-bottom: 1rem;
+    font-size: 22px;
+  }
+  #welcomebtn{
+    margin-top: 1rem;
+    font-size: 20px;
+    width: 200px;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    border-radius:12px ;
+    border: 1px solid grey;
+    background-color: rgb(197, 36, 36);
+    color: white;
+  }
+  #welcome{
+    font-size: 3rem;
+    font-weight: 600;
+    color:  white;
+}
+#welcome1{
+    font-size: 2rem;
+    color:  yellow;
+    font-weight: 600;
+}
+.minor{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+
+.homeimg1{
+    width: 20rem;
+    border-radius: 12px;
+}
+
+.homebody2{
+    width: 100vw;
+    height: 30vh;
+    justify-content: center;
+    
+}
+.body2sec1{
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 1rem;
+}
+
+.homeimg2{
+    width: 15rem;
+    border-radius: 50%;
+}
+
+.cardtopic{
+    font-size: 20px;
+    margin-bottom: 1rem;
+    
+}
+
+.minor1{
+    font-size: 16px;
+}

@@ -64,7 +64,7 @@
                             <form action="{{ url('authorizer-approve-loans/'.$item->id) }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               <input type = "hidden" name = "approve" value = "1" />
-                              <button class="btn2" type="submit"> Approve loan</button>
+                              <button class="btn2" type="submit" style="background-color: rgb(109, 207, 109);"> Approve loan</button>
                             </form>
                            </div>
                       </td>
@@ -73,7 +73,7 @@
                             <form action="{{ url('authorizer-approve-loans/'.$item->id) }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               <input type = "hidden" name = "approve" value = "0" />
-                              <button class="btn1" type="submit" >Reject request</button>
+                              <button class="btn1" type="submit" style="background-color: rgb(200, 79, 79);">Reject request</button>
                             </form>
                           </div>
                       </td>

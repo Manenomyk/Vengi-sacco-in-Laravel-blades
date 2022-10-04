@@ -18,6 +18,7 @@ use App\Http\Controllers\Clerk\SharesController;
 use App\Http\Controllers\Member\MembersDashboardController;
 use App\Http\Controllers\Member\MembersMyloansController;
 use App\Http\Controllers\Member\MembersMysharesController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Request;
 
 /*
@@ -146,6 +147,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(MembersMysharesController::class)->group(function(){
         Route::get('member-shares','index');
+    });
+
+    //pdf controller
+    Route::controller(PdfController::class)->group(function(){
+        Route::post('view-pdf','view_pdf');
+        Route::post('download-pdf','download_pdf');
     });
 
 

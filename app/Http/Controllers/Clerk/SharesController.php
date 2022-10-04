@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Clerk;
 
 use App\Models\User;
 use App\Models\Share;
+use App\Models\ShareType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ShareType;
 
 class SharesController extends Controller
 {
