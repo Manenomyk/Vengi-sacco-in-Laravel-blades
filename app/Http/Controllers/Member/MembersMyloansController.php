@@ -16,8 +16,8 @@ class MembersMyloansController extends Controller
      */
     public function index()
     {
-        $loan=Loan::where('user_id',Auth::user()->id)->get();
-        return view('member.member-myloans',compact('loan'));
+        // $loan=Loan::where('user_id',Auth::user()->id)->get();
+        return view('member.member-myloans');
     }
 
     /**

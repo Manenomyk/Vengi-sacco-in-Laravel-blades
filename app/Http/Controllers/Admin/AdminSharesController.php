@@ -15,18 +15,18 @@ class AdminSharesController extends Controller
      */
     public function index()
     {
-        $share=Share::join('users','users.id','=','shares.user_id')
-        ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->paginate(10);
-        return view('admin.admin-shares',compact('share'));
+        // $share=Share::join('users','users.id','=','shares.user_id')
+        // ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
+        // ->paginate(10);
+        return view('admin.admin-shares');
     }
 
     public function unapproved_shares(){
-        $share=Share::join('users','users.id','=','shares.user_id')
-        ->where('shares.is_approved','pending')
-        ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->paginate(10);
-        return view('admin.admin-sharespending',compact('share'));
+        // $share=Share::join('users','users.id','=','shares.user_id')
+        // ->where('shares.is_approved','pending')
+        // ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
+        // ->paginate(10);
+        return view('admin.admin-sharespending');
     }
 
     /**

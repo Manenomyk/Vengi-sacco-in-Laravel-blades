@@ -15,19 +15,19 @@ class AdminMembersController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->isMethod('post')) {
-            $member = User::where('role', 3)->where('name', 'LIKE', '%' . $request->name . '%')->paginate(10);
-        }
-        elseif($request->isMethod('get')){
-            $member = User::where('role', 3)->paginate(10);
-        }
-        return view('admin.admin-members', compact('member'));
+        // if ($request->isMethod('post')) {
+        //     $member = User::where('role', 3)->where('name', 'LIKE', '%' . $request->name . '%')->paginate(10);
+        // }
+        // elseif($request->isMethod('get')){
+        //     $member = User::where('role', 3)->paginate(10);
+        // }
+        return view('admin.admin-members');
     }
 
     public function unapproved_members()
     {
-        $member = User::where('role', 3)->where('is_approved', 0)->paginate(10);
-        return view('admin.admin-memberspending', compact('member'));
+        // $member = User::where('role', 3)->where('is_approved', 0)->paginate(10);
+        return view('admin.admin-memberspending');
     }
 
     /**

@@ -80,6 +80,7 @@
                                         <td>
                                             {{ $item->gender }}
                                         </td>
+                                        <td><a href="{{ url('create-account/'.$item->id) }}">Open Account</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

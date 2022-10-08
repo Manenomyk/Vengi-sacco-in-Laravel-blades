@@ -27,7 +27,7 @@
             <div class="box">
               <div class="right-side">
                 <div class="box-topic">Total Members</div>
-                <div class="number">{{ $members }}</div>
+                <div class="number">10</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
                   <span class="text">Up from yesterday</span>
@@ -38,7 +38,7 @@
             <div class="box">
               <div class="right-side">
                 <div class="box-topic">Total Shares</div>
-                <div class="number">{{ $share }}</div>
+                <div class="number">200</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
                   <span class="text">Up from yesterday</span>
@@ -49,7 +49,7 @@
             <div class="box">
               <div class="right-side">
                 <div class="box-topic">Total loans</div>
-                <div class="number">{{ $loans }}</div>
+                <div class="number">3000</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
                   <span class="text">Up from yesterday</span>
@@ -60,7 +60,7 @@
             <div class="box">
               <div class="right-side">
                 <div class="box-topic">Pending Approvals</div>
-                <div class="number">{{ $total_pending }}</div>
+                <div class="number">8</div>
                 <div class="indicator">
                   <i class='bx bx-down-arrow-alt down'></i>
                   <span class="text">Down From Today</span>

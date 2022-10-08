@@ -72,7 +72,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($share as $item)
+                      {{-- @foreach ($share as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->shares_amount }}</td>
@@ -93,12 +93,12 @@
                           @endif
                         </td>
                     </tr>
-                      @endforeach
+                      @endforeach --}}
                     </tbody>
                 </table>
             </div>
             <div>
-              {{ $share->onEachSide(2)->links() }}
+              {{-- {{ $share->onEachSide(2)->links() }} --}}
         </div>
      </section>
      @endsection

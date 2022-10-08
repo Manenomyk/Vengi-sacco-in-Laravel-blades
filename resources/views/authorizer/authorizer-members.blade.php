@@ -76,7 +76,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($member as $item)
+                            {{-- @foreach ($member as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
@@ -94,12 +94,12 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
             </div>
-            {{ $member->onEachSide(2)->links() }}
+            {{-- {{ $member->onEachSide(2)->links() }} --}}
         </div>
     </section>
 </body>

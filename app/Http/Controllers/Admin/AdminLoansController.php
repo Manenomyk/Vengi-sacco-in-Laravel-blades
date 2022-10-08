@@ -15,18 +15,18 @@ class AdminLoansController extends Controller
      */
     public function index()
     {
-        $loan=Loan::join('users','users.id','=','loans.user_id')
-        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->paginate(10);
-        return view('admin.admin-loans',compact('loan'));
+        // $loan=Loan::join('users','users.id','=','loans.user_id')
+        // ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        // ->paginate(10);
+        return view('admin.admin-loans');
     }
 
     public function unapproved_loans(){
-        $loan=Loan::join('users','users.id','=','loans.user_id')
-        ->where('loans.is_approved',0)
-        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->paginate();
-        return view('admin.admin-loanspending',compact('loan'));
+        // $loan=Loan::join('users','users.id','=','loans.user_id')
+        // ->where('loans.is_approved',0)
+        // ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        // ->paginate();
+        return view('admin.admin-loanspending');
     }
 
     /**

@@ -36,27 +36,27 @@
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-members') }}">
+              <a href="{{ url('members') }}">
                 <i class='bx bx-coin-stack' ></i>
                 <span class="links_name">Members</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-add-members') }}">
+              <a href="{{ url('account-number') }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Add members</span>
+                <span class="links_name">Transact</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-issue-shares') }}">
+              <a href="{{ url('add-member') }}">
                 <i class='bx bx-book-alt' ></i>
-                <span class="links_name">Allocate shares</span>
+                <span class="links_name">Add member</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-issue-loans') }}">
+              <a href="{{ url('add-account-type') }}">
                 <i class='bx bx-cog' ></i>
-                <span class="links_name">Allocate loans</span>
+                <span class="links_name">Add account type</span>
               </a>
             </li>
             <li class="log_out">

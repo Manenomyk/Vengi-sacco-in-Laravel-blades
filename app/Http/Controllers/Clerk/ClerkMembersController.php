@@ -16,8 +16,8 @@ class ClerkMembersController extends Controller
      */
     public function index()
     {
-        $member=User::where('role',3)->paginate(10);
-        return view('clerk.clerk-members',compact('member'));
+        // $member=User::where('role',3)->paginate(10);
+        return view('clerk.clerk-members');
     }
 
     /**
@@ -38,32 +38,32 @@ class ClerkMembersController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'=>'required|string|max:50|min:3',
-            'email'=>'required|email|string|unique:users,email|max:100|min:4',
-            'role' => 'required',
-            'location'=>'required|string|max:50',
-            'gender'=>'required|string|max:10',
-            'id_number'=>'required|unique:users,id_number|numeric|digits_between:6,8',
-            'phone_number'=>'required|numeric|digits_between:9,10'
-        ]);
+        // $validated = $request->validate([
+        //     'name'=>'required|string|max:50|min:3',
+        //     'email'=>'required|email|string|unique:users,email|max:100|min:4',
+        //     'role' => 'required',
+        //     'location'=>'required|string|max:50',
+        //     'gender'=>'required|string|max:10',
+        //     'id_number'=>'required|unique:users,id_number|numeric|digits_between:6,8',
+        //     'phone_number'=>'required|numeric|digits_between:9,10'
+        // ]);
 
-        $member=new User();
+        // $member=new User();
 
-        $member->password=Hash::make($request->id_number);
-        $member->name=$request->input('name');
-        $member->email=$request->input('email');
-        $member->role=$request->input('role');
-        $member->id_number=$request->input('id_number');
-        $member->location=$request->input('location');
-        $member->gender=$request->input('gender');
-        $member->phone_number=$request->input('phone_number');
+        // $member->password=Hash::make($request->id_number);
+        // $member->name=$request->input('name');
+        // $member->email=$request->input('email');
+        // $member->role=$request->input('role');
+        // $member->id_number=$request->input('id_number');
+        // $member->location=$request->input('location');
+        // $member->gender=$request->input('gender');
+        // $member->phone_number=$request->input('phone_number');
 
-        $result=$member->save();
+        // $result=$member->save();
 
-        if($result){
-            return back()->with("message","User created successfully, pending for approval");
-        }
+        // if($result){
+        //     return back()->with("message","User created successfully, pending for approval");
+        // }
 
        
     }

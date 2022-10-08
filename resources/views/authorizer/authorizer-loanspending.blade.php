@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($loan as $item)
+                      {{-- @foreach ($loan as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->loan_amount }}</td>
@@ -79,12 +79,12 @@
                       </td>
                     </tr>
                    
-                      @endforeach
+                      @endforeach --}}
                     </tbody>
                 </table>
             </div>
             <div>
-              {{ $loan->onEachSide(2)->links() }}
+              {{-- {{ $loan->onEachSide(2)->links() }} --}}
         </div>
       </section>
     

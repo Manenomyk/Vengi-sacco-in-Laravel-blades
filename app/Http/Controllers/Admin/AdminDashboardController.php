@@ -17,13 +17,13 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        $members=User::where('role',3)->count();
-        $share=Share::where('is_approved','approve')->sum('shares_amount');
-        $loans=Loan::where('is_approved',1)->sum('loan_amount');
-        $pending_loans=Loan::where('is_approved',0)->count();
-        $pending_shares=Share::where('is_approved','pending')->count();
-        $total_pending=$pending_loans+$pending_shares;
-        return view('admin.admin-dashboard',compact('members','share','loans','total_pending'));
+        // $members=User::where('role',3)->count();
+        // $share=Share::where('is_approved','approve')->sum('shares_amount');
+        // $loans=Loan::where('is_approved',1)->sum('loan_amount');
+        // $pending_loans=Loan::where('is_approved',0)->count();
+        // $pending_shares=Share::where('is_approved','pending')->count();
+        // $total_pending=$pending_loans+$pending_shares;
+        return view('admin.admin-dashboard');
     }
 
     /**

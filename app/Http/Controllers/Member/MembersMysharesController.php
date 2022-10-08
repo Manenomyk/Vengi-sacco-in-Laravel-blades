@@ -16,8 +16,8 @@ class MembersMysharesController extends Controller
      */
     public function index()
     {
-        $share=Share::where('user_id',Auth::user()->id)->get();
-        return view('member.member-myshares',compact('share'));
+        // $share=Share::where('user_id',Auth::user()->id)->get();
+        return view('member.member-myshares');
     }
 
     /**

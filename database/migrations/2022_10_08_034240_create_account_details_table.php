@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::create('account_details', function (Blueprint $table) {
+            $table->id();
+            $table->string('account_type');
+            $table->integer('interest');
+            $table->integer('duration');
+            $table->boolean('is_approved')->default(0);
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -25,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('account_details');
     }
 };

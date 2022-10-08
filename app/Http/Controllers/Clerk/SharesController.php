@@ -17,10 +17,10 @@ class SharesController extends Controller
      */
     public function index()
     {
-        $share=Share::join('users','users.id','=','shares.user_id')
-        ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
-        ->paginate(10);
-        return view('clerk.clerk-shares',compact('share'));
+        // $share=Share::join('users','users.id','=','shares.user_id')
+        // ->select('shares.shares_amount','shares.id','shares.user_id','shares.is_approved','shares.share_type_id','users.name')
+        // ->paginate(10);
+        return view('clerk.clerk-shares');
     }
 
     /**
@@ -30,9 +30,9 @@ class SharesController extends Controller
      */
     public function create()
     {
-        $member=User::where('role',3)->where('is_approved',1)->get();
-        $type=ShareType::all();
-        return view('clerk.clerk-addshares',compact('member','type'));
+        // $member=User::where('role',3)->where('is_approved',1)->get();
+        // $type=ShareType::all();
+        return view('clerk.clerk-addshares');
     }
 
     /**
@@ -43,29 +43,29 @@ class SharesController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|integer',
-            'shares_amount'=>'required|string|max:50',
-            'share_type_id'=>'required|string',
-        ]);
+        // $validated = $request->validate([
+        //     'user_id' => 'required|integer',
+        //     'shares_amount'=>'required|string|max:50',
+        //     'share_type_id'=>'required|string',
+        // ]);
 
-        $not_approved=User::where('id',$request->user_id)->first();
-        if($not_approved->is_approved==0){
-            return back()->with("issue","The user has not been approved, contact the authorizer");
-        }
+        // $not_approved=User::where('id',$request->user_id)->first();
+        // if($not_approved->is_approved==0){
+        //     return back()->with("issue","The user has not been approved, contact the authorizer");
+        // }
 
-        $share=new Share();
+        // $share=new Share();
 
-        $share->user_id=$request->input('user_id');
-        $share->shares_amount=$request->input('shares_amount');
-        $share->share_type_id=$request->input('share_type_id');
+        // $share->user_id=$request->input('user_id');
+        // $share->shares_amount=$request->input('shares_amount');
+        // $share->share_type_id=$request->input('share_type_id');
       
 
-        $result=$share->save();
+        // $result=$share->save();
 
-        if($result){
-            return back()->with("message","Shares allocated successfully,pending approval");
-        }
+        // if($result){
+        //     return back()->with("message","Shares allocated successfully,pending approval");
+        // }
         
     }
 

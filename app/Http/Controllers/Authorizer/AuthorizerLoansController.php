@@ -17,43 +17,43 @@ class AuthorizerLoansController extends Controller
      */
     public function index()
     {
-        $loan=Loan::join('users','users.id','=','loans.user_id')
-        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->paginate(10);
-        return view('authorizer.authorizer-loans',compact('loan'));
+        // $loan=Loan::join('users','users.id','=','loans.user_id')
+        // ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        // ->paginate(10);
+        return view('authorizer.authorizer-loans');
     }
 
     public function unapproved_loans()
     {
-        $loan=Loan::join('users','users.id','=','loans.user_id')
-        ->where('loans.is_approved',0)
-        ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
-        ->paginate(6);
-        return view('authorizer.authorizer-loanspending',compact('loan'));
+        // $loan=Loan::join('users','users.id','=','loans.user_id')
+        // ->where('loans.is_approved',0)
+        // ->select('loans.loan_amount','loans.id','loans.due_date','loans.is_approved','loans.user_id','loans.loans_type_id','users.name')
+        // ->paginate(6);
+        return view('authorizer.authorizer-loanspending');
     }
 
     public function approve(Request $request, $id){
         
-        $approve=Loan::find($id);
+        // $approve=Loan::find($id);
         
-        $loan_type=LoanType::where('id',$approve->loans_type_id)->first();
-        $due_date=Carbon::now()->addMonths($loan_type->duration);
+        // $loan_type=LoanType::where('id',$approve->loans_type_id)->first();
+        // $due_date=Carbon::now()->addMonths($loan_type->duration);
 
-        if($request->approve==1){
-            $approve->is_approved=$request->input('approve');
-            $approve->due_date=$due_date;
-            $result=$approve->update();
-            if($result){
-                return back()->with("message", "The loans has been approved successfully");
-            }
-        }
+        // if($request->approve==1){
+        //     $approve->is_approved=$request->input('approve');
+        //     $approve->due_date=$due_date;
+        //     $result=$approve->update();
+        //     if($result){
+        //         return back()->with("message", "The loans has been approved successfully");
+        //     }
+        // }
 
-        else{
-            $result=$approve->delete();
-            if($result){
-                return back()->with("message", "The loans has been declined successfully");
-            }
-        }
+        // else{
+        //     $result=$approve->delete();
+        //     if($result){
+        //         return back()->with("message", "The loans has been declined successfully");
+        //     }
+        // }
 
        
        

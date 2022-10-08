@@ -37,21 +37,22 @@
                                 {{ session()->get('message') }}
                             </div>
                         @endif
-                        <form action="{{ url('store-members') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('store-user') }}" method="POST" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
+
                             <label for="name">name</label>
-                            <input class="forminput" type="text" name="name">
+                            <input class="forminput" type="text" name="name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="email">email</label>
-                            <input class="forminput" type="text" name="email">
+                            <input class="forminput" type="text" name="email" value="{{ old('email') }}">
                             @error('email')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="role"></label>
-                            <select class="forminput" name="role">
+                            <select class="forminput" name="role" value="{{ old('role') }}">
                                 <option value="">Select role</option>
                                 <option value="0">Administrator</option>
                                 <option value="1">Clerk</option>
@@ -62,16 +63,16 @@
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="id_number">id number</label>
-                            <input class="forminput" type="text" name="id_number">
+                            <input class="forminput" type="text" name="id_number" value="{{ old('id_number') }}">
                             @error('id_number')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="location">location</label>
-                            <input class="forminput" type="text" name="location">
+                            <input class="forminput" type="text" name="location" value="{{ old('location') }}">
                             @error('location')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
-                            <select class="forminput" name="gender">
+                            <select class="forminput" name="gender" value="{{ old('gender') }}">
                                 <option value="">Select gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -80,7 +81,7 @@
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="phone_number">phone number</label>
-                            <input class="forminput" type="text" name="phone_number">
+                            <input class="forminput" type="text" name="phone_number" value="{{ old('phone_number') }}">
                             @error('phone_number')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror

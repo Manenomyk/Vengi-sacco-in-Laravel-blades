@@ -9,9 +9,11 @@ use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
 use App\Http\Controllers\Authorizer\AuthorizerLoansController;
 use App\Http\Controllers\Authorizer\AuthorizerMembersController;
 use App\Http\Controllers\Authorizer\AuthorizerSharesController;
+use App\Http\Controllers\Clerk\AccountController;
+use App\Http\Controllers\Clerk\AccountType;
 use App\Http\Controllers\Clerk\ClerkLoansController;
-use App\Http\Controllers\Clerk\ClerkMembersController;
 use App\Http\Controllers\Clerk\DashBoardController;
+use App\Http\Controllers\Clerk\MemberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Clerk\SharesController;
@@ -20,6 +22,7 @@ use App\Http\Controllers\Member\MembersMyloansController;
 use App\Http\Controllers\Member\MembersMysharesController;
 use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Request;
+use Laravel\Jetstream\Rules\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,22 +41,6 @@ Route::get('/', function () {
 
 Route::get('homepage',[HomeController::class,'CheckUser']);
 
-// Route::get('/AdminDash', function () {
-//     return view('admin.admin-dashboard');
-// })->name('admin.dash');
-
-// Route::get('/ClerkDash', function () {
-//     return view('clerk.clerk-dashboard');
-// })->name('clerk.dash');
-
-// Route::get('/AuthorizerDash', function () {
-//     return view('authorizer.authorizer-dashboard');
-// })->name('authorizer.dash');
-
-// Route::get('/MemberDash', function () {
-//     return view('member.member-dashboard');
-// })->name('member.dash');
-
 
 Route::middleware([
     'auth:sanctum',
@@ -70,6 +57,27 @@ Route::middleware(['auth'])->group(function () {
 
 
     //clerk
+    //Account type controller
+    Route::controller(AccountType::class)->group(function(){
+        Route::get('add-account-type','create');
+        Route::post('store-account-type','store');
+    });
+
+    Route::controller(MemberController::class)->group(function(){
+        Route::get('members','index');
+        Route::get('add-member','create');
+        Route::post('store-user','store');
+    });
+
+    Route::controller(AccountController::class)->group(function(){
+        Route::get('create-account/{id}','create');
+        Route::post('store-opened-account','store');
+        Route::get('account-number','get_number_page');
+        Route::post('search-number','search_number');
+        Route::post('store-allocation','store_allocation');
+    });
+
+
     Route::controller(SharesController::class)->group(function(){
         Route::get('clerk-shares','index');
         Route::get('clerk-issue-shares','create');
@@ -85,11 +93,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('store-loans','store');
     });
 
-    Route::controller(ClerkMembersController::class)->group(function(){
-        Route::get('clerk-members','index');
-        Route::get('clerk-add-members','create');
-        Route::post('store-members','store');
-    });
+
 
     //Authorizer
     Route::controller(AuthorizerDashboardController::class)->group(function(){

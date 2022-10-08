@@ -11,8 +11,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 95%;
-  
+  min-width: 100%;
 }
 
 td, th {

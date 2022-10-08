@@ -49,9 +49,9 @@
                             <label for="user">Select user to allocate shares</label>
                             <select class="forminput" name="user_id">
                                 <option value="">Select user</option>
-                                @foreach ($member as $item)
+                                {{-- @foreach ($member as $item)
                                     <option value={{ $item->id }}>{{ $item->name }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             @error('user_id')
                                 <div class="errors-here">{{ $message }}</div>
@@ -64,9 +64,9 @@
                             <label for="type">select type of share</label>
                             <select class="forminput" name="share_type_id">
                                 <option value="">Select type</option>
-                                @foreach ($type as $share)
+                                {{-- @foreach ($type as $share)
                                     <option value={{ $share->id }}>{{ $share->name }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             @error('share_type_id')
                                 <div class="errors-here">{{ $message }}</div>
