@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class AccountType extends Controller
 {
+    public function index(){
+        $account_type=AccountDetail::all();
+        return view('clerk.account-type',compact('account_type'));
+    }
     public function create(){
         return view('clerk.add-account-type');
     }

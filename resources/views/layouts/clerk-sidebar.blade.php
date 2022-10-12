@@ -18,43 +18,73 @@
         </div>
           <ul class="nav-links">
             <li>
-              <a href="{{ url('clerk-dash') }}" class="active">
+              <a href="{{ url('clerk-dash') }}" class="sidebarBtn active">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-shares') }}">
+              <a href="{{ url('get-account-types') }}" class="sidebarBtn">
                 <i class='bx bx-box' ></i>
-                <span class="links_name">Shares</span>
+                <span class="links_name">Account types</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('clerk-loans') }}">
+              <a href="{{ url('get-emergency') }}" class="sidebarBtn">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> Loans</span>
+                <span class="links_name"> Emergency</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('members') }}">
+              <a href="{{ url('table-banking') }}" class="sidebarBtn">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name"> Table Banking</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('share-account') }}" class="sidebarBtn">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name"> Share account</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('normal-share') }}" class="sidebarBtn">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name"> Normal Shares</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('inst-shares') }}" class="sidebarBtn">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name"> Institutional Shares</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('gen-ledger') }}" class="sidebarBtn">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name"> General Ledger</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('members') }}" class="sidebarBtn">
                 <i class='bx bx-coin-stack' ></i>
                 <span class="links_name">Members</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('account-number') }}">
+              <a href="{{ url('account-number') }}" class="sidebarBtn">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Transact</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('add-member') }}">
+              <a href="{{ url('add-member') }}" class="sidebarBtn">
                 <i class='bx bx-book-alt' ></i>
                 <span class="links_name">Add member</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('add-account-type') }}">
+              <a href="{{ url('add-account-type') }}" class="sidebarBtn">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Add account type</span>
               </a>
@@ -79,16 +109,29 @@
       @yield('clerk-sidebar')
     
       <script>
-       let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function() {
-      sidebar.classList.toggle("active");
-      if(sidebar.classList.contains("active")){
-      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-    }else
-      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    //    let sidebar = document.querySelectorAll(".sidebar");
+    // let sidebarBtn = document.querySelector(".sidebarBtn");
+    // sidebarBtn.onclick = function() {
+    //   sidebar.classList.toggle("active");
+    //   if(sidebar.classList.contains("active")){
+    //   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+    // }else
+    //   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    // }
+
+    let list=document.querySelectorAll('.sidebarBtn');
+    for(let i=0; i<list.length; i++){
+      list[i].onClick=function(){
+        let j=0;
+        while(j < list.length){
+          list[j++].className='list';
+        }
+        list[i].className='list active'
+      }
     }
+
      </script>
+   
     
     </body>
     </html>

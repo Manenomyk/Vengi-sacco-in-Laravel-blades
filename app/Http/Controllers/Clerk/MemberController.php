@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MemberController extends Controller
 {
@@ -43,6 +44,7 @@ class MemberController extends Controller
         $result=$user->save();
 
         if($result){
+            Alert::success('Information', 'User created successfully');
             return back()->with("message","User created successfully");
         }
         else{

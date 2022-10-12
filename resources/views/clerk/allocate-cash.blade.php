@@ -43,7 +43,6 @@
                         <div class="ditails">
                             <ul>
                                 <li><b><span>Name:</span> </b> {{ $user->name }}</li>
-                                <li><b><span>Role:</span></b> {{ $user->role }}</li>
                                 <li><b><span>Location:</span></b> {{ $user->location }}</li>
                                 <li><b><span>Gender:</span></b> {{ $user->gender }}</li>
                                 <li><b><span>Id Number:</span></b> {{ $user->id_number }}</li>
@@ -53,6 +52,8 @@
                                 <li><b><span>Duration:</span></b> {{ $details->duration }}</li>
                                 <li><b><span>Account Type:</span></b> {{ $details->account_type }}</li>
                                 <li><b><span>Account Number:</span></b> {{ $account->id }}</li>
+                                <li><b><span>Account Balance:</span></b> {{ $account->amount_without_interest }}</li>
+
                             </ul>
                         </div>
                         <form action="{{ url('store-allocation') }}" method="POST" enctype="multipart/form-data"
@@ -78,7 +79,7 @@
                             <div style="display: flex; justify-content:right; ">
                                 <button type="submit"
                                     style="background-color: #0A2558; color:white; padding:8px 0px; width:100px; border-radius:10px;">
-                                    Allocate</button>
+                                    Submit</button>
                             </div>
                         </form>
 

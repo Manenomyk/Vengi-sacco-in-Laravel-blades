@@ -13,6 +13,7 @@ use App\Models\ShareAccount;
 use App\Models\TableBankingLoan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AccountController extends Controller
 {
@@ -35,8 +36,17 @@ class AccountController extends Controller
             $share_account->user_id=$req->input('user_id');
             $share_account->details_id=$req->input('account_type');
             $result=$share_account->save();
+
+
             $acc_share=ShareAccount::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_share->id;
+            $res=$record->save();
+            
+            if ($result && $res){
+                Alert::html("information","<b>Share Account opened Successfully, Account number: $acc_share->id<b>","success");
                 return back()->with("info","Share Account Opened Successfully, Account Number: $acc_share->id");
             }
         } 
@@ -44,10 +54,17 @@ class AccountController extends Controller
             $institutional_share= new InstitutionalShare();
             $institutional_share->user_id=$req->input('user_id');
             $institutional_share->details_id=$req->input('account_type');
-
             $result=$institutional_share->save();
+
             $acc_inst=InstitutionalShare::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_inst->id;
+            $res=$record->save();
+
+            if ($result && $res){
+                Alert::success("information","Share Account opened Successfully, Account number: $acc_inst->id");
                 return back()->with("info","Institutional Share Account Opened Successfully, Account Number: $acc_inst->id");
             }
         }
@@ -57,8 +74,16 @@ class AccountController extends Controller
             $normal_share->details_id=$req->input('account_type');
 
             $result=$normal_share->save();
+
             $acc_norm=NormalShare::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_norm->id;
+            $res=$record->save();
+
+            if ($result && $res){
+                Alert::success("information","Share Account opened Successfully, Account number: $acc_norm->id");
                 return back()->with("info","Normal Share Account Opened Successfully, Account Number: $acc_norm->id");
             }
         }
@@ -69,7 +94,14 @@ class AccountController extends Controller
 
             $result=$table_banking->save();
             $acc_table=TableBankingLoan::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_table->id;
+            $res=$record->save();
+
+            if ($result && $res){
+                Alert::success("information","Share Account opened Successfully, Account number: $acc_table->id");
                 return back()->with("info","Table Banking Loan Account Opened Successfully, Account Number: $acc_table->id");
             }
         }
@@ -80,7 +112,14 @@ class AccountController extends Controller
 
             $result=$emergency_loan->save();
             $acc_emerg=EmergencyLoan::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_emerg->id;
+            $res=$record->save();
+
+            if ($result && $res){
+                Alert::success("information","Share Account opened Successfully, Account number: $acc_emerg->id");
                 return back()->with("info","Emergency Loan Account Opened Successfully, Account Number: $acc_emerg->id");
             }
         }
@@ -91,7 +130,14 @@ class AccountController extends Controller
 
             $result=$general_ledger->save();
             $acc_gen=GeneralLedger::where('user_id',$req->user_id)->first();
-            if ($result){
+
+            $record->details_id=$req->input('account_type');
+            $record->user_id=$req->input('account_type');
+            $record->account_id=$acc_gen->id;
+            $res=$record->save();
+            
+            if ($result && $res){
+                Alert::success("information","Share Account opened Successfully, Account number: $acc_gen->id");
                 return back()->with("info","Normal Share Account Opened Successfully, Account Number: $acc_gen->id");
             }
         }
@@ -148,11 +194,177 @@ class AccountController extends Controller
         }
     }
 
+
     public function store_allocation(Request $request){
         $validated=$request->validate([
             'type'=>'required|boolean',
             'amount'=>'required|numeric'
         ]);
+
+        $number=$request->account;
+
+       
+        
+        if(100000<=$number && $number<=199999){
+            $account=ShareAccount::where('id',$number)->first();
+            $account->type=$request->input('type');
+            if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+           
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+            $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        elseif (200000<=$number && $number<=299999) {
+            $account=InstitutionalShare::where('id',$number)->first();
+            $account->type=$request->input('type');
+            if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+            $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        elseif (300000<=$number && $number<=399999) {
+            $account=NormalShare::where('id',$number)->first();
+            $account->type=$request->input('type');
+             if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+            $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        elseif (400000<=$number && $number<=499999) {
+            $account=TableBankingLoan::where('id',$number)->first();
+            $account->type=$request->input('type');
+             if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+             $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        elseif (500000<=$number && $number<=599999) {
+            $account=EmergencyLoan::where('id',$number)->first();
+            $account->type=$request->input('type');
+             if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+            $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        elseif (600000<=$number && $number<=699999) {
+            $account=GeneralLedger::where('id',$number)->first();
+            $account->type=$request->input('type');
+             if($request->type==1){
+                $money=$request->amount+$account->amount_without_interest;
+            }
+            elseif($request->type==0){
+                $money=$account->amount_without_interest-$request->amount;
+            }
+            $account->amount_without_interest=$money;
+            $result=$account->save();
+
+            $record=new Record();
+
+            $record->amount_without_interest=$request->input('amount');
+            $record->type=$request->input('type');
+            $record->account_id=$account->id;
+            $record->details_id=$account->details_id;
+            $record->user_id=$account->user_id;
+            $res=$record->save();
+
+            if ($result && $res) {
+                return redirect()->route('cashing')->with("info","allocated successfully");
+                // return back()->with("info","cash allocated successfully");
+            }
+        }
+        else{
+            return back()->with("info","Error occurred while allocating cash");
+        }
 
         
     }

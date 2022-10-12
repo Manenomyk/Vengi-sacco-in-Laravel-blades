@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminLogsController;
 use App\Http\Controllers\Admin\AdminMembersController;
 use App\Http\Controllers\Admin\AdminSharesController;
 use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
+use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
 use App\Http\Controllers\Authorizer\AuthorizerLoansController;
 use App\Http\Controllers\Authorizer\AuthorizerMembersController;
 use App\Http\Controllers\Authorizer\AuthorizerSharesController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Clerk\AccountController;
 use App\Http\Controllers\Clerk\AccountType;
 use App\Http\Controllers\Clerk\ClerkLoansController;
 use App\Http\Controllers\Clerk\DashBoardController;
+use App\Http\Controllers\Clerk\DisplayController;
 use App\Http\Controllers\Clerk\MemberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -59,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
     //clerk
     //Account type controller
     Route::controller(AccountType::class)->group(function(){
+        Route::get('get-account-types','index');
         Route::get('add-account-type','create');
         Route::post('store-account-type','store');
     });
@@ -72,17 +75,21 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(AccountController::class)->group(function(){
         Route::get('create-account/{id}','create');
         Route::post('store-opened-account','store');
-        Route::get('account-number','get_number_page');
+        Route::get('account-number','get_number_page')->name('cashing');
         Route::post('search-number','search_number');
         Route::post('store-allocation','store_allocation');
     });
 
-
-    Route::controller(SharesController::class)->group(function(){
-        Route::get('clerk-shares','index');
-        Route::get('clerk-issue-shares','create');
-        Route::post('store-shares','store');
+    Route::controller(DisplayController::class)->group(function(){
+        Route::get('get-emergency','get_emergency');
+        Route::get('table-banking','table_banking_loans');
+        Route::get('share-account','share_accounts');
+        Route::get('normal-share','normal_shares');
+        Route::get('inst-shares','institutional_shares');
+        Route::get('gen-ledger','gen_ledgers');
     });
+
+
     Route::controller(DashBoardController::class)->group(function(){
         Route::get('clerk-dash','index');
     });
@@ -104,6 +111,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('authorizer-members','index');
         Route::get('authorizer-unapproved-members','unapproved_members');
         Route::post('authorizer-approve-member/{id}','approve');
+    });
+
+    Route::controller(AuthorizerDisplayController::class)->group(function(){
+        Route::get('auth-emergency','emergency');
+        Route::get('auth-table-banking','table');
+        Route::get('auth-share-account','share');
+        Route::get('auth-normal-share','normal');
+        Route::get('auth-inst-shares','institutional');
+        Route::get('auth-gen-ledger','ledgers');
     });
 
     Route::controller(AuthorizerLoansController::class)->group(function(){

@@ -53,7 +53,7 @@
                             @enderror
                             <div style="display: flex; justify-content:right; ">
                                 <button type="submit"
-                                    style="background-color: #0A2558; color:white; padding:8px 0px; width:100px; border-radius:10px;">Search
+                                    style="background-color: #0A2558; color:white; padding:8px 0px; width:125px; border-radius:10px;">Search
                                     Account</button>
                             </div>
                         </form>

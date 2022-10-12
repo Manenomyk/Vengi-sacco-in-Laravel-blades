@@ -36,27 +36,39 @@
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-shares') }}">
+              <a href="{{ url('auth-emergency') }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">All shares</span>
+                <span class="links_name">Emergency loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-unapproved-shares') }}">
+              <a href="{{ url('auth-table-banking') }}">
                 <i class='bx bx-coin-stack' ></i>
-                <span class="links_name">Pending shares</span>
+                <span class="links_name">table banking</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-loans') }}">
+              <a href="{{ url('auth-share-account') }}">
                 <i class='bx bx-book-alt' ></i>
-                <span class="links_name">All loans</span>
+                <span class="links_name">Shares Accounts</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-unapproved-loans') }}">
+              <a href="{{ url('auth-normal-share') }}">
                 <i class='bx bx-cog' ></i>
-                <span class="links_name">Pending loans</span>
+                <span class="links_name">Normal Shares</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('auth-inst-shares') }}">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">Institutional Shares</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('auth-gen-ledger') }}">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">General Ledger</span>
               </a>
             </li>
             <li class="log_out">

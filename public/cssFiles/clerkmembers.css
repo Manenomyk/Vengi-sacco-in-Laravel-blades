@@ -11,8 +11,14 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  min-width: 100%;
+  min-width: 1000px;
 }
+@media (max-width: 768px) {
+  table{
+    min-width:300px ;
+  }
+}
+
 
 td, th {
   border: 1px solid #dddddd;
@@ -27,10 +33,10 @@ tr:nth-child(even) {
 thead{
   background-color: #0a2558;
   color: white;
-  font-size: 14px;
+  font-size: 13px;
 }
 tbody{
-  font-size: 14px;
+  font-size: 13px;
 }
 #gender{
   font-size: 16px;

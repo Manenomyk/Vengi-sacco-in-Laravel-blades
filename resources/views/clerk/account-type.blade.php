@@ -55,30 +55,22 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>loan amount (+ 5% interest)</th>
-                            <th>User allocated </th>
-                            <th>loan type</th>
-                            <th>due date</th>
+                            <th>Account Type</th>
+                            <th>Interest </th>
+                            <th>Duration in Months</th>
                             <th>status</th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                      {{-- @foreach ($loan as $item)
+                      @foreach ($account_type as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->loan_amount }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->account_type }}</td>
+                        <td>{{ $item->interest }} %</td>
                         <td>
-                          @if ($item->loans_type_id==1)
-                          Table bank
-                          @elseif ($item->loans_type_id==2)
-                          Short term
-                          @elseif ($item->loans_type_id==3)
-                          Short bank
-                          @endif
+                         {{ $item->duration }}
                         </td>
-                        <td>{{ $item->due_date }}</td>
                         <td>
                           @if ( $item->is_approved ==0 )
                           Pending
@@ -88,12 +80,11 @@
                         </td>
                     </tr>
                    
-                      @endforeach --}}
+                      @endforeach
                     </tbody>
                 </table>
             </div>
             <div>
-              {{-- {{ $loan->onEachSide(2)->links() }} --}}
         </div>
      </section>
      @endsection
