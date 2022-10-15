@@ -77,18 +77,6 @@
                 <span class="links_name">Transact</span>
               </a>
             </li>
-            <li>
-              <a href="{{ url('add-member') }}" class="sidebarBtn">
-                <i class='bx bx-book-alt' ></i>
-                <span class="links_name">Add member</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{ url('add-account-type') }}" class="sidebarBtn">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Add account type</span>
-              </a>
-            </li>
             <li class="log_out">
                   <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf

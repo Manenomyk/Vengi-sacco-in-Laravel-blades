@@ -23,6 +23,7 @@ class AuthorizerDisplayController extends Controller
                 'account_details.account_type',
                 'account_details.interest',
                 'account_details.duration',
+                'emergency_loans.id',
                 'emergency_loans.is_approved',
                 'emergency_loans.type',
                 'emergency_loans.amount_without_interest',
@@ -31,10 +32,10 @@ class AuthorizerDisplayController extends Controller
                 'emergency_loans.created_at'
             )->paginate(10);
 
-       return view('authorizer.emergency');
+       return view('authorizer.emergency',compact('emergency_loans'));
     }
 
-    public function gen_ledgers(){
+    public function ledgers(){
        
         $general_ledgers = GeneralLedger::join('users', 'users.id', '=', 'general_ledgers.user_id')
         ->join('account_details', 'account_details.id', '=', 'general_ledgers.details_id')
@@ -44,6 +45,7 @@ class AuthorizerDisplayController extends Controller
             'account_details.account_type',
             'account_details.interest',
             'account_details.duration',
+            'general_ledgers.id',
             'general_ledgers.is_approved',
             'general_ledgers.type',
             'general_ledgers.amount_without_interest',
@@ -52,10 +54,10 @@ class AuthorizerDisplayController extends Controller
             'general_ledgers.created_at'
         )->paginate(10);
 
-        return view('clerk.ledger',compact('general_ledgers'));
+        return view('authorizer.ledger',compact('general_ledgers'));
 
     }
-    public function institutional_shares(){
+    public function institutional(){
         $institutional_shares = InstitutionalShare::join('users', 'users.id', '=', 'institutional_shares.user_id')
         ->join('account_details', 'account_details.id', '=', 'institutional_shares.details_id')
         ->select(
@@ -64,6 +66,7 @@ class AuthorizerDisplayController extends Controller
             'account_details.account_type',
             'account_details.interest',
             'account_details.duration',
+            'institutional_shares.id',
             'institutional_shares.is_approved',
             'institutional_shares.type',
             'institutional_shares.amount_without_interest',
@@ -71,9 +74,9 @@ class AuthorizerDisplayController extends Controller
             'institutional_shares.created_at'
         )->paginate(10);
 
-        return view('clerk.inst-shares',compact('institutional_shares'));
+        return view('authorizer.inst-shares',compact('institutional_shares'));
     }
-    public function normal_shares(){
+    public function normal(){
         $normal_shares = NormalShare::join('users', 'users.id', '=', 'normal_shares.user_id')
         ->join('account_details', 'account_details.id', '=', 'normal_shares.details_id')
         ->select(
@@ -82,6 +85,7 @@ class AuthorizerDisplayController extends Controller
             'account_details.account_type',
             'account_details.interest',
             'account_details.duration',
+            'normal_shares.id',
             'normal_shares.is_approved',
             'normal_shares.type',
             'normal_shares.amount_without_interest',
@@ -89,11 +93,11 @@ class AuthorizerDisplayController extends Controller
             'normal_shares.created_at'
         )->paginate(10);
 
-        return view('clerk.normal-share',compact('normal_shares'));
+        return view('authorizer.normal-share',compact('normal_shares'));
 
     }
 
-    public function share_accounts(){
+    public function share(){
         $share_accounts = ShareAccount::join('users', 'users.id', '=', 'share_accounts.user_id')
         ->join('account_details', 'account_details.id', '=', 'share_accounts.details_id')
         ->select(
@@ -102,6 +106,7 @@ class AuthorizerDisplayController extends Controller
             'account_details.account_type',
             'account_details.interest',
             'account_details.duration',
+            'share_accounts.id',
             'share_accounts.is_approved',
             'share_accounts.type',
             'share_accounts.amount_without_interest',
@@ -109,10 +114,10 @@ class AuthorizerDisplayController extends Controller
             'share_accounts.created_at'
         )->paginate(10);
 
-        return view('clerk.share-account',compact('share_accounts'));
+        return view('authorizer.share-account',compact('share_accounts'));
     }
 
-    public function table_banking_loans(){
+    public function table(){
         $table_banking_loans = TableBankingLoan::join('users', 'users.id', '=', 'table_banking_loans.user_id')
         ->join('account_details', 'account_details.id', '=', 'table_banking_loans.details_id')
         ->select(
@@ -121,6 +126,7 @@ class AuthorizerDisplayController extends Controller
             'account_details.account_type',
             'account_details.interest',
             'account_details.duration',
+            'table_banking_loans.id',
             'table_banking_loans.is_approved',
             'table_banking_loans.type',
             'table_banking_loans.amount_without_interest',
@@ -129,6 +135,6 @@ class AuthorizerDisplayController extends Controller
             'table_banking_loans.created_at'
         )->paginate(10);
 
-        return view('clerk.table-banking',compact('table_banking_loans'));
+        return view('authorizer.table-banking',compact('table_banking_loans'));
     }
 }

@@ -228,8 +228,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         elseif (200000<=$number && $number<=299999) {
@@ -254,8 +254,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         elseif (300000<=$number && $number<=399999) {
@@ -280,8 +280,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         elseif (400000<=$number && $number<=499999) {
@@ -306,8 +306,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         elseif (500000<=$number && $number<=599999) {
@@ -332,8 +332,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         elseif (600000<=$number && $number<=699999) {
@@ -358,8 +358,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
+                Alert::success("information","Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
-                // return back()->with("info","cash allocated successfully");
             }
         }
         else{

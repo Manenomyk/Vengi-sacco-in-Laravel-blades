@@ -36,21 +36,7 @@ class DisplayController extends Controller
 
     public function gen_ledgers(){
        
-        $general_ledgers = GeneralLedger::join('users', 'users.id', '=', 'general_ledgers.user_id')
-        ->join('account_details', 'account_details.id', '=', 'general_ledgers.details_id')
-        ->select(
-            'users.name',
-            'users.id_number',
-            'account_details.account_type',
-            'account_details.interest',
-            'account_details.duration',
-            'general_ledgers.is_approved',
-            'general_ledgers.type',
-            'general_ledgers.amount_without_interest',
-            'general_ledgers.amount_with_interest',
-            'general_ledgers.due_date',
-            'general_ledgers.created_at'
-        )->paginate(10);
+        $general_ledgers = GeneralLedger::paginate();
 
         return view('clerk.ledger',compact('general_ledgers'));
 

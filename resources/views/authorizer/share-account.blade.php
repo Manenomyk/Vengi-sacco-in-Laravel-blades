@@ -23,12 +23,12 @@
 
 <body>
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+  @extends('layouts.authorizer-sidebar')
+  <x-app-layout>
 
-    </x-app-layout>
+  </x-app-layout>
 
-    @section('clerk-sidebar')
+  @section('authorizer-sidebar')
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -87,6 +87,24 @@
                                           Approved
                                         @endif
                                         </td>
+                                        <td>
+                                          <div class="button1">
+                                            <form action="{{ url('auth-approve-share/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                                              @csrf
+                                              <input type = "hidden" name = "approve" value = "1" />
+                                              <button class="btn2" type="submit" style="background-color: rgb(109, 207, 109);">Approve</button>
+                                            </form>
+                                           </div>
+                                      </td>
+                                      <td>
+                                          <div class="button1">
+                                            <form action="{{ url('auth-approve-share/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                                              @csrf
+                                              <input type = "hidden" name = "approve" value = "0" />
+                                              <button class="btn1" type="submit" style="background-color: rgb(200, 79, 79);" >Reject</button>
+                                            </form>
+                                          </div>
+                                      </td>
                                     </tr>
                                 @endforeach
                             </tbody>

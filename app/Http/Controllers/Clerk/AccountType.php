@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Clerk;
 
-use App\Http\Controllers\Controller;
-use App\Models\AccountDetail;
 use Illuminate\Http\Request;
+use App\Models\AccountDetail;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AccountType extends Controller
 {
@@ -32,6 +33,7 @@ class AccountType extends Controller
         $result=$account_type->save();
 
         if($result){
+            Alert::success("information","The $request->account_type_name account type has been created successfully");
             return back()->with("message","The $request->account_type_name account type has been created successfully");
         }
         else{

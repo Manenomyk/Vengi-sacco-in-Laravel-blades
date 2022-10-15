@@ -12,7 +12,7 @@ class MemberController extends Controller
 {
 
     public function index(){
-        $member=User::where('role',3)->paginate(10);
+        $member=User::where('role',3)->where('is_approved',1)->paginate(10);
         return view('clerk.clerk-members',compact('member'));
     }
     public function create(){

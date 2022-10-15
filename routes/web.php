@@ -5,20 +5,18 @@ use App\Http\Controllers\Admin\AdminLoansController;
 use App\Http\Controllers\Admin\AdminLogsController;
 use App\Http\Controllers\Admin\AdminMembersController;
 use App\Http\Controllers\Admin\AdminSharesController;
+use App\Http\Controllers\Authorizer\ApproveController;
 use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
 use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
-use App\Http\Controllers\Authorizer\AuthorizerLoansController;
 use App\Http\Controllers\Authorizer\AuthorizerMembersController;
-use App\Http\Controllers\Authorizer\AuthorizerSharesController;
 use App\Http\Controllers\Clerk\AccountController;
 use App\Http\Controllers\Clerk\AccountType;
-use App\Http\Controllers\Clerk\ClerkLoansController;
 use App\Http\Controllers\Clerk\DashBoardController;
 use App\Http\Controllers\Clerk\DisplayController;
+use App\Http\Controllers\Clerk\LegderController;
 use App\Http\Controllers\Clerk\MemberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Clerk\SharesController;
 use App\Http\Controllers\Member\MembersDashboardController;
 use App\Http\Controllers\Member\MembersMyloansController;
 use App\Http\Controllers\Member\MembersMysharesController;
@@ -89,16 +87,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('gen-ledger','gen_ledgers');
     });
 
+    Route::controller(LegderController::class)->group(function(){
+        Route::get('create-ledger','create');
+    });
+
 
     Route::controller(DashBoardController::class)->group(function(){
         Route::get('clerk-dash','index');
     });
 
-    Route::controller(ClerkLoansController::class)->group(function(){
-        Route::get('clerk-loans','index');
-        Route::get('clerk-issue-loans','create');
-        Route::post('store-loans','store');
-    });
 
 
 
@@ -122,17 +119,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('auth-gen-ledger','ledgers');
     });
 
-    Route::controller(AuthorizerLoansController::class)->group(function(){
-        Route::get('authorizer-loans','index');
-        Route::get('authorizer-unapproved-loans','unapproved_loans');
-        Route::post('authorizer-approve-loans/{id}','approve');
+    Route::controller(ApproveController::class)->group(function(){
+        Route::post('auth-approve-share/{id}','share');
+        Route::post('auth-approve-table/{id}','table');
+        Route::post('auth-approve-inst/{id}','inst');
+        Route::post('auth-approve-norm/{id}','normal');
+        Route::post('auth-approve-ledger/{id}','ledger');
+        Route::post('auth-approve-emergency/{id}','emergency');
     });
 
-    Route::controller(AuthorizerSharesController::class)->group(function(){
-        Route::get('authorizer-shares','index');
-        Route::get('authorizer-unapproved-shares','unapproved_shares');
-        Route::post('authorizer-approve-shares/{id}','approve');
-    });
 
     //admin
     Route::controller(AdminDashboardController::class)->group(function(){

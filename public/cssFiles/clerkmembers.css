@@ -1,7 +1,12 @@
 .table{
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin-left: 10px;
+}
+@media (max-width: 768px) {
+  .table{
+    margin-left: 0px;
+  }
 }
 
 .top-header{
@@ -39,7 +44,7 @@ tbody{
   font-size: 13px;
 }
 #gender{
-  font-size: 16px;
+  font-size: 14px;
   background-color: transparent;
   border: none;
 }
@@ -52,10 +57,9 @@ tbody{
 .btn{
   background-color: rgb(109, 207, 109);
   color: white;
-  padding: 8px 8px;
+  padding: 6px 8px;
   font-size: 16px;
-  border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-bottom: 1rem;
   cursor: pointer;
 }
@@ -108,14 +112,14 @@ border-radius: 10px;
 .forminput{
 margin-bottom: 10px;
 font-size: 14px;
-border-radius: 10px;
+border-radius: 8px;
 border: 1px solid gray;
 width: 23rem;
 }
 
 .addmembtn{
 padding: 10px 10px;
-font-size: 16px;
+font-size: 14px;
 background-color: #0a2558;
 color: white;
 border:  2px solid dodgerblue;

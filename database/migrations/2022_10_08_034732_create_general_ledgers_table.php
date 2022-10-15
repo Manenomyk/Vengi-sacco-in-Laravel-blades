@@ -16,12 +16,9 @@ return new class extends Migration
         Schema::create('general_ledgers', function (Blueprint $table) {
             $table->id()->startingValue(600000);
             $table->boolean('type')->default(1);
+            $table->string('name');
             $table->boolean('is_approved')->default(0);
-            $table->bigInteger('amount_without_interest')->nullable();
-            $table->bigInteger('amount_with_interest')->nullable();
-            $table->date('due_date')->nullable();
-            $table->foreignId('details_id')->constrained('account_details')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('amount')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

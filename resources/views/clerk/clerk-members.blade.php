@@ -9,24 +9,32 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      .sach-form{
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 10px;
-      }
-      .space-content{
-        display: flex;
-        justify-content: space-between;
-      }
-     </style>
+        .sach-form {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+
+        .space-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .open-account{
+          background-color: rgb(109, 207, 109);
+          border-radius: 8px;
+          padding: 6px 10px;
+        }
+        .open-account:hover{
+          transition: 1s;
+          background-color: white;
+          color: black;
+          box-shadow: 11px 6px 6px rgb(109, 207, 109,0.6);
+          transform:scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
-    {{-- @include('layouts.nav')
-        @section('navigation')
-
-        @endsection --}}
-
     @extends('layouts.clerk-sidebar')
     <x-app-layout>
 
@@ -36,27 +44,34 @@
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
-                  <div class="pdf" style="display: flex; flex-direction:row; ">
-                    <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
+                    <div class="pdf" style="display: flex; flex-direction:row; ">
+                        <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data"
+                            target="blank">
+                            @csrf
+                            <button type="submit"
+                                style="margin-left: 10px; background-color: rgb(109, 207, 109); " class="open-account"> view
+                                pdf</button>
+                        </form>
+                        <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data"
+                            target="blank">
+                            @csrf
+                            <button type="submit"
+                                style="margin-left: 10px; background-color: rgb(109, 207, 109); " class="open-account"> download
+                                pdf</button>
+                        </form>
+                        <div class="button" style="margin-left: 10px;">
+                          <div class="btn open-account"> <a href="{{ url('add-member') }}">+</a></div>
+                      </div>
+                    </div>
+                    <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
+                        class="sach-form">
+                        @csrf
+                        <input type="text" name="name" placeholder="search users..." />
+                        <button type="submit" style="background-color: #0A2558; color:white">search</button>
                     </form>
-                    <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
-                    </form>
-                  </div>
-                  <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
-                    @csrf
-                    <input type="text" name="name" placeholder="search users..."/>
-                    <button type="submit" style="background-color: #0A2558; color:white" >search</button>
-                  </form>
                 </div>
                 <div class="container">
                     <h3 class="top-header"><b>Sacco members</b></h3>
-                    {{-- <div class="button">
-              <div class="btn"> <a href="{{ url('clerk-add-members') }}">+ Add members</a></div>
-            </div> --}}
                     <div class="table">
                         <table>
                             <thead>
@@ -80,7 +95,7 @@
                                         <td>
                                             {{ $item->gender }}
                                         </td>
-                                        <td><a href="{{ url('create-account/'.$item->id) }}">Open Account</a></td>
+                                        <td><a href="{{ url('create-account/' . $item->id) }}" class="open-account" >Open Account</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

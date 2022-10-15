@@ -22,12 +22,12 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+  @extends('layouts.authorizer-sidebar')
+  <x-app-layout>
 
-    </x-app-layout>
+  </x-app-layout>
 
-    @section('clerk-sidebar')
+  @section('authorizer-sidebar')
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -81,7 +81,31 @@
                                         </td>
                                         <td>{{ $item->due_date }}</td>
                                         <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->is_approved }}</td>
+                                        <td>
+                                          @if ($item->is_approved==0)
+                                          pending
+                                          @elseif ($item->is_approved==1)
+                                          Approved
+                                          @endif
+                                        </td>
+                                        <td>
+                                          <div class="button1">
+                                            <form action="{{ url('auth-approve-table/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                                              @csrf
+                                              <input type = "hidden" name = "approve" value = "1" />
+                                              <button class="btn2" type="submit" style="background-color: rgb(109, 207, 109);">Approve</button>
+                                            </form>
+                                           </div>
+                                      </td>
+                                      <td>
+                                          <div class="button1">
+                                            <form action="{{ url('auth-approve-table/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                                              @csrf
+                                              <input type = "hidden" name = "approve" value = "0" />
+                                              <button class="btn1" type="submit" style="background-color: rgb(200, 79, 79);" >Reject</button>
+                                            </form>
+                                          </div>
+                                      </td>
                                     </tr>
                                 @endforeach
                             </tbody>

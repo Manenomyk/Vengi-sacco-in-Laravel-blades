@@ -34,7 +34,7 @@
             <div class="home-content" style="display: flex; justify-content:center;">
                 <div class="addcontainer">
                     <div class="adddetails">
-                        <h1><b>Allocate Cash</b></h1>
+                        <h1><b>Transaction Processing</b></h1>
                         @if (session()->has('message'))
                             <div class="success-here">
                                 {{ session()->get('message') }}
@@ -44,7 +44,7 @@
                             <ul>
                                 <li><b><span>Name:</span> </b> {{ $user->name }}</li>
                                 <li><b><span>Location:</span></b> {{ $user->location }}</li>
-                                <li><b><span>Gender:</span></b> {{ $user->gender }}</li>
+                                {{-- <li><b><span>Gender:</span></b> {{ $user->gender }}</li> --}}
                                 <li><b><span>Id Number:</span></b> {{ $user->id_number }}</li>
                                 <li><b><span>Phone Number:</span></b> {{ $user->phone_number }}</li>
                                 <li><b><span>Account Type:</span></b> {{ $details->account_type }}</li>

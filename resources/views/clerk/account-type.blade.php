@@ -12,6 +12,7 @@
         display: flex;
         justify-content: flex-end;
         margin-right: 10px;
+        height: 20px;
       }
       .space-content{
         display: flex;
@@ -41,6 +42,9 @@
                 @csrf
                 <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
               </form>
+              <div class="button" style="margin-left: 10px;">
+                <div class="btn"> <a href="{{ url('add-account-type') }}">+</a></div>
+            </div>
             </div>
             <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
               @csrf
@@ -59,7 +63,6 @@
                             <th>Interest </th>
                             <th>Duration in Months</th>
                             <th>status</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
