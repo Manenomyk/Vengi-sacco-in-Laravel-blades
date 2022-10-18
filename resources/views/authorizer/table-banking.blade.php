@@ -88,6 +88,7 @@
                                           Approved
                                           @endif
                                         </td>
+                                        @if ($item->is_approved==0)
                                         <td>
                                           <div class="button1">
                                             <form action="{{ url('auth-approve-table/'.$item->id) }}" method="POST" enctype="multipart/form-data">
@@ -106,6 +107,10 @@
                                             </form>
                                           </div>
                                       </td>
+                                        @elseif ($item->is_approved==1)
+                                        
+                                        @endif
+                                       
                                     </tr>
                                 @endforeach
                             </tbody>

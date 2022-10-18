@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
     <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}" >
     <link rel="stylesheet" href="{{ asset('cssFiles/clerkmembers.css') }}" >
     <!-- Boxicons CDN Link -->
@@ -14,6 +12,7 @@
         display: flex;
         justify-content: flex-end;
         margin-right: 10px;
+        height: 20px;
       }
       .space-content{
         display: flex;
@@ -22,18 +21,16 @@
      </style>
    </head>
    
-    <body>
-        @include('layouts.nav')
-        @section('navigation')
+    <body>       
 
-    @include('layouts.admin-sidebar')
+    @extends('layouts.clerk-sidebar')
+    <x-app-layout>
 
-     @section('admin-sidebar')
+    </x-app-layout>
 
-     @endsection
+     @section('clerk-sidebar')
 
-      
-      <section class="home-section">
+     <section class="home-section">
         <div class="home-content">
           <div class="space-content">
             <div class="pdf" style="display: flex; flex-direction:row; ">
@@ -45,10 +42,13 @@
                 @csrf
                 <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
               </form>
+              <div class="button" style="margin-left: 10px;">
+                <div class="btn"> <a href="{{ url('add-account-type') }}">+</a></div>
+            </div>
             </div>
             <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
               @csrf
-              <input type="text" name="name" placeholder="search users"/>
+              <input type="text" name="name" placeholder="search loans..."/>
               <button type="submit" style="background-color: #0A2558; color:white" >search</button>
             </form>
           </div>
@@ -59,30 +59,21 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>loan amount</th>
-                            <th>User allocated </th>
-                            <th>loan type</th>
-                            <th>due date</th>
+                            <th>Account Type</th>
+                            <th>Interest </th>
+                            <th>Duration in Months</th>
                             <th>status</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
-                      {{-- @foreach ($loan as $item)
+                      @foreach ($account_type as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->loan_amount }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->account_type }}</td>
+                        <td>{{ $item->interest }} %</td>
                         <td>
-                          @if ($item->loans_type_id==1)
-                          Table bank
-                          @elseif ($item->loans_type_id==2)
-                          Short term
-                          @elseif ($item->loans_type_id==3)
-                          Short bank
-                          @endif
+                         {{ $item->duration }}
                         </td>
-                        <td>{{ $item->due_date }}</td>
                         <td>
                           @if ( $item->is_approved ==0 )
                           Pending
@@ -92,15 +83,13 @@
                         </td>
                     </tr>
                    
-                      @endforeach --}}
+                      @endforeach
                     </tbody>
                 </table>
             </div>
             <div>
-              {{-- {{ $loan->onEachSide(2)->links() }} --}}
         </div>
-      </section>
-    
-    
+     </section>
+     @endsection
     </body>
     </html>

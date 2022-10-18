@@ -23,12 +23,15 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
 
-    </x-app-layout>
+    @include('layouts.nav')
+    @section('navigation')
 
-    @section('clerk-sidebar')
+@include('layouts.admin-sidebar')
+
+ @section('admin-sidebar')
+
+ @endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -47,9 +50,6 @@
                                 style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> download
                                 pdf</button>
                         </form>
-                        <div class="button" style="margin-left: 10px;">
-                            <div class="btn open-account"> <a href="{{ url('create-ledger') }}">+</a></div>
-                        </div>
                     </div>
                     <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
                         class="sach-form">
@@ -59,41 +59,44 @@
                     </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>General Ledgers</b></h3>
+                    <h3 class="top-header"><b>Institutional Shares</b></h3>
+
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Account Number</th>
-                                    <th>Name</th>
+                                    <th>Member</th>
+                                    <th>Id Number</th>
+                                    <th>Account Type</th>
+                                    <th>Interest</th>
+                                    <th>Duration</th>
                                     <th>amount</th>
                                     <th>Date Opened</th>
                                     <th>status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($general_ledgers as $item)
+                                @foreach ($institutional_shares as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->id_number }}</td>
+                                        <td>{{ $item->account_type }}</td>
+                                        <td>{{ $item->interest }}</td>
+                                        <td>{{ $item->duration }}</td>
                                         <td>
-                                            @if ($item->amount == null)
-                                                0
-                                            @else
-                                                {{ $item->amount }}
-                                            @endif
+                                          @if ($item->amount_without_interest==null)
+                                          0
+                                          @else
+                                          {{ $item->amount_without_interest }}
+                                        @endif
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            @if ($item->is_approved == 0)
-                                                pending
-                                            @elseif ($item->is_approved == 1)
-                                                Approved
-                                            @endif
-
-                                        </td>
-                                        <td>
-                                          <a href="{{ url('fund-ledger/'.$item->id) }}"> Allocate Amount</a>
+                                          @if ($item->is_approved==0)
+                                          pending
+                                          @elseif ($item->is_approved==1)
+                                          Approved
+                                        @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -101,10 +104,10 @@
                         </table>
                     </div>
                 </div>
-                {{ $general_ledgers->onEachSide(2)->links() }}
+                {{ $institutional_shares->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

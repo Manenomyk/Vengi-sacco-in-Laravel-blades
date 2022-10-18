@@ -34,19 +34,25 @@
             <div class="home-content" style="display: flex; justify-content:center;">
                 <div class="addcontainer">
                     <div class="adddetails">
-                        <h1><b>Register a General Ledger Account</b></h1>
+                        <h1><b>{{ $ledger->name }} ledger</b></h1>
                         @if (session()->has('message'))
                             <div class="success-here">
                                 {{ session()->get('message') }}
                             </div>
                         @endif
-                        <form action="{{ url('reg-ledger') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('fund/'.$ledger->id) }}" method="POST" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
 
-                            <label for="amount">Name</label>
-                            <input class="forminput" type="text" name="name" value="{{ old('name') }}">
-                            @error('name')
+                            <label for="role">Type Of Transaction</label>
+                            <select class="forminput" name="type" value="{{ old('type') }}">
+                                <option value="">Select type</option>
+                                <option value="0">debit</option>
+                                <option value="1">credit</option>
+                            </select>
+                            <label for="amount">Amount</label>
+                            <input class="forminput" type="text" name="amount" value="{{ old('amount') }}">
+                            @error('amount')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <div style="display: flex; justify-content:right; ">

@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      {{-- @foreach ($activity as $item)
+                      @foreach ($activity as $item)
                       <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->description }}</td>
@@ -60,12 +60,12 @@
                         </td>
                         <td>{{ $item->created_at }}</td>
                     </tr>
-                      @endforeach --}}
+                      @endforeach
                     </tbody>
                 </table>
             </div>
             <div>
-              {{-- {{ $activity->onEachSide(2)->links() }} --}}
+              {{ $activity->onEachSide(2)->links() }}
         </div>
       </section>
     

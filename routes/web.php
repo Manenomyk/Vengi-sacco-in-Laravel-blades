@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\AdminLoansController;
+use App\Http\Controllers\Admin\AdminDisplayController;
 use App\Http\Controllers\Admin\AdminLogsController;
 use App\Http\Controllers\Admin\AdminMembersController;
-use App\Http\Controllers\Admin\AdminSharesController;
 use App\Http\Controllers\Authorizer\ApproveController;
 use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
 use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
@@ -59,41 +58,45 @@ Route::middleware(['auth'])->group(function () {
     //clerk
     //Account type controller
     Route::controller(AccountType::class)->group(function(){
-        Route::get('get-account-types','index');
-        Route::get('add-account-type','create');
-        Route::post('store-account-type','store');
+        Route::get('get-account-types','index')->middleware('can:clerk');
+        Route::get('add-account-type','create')->middleware('can:clerk');
+        Route::post('store-account-type','store')->middleware('can:clerk');
     });
 
     Route::controller(MemberController::class)->group(function(){
-        Route::get('members','index');
-        Route::get('add-member','create');
-        Route::post('store-user','store');
+        Route::get('members','index')->middleware('can:clerk');
+        Route::get('add-member','create')->middleware('can:clerk');
+        Route::post('store-user','store')->middleware('can:clerk');
     });
 
     Route::controller(AccountController::class)->group(function(){
-        Route::get('create-account/{id}','create');
-        Route::post('store-opened-account','store');
-        Route::get('account-number','get_number_page')->name('cashing');
-        Route::post('search-number','search_number');
-        Route::post('store-allocation','store_allocation');
+        Route::get('create-account/{id}','create')->middleware('can:clerk');
+        Route::post('store-opened-account','store')->middleware('can:clerk');
+        Route::get('account-number','get_number_page')->name('cashing')->middleware('can:clerk');
+        Route::post('search-number','search_number')->middleware('can:clerk');
+        Route::post('store-allocation','store_allocation')->middleware('can:clerk');
     });
 
     Route::controller(DisplayController::class)->group(function(){
-        Route::get('get-emergency','get_emergency');
-        Route::get('table-banking','table_banking_loans');
-        Route::get('share-account','share_accounts');
-        Route::get('normal-share','normal_shares');
-        Route::get('inst-shares','institutional_shares');
-        Route::get('gen-ledger','gen_ledgers');
+        Route::get('get-emergency','get_emergency')->middleware('can:clerk');
+        Route::get('table-banking','table_banking_loans')->middleware('can:clerk');
+        Route::get('share-account','share_accounts')->middleware('can:clerk');
+        Route::get('normal-share','normal_shares')->middleware('can:clerk');
+        Route::get('inst-shares','institutional_shares')->middleware('can:clerk');
+
     });
 
     Route::controller(LegderController::class)->group(function(){
-        Route::get('create-ledger','create');
+        Route::get('create-ledger','create')->middleware('can:clerk');
+        Route::get('gen-ledger','gen_ledgers')->middleware('can:clerk');
+        Route::post('reg-ledger','store')->middleware('can:clerk');
+        Route::get('fund-ledger/{id}','edit')->middleware('can:clerk');
+        Route::post('fund/{id}','update')->middleware('can:clerk');
     });
 
 
     Route::controller(DashBoardController::class)->group(function(){
-        Route::get('clerk-dash','index');
+        Route::get('clerk-dash','index')->middleware('can:clerk');
     });
 
 
@@ -139,14 +142,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin-unapproved-members','unapproved_members');
     });
 
-    Route::controller(AdminLoansController::class)->group(function(){
-        Route::get('admin-loans','index');
-        Route::get('admin-unapproved-loans','unapproved_loans');
-    });
+    Route::controller(AdminDisplayController::class)->group(function(){
+        Route::get('admin-emergency','admin_emergency');
+        Route::get('admin-table-banking','admin_table');
+        Route::get('admin-share-account','admin_share');
+        Route::get('admin-normal-share','admin_normal');
+        Route::get('admin-inst-shares','admin_inst');
 
-    Route::controller(AdminSharesController::class)->group(function(){
-        Route::get('admin-shares','index');
-        Route::get('admin-unapproved-shares','unapproved_shares');
     });
 
     Route::get('get-logs',[AdminLogsController::class,'logs']);

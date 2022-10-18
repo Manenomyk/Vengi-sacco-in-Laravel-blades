@@ -23,12 +23,14 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+    @include('layouts.nav')
+    @section('navigation')
 
-    </x-app-layout>
+@include('layouts.admin-sidebar')
 
-    @section('clerk-sidebar')
+ @section('admin-sidebar')
+
+ @endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -104,7 +106,7 @@
                 {{ $general_ledgers->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

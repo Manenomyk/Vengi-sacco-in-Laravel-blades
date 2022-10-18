@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Clerk;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\EmergencyLoan;
-use App\Models\GeneralLedger;
-use App\Models\InstitutionalShare;
 use App\Models\NormalShare;
 use App\Models\ShareAccount;
-use App\Models\TableBankingLoan;
 use Illuminate\Http\Request;
+use App\Models\EmergencyLoan;
+use App\Models\TableBankingLoan;
+use App\Models\InstitutionalShare;
+use App\Http\Controllers\Controller;
 
-class DisplayController extends Controller
+class AdminDisplayController extends Controller
 {
-    public function get_emergency()
+    public function admin_emergency()
     {
         $emergency_loans = EmergencyLoan::join('users', 'users.id', '=', 'emergency_loans.user_id')
             ->join('account_details', 'account_details.id', '=', 'emergency_loans.details_id')
@@ -30,12 +29,13 @@ class DisplayController extends Controller
                 'emergency_loans.due_date',
                 'emergency_loans.created_at'
             )->paginate(10);
+       
 
-        return view('clerk.emergency',compact('emergency_loans'));
+      return view('admin.admin-emergency',compact('emergency_loans'));
     }
 
   
-    public function institutional_shares(){
+    public function admin_inst(){
         $institutional_shares = InstitutionalShare::join('users', 'users.id', '=', 'institutional_shares.user_id')
         ->join('account_details', 'account_details.id', '=', 'institutional_shares.details_id')
         ->select(
@@ -51,9 +51,9 @@ class DisplayController extends Controller
             'institutional_shares.created_at'
         )->paginate(10);
 
-        return view('clerk.inst-shares',compact('institutional_shares'));
+        return view('admin.inst-shares',compact('institutional_shares'));
     }
-    public function normal_shares(){
+    public function admin_normal(){
         $normal_shares = NormalShare::join('users', 'users.id', '=', 'normal_shares.user_id')
         ->join('account_details', 'account_details.id', '=', 'normal_shares.details_id')
         ->select(
@@ -69,11 +69,11 @@ class DisplayController extends Controller
             'normal_shares.created_at'
         )->paginate(10);
 
-        return view('clerk.normal-share',compact('normal_shares'));
+        return view('admin.normal-share',compact('normal_shares'));
 
     }
 
-    public function share_accounts(){
+    public function admin_share(){
         $share_accounts = ShareAccount::join('users', 'users.id', '=', 'share_accounts.user_id')
         ->join('account_details', 'account_details.id', '=', 'share_accounts.details_id')
         ->select(
@@ -89,10 +89,10 @@ class DisplayController extends Controller
             'share_accounts.created_at'
         )->paginate(10);
 
-        return view('clerk.share-account',compact('share_accounts'));
+        return view('admin.share-account',compact('share_accounts'));
     }
 
-    public function table_banking_loans(){
+    public function admin_table(){
         $table_banking_loans = TableBankingLoan::join('users', 'users.id', '=', 'table_banking_loans.user_id')
         ->join('account_details', 'account_details.id', '=', 'table_banking_loans.details_id')
         ->select(
@@ -109,6 +109,6 @@ class DisplayController extends Controller
             'table_banking_loans.created_at'
         )->paginate(10);
 
-        return view('clerk.table-banking',compact('table_banking_loans'));
+        return view('admin.table-banking',compact('table_banking_loans'));
     }
 }
