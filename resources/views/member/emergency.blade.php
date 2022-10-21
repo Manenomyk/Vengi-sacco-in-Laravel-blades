@@ -22,13 +22,14 @@
 </head>
 
 <body>
+  @include('layouts.nav')
+  @section('navigation')
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+@include('layouts.member-sidebar')
 
-    </x-app-layout>
+@section('member-sidebar')
 
-    @section('clerk-sidebar')
+@endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -49,28 +50,23 @@
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Share Accounts</b></h3>
+                    <h3 class="top-header"><b>Admin Emergency Loans</b></h3>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
                                     <th>Duration</th>
                                     <th>amount</th>
+                                    <th>due_date</th>
                                     <th>Date Opened</th>
                                     <th>status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @foreach ($emergency_loans as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
@@ -81,6 +77,7 @@
                                           {{ $item->amount_without_interest }}
                                         @endif
                                         </td>
+                                        <td>{{ $item->due_date }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                           @if ($item->is_approved==0)
@@ -95,10 +92,10 @@
                         </table>
                     </div>
                 </div>
-                {{ $share_accounts->onEachSide(2)->links() }}
+                {{ $emergency_loans->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+   
 </body>
 
 </html>

@@ -31,7 +31,7 @@
             <div class="home-content" style="display: flex; justify-content:center;">
                 <div class="addcontainer">
                     <div class="adddetails">
-                        <h1><b>Account Number Transaction</b></h1>
+                        <h1><b>Transaction Processing</b></h1>
                         @if (session()->has("info"))
                             <div class="success-here">
                                 {{ session()->get("info") }}

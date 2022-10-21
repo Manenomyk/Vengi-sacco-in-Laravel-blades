@@ -22,55 +22,51 @@
 </head>
 
 <body>
+  @include('layouts.nav')
+  @section('navigation')
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+@include('layouts.member-sidebar')
 
-    </x-app-layout>
+@section('member-sidebar')
 
-    @section('clerk-sidebar')
+@endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
                   <div class="pdf" style="display: flex; flex-direction:row; ">
-                    <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+                    <form action="#" method="post" enctype="multipart/form-data" target="blank">
                       @csrf
                       <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
                     </form>
-                    <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+                    <form action="#" method="post" enctype="multipart/form-data" target="blank">
                       @csrf
                       <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
                     </form>
                   </div>
-                  <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
+                  <form action="#" method="post" enctype="multipart/form-data" class="sach-form"> 
                     @csrf
                     <input type="text" name="name" placeholder="search users..."/>
                     <button type="submit" style="background-color: #0A2558; color:white" >search</button>
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Share Accounts</b></h3>
+                    <h3 class="top-header"><b>Table Banking Loans</b></h3>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
                                     <th>Duration</th>
                                     <th>amount</th>
+                                    <th>due_date</th>
                                     <th>Date Opened</th>
                                     <th>status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @foreach ($table_banking_loans as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
@@ -81,24 +77,18 @@
                                           {{ $item->amount_without_interest }}
                                         @endif
                                         </td>
+                                        <td>{{ $item->due_date }}</td>
                                         <td>{{ $item->created_at }}</td>
-                                        <td>
-                                          @if ($item->is_approved==0)
-                                          pending
-                                          @elseif ($item->is_approved==1)
-                                          Approved
-                                        @endif
-                                        </td>
+                                        <td>{{ $item->is_approved }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-                {{ $share_accounts->onEachSide(2)->links() }}
+                {{ $table_banking_loans->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
 </body>
 
 </html>

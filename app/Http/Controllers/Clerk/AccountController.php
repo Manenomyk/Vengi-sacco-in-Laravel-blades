@@ -260,6 +260,7 @@ class AccountController extends Controller
         }
         elseif (300000<=$number && $number<=399999) {
             $account=NormalShare::where('id',$number)->first();
+            $interest=AccountDetail::where('id',$account->details_id)->first();
             $account->type=$request->input('type');
              if($request->type==1){
                 $money=$request->amount+$account->amount_without_interest;
@@ -267,7 +268,15 @@ class AccountController extends Controller
             elseif($request->type==0){
                 $money=$account->amount_without_interest-$request->amount;
             }
-            $account->amount_without_interest=$money;
+
+            if ($account->amount_without_interest==null) {
+                $interested=$money*(100+$interest->interest)/100;
+                $account->amount_without_interest=$interested;
+            } else {
+                $account->amount_without_interest=$money;
+            }
+            
+           
             $result=$account->save();
 
             $record=new Record();
@@ -286,6 +295,7 @@ class AccountController extends Controller
         }
         elseif (400000<=$number && $number<=499999) {
             $account=TableBankingLoan::where('id',$number)->first();
+            $interest=AccountDetail::where('id',$account->details_id)->first();
             $account->type=$request->input('type');
              if($request->type==1){
                 $money=$request->amount+$account->amount_without_interest;
@@ -293,7 +303,15 @@ class AccountController extends Controller
             elseif($request->type==0){
                 $money=$account->amount_without_interest-$request->amount;
             }
-            $account->amount_without_interest=$money;
+            // $account->amount_without_interest=$money;
+
+            if ($account->amount_without_interest==null) {
+                $interested=$money*(100+$interest->interest)/100;
+                $account->amount_without_interest=$interested;
+            } else {
+                $account->amount_without_interest=$money;
+            }
+            
             $result=$account->save();
 
              $record=new Record();
@@ -312,6 +330,7 @@ class AccountController extends Controller
         }
         elseif (500000<=$number && $number<=599999) {
             $account=EmergencyLoan::where('id',$number)->first();
+            $interest=AccountDetail::where('id',$account->details_id)->first();
             $account->type=$request->input('type');
              if($request->type==1){
                 $money=$request->amount+$account->amount_without_interest;
@@ -319,7 +338,13 @@ class AccountController extends Controller
             elseif($request->type==0){
                 $money=$account->amount_without_interest-$request->amount;
             }
-            $account->amount_without_interest=$money;
+            // $account->amount_without_interest=$money;
+            if ($account->amount_without_interest==null) {
+                $interested=$money*(100+$interest->interest)/100;
+                $account->amount_without_interest=$interested;
+            } else {
+                $account->amount_without_interest=$money;
+            }
             $result=$account->save();
 
             $record=new Record();
@@ -336,32 +361,32 @@ class AccountController extends Controller
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
-        elseif (600000<=$number && $number<=699999) {
-            $account=GeneralLedger::where('id',$number)->first();
-            $account->type=$request->input('type');
-             if($request->type==1){
-                $money=$request->amount+$account->amount_without_interest;
-            }
-            elseif($request->type==0){
-                $money=$account->amount_without_interest-$request->amount;
-            }
-            $account->amount_without_interest=$money;
-            $result=$account->save();
+        // elseif (600000<=$number && $number<=699999) {
+        //     $account=GeneralLedger::where('id',$number)->first();
+        //     $account->type=$request->input('type');
+        //      if($request->type==1){
+        //         $money=$request->amount+$account->amount_without_interest;
+        //     }
+        //     elseif($request->type==0){
+        //         $money=$account->amount_without_interest-$request->amount;
+        //     }
+        //     $account->amount_without_interest=$money;
+        //     $result=$account->save();
 
-            $record=new Record();
+        //     $record=new Record();
 
-            $record->amount_without_interest=$request->input('amount');
-            $record->type=$request->input('type');
-            $record->account_id=$account->id;
-            $record->details_id=$account->details_id;
-            $record->user_id=$account->user_id;
-            $res=$record->save();
+        //     $record->amount_without_interest=$request->input('amount');
+        //     $record->type=$request->input('type');
+        //     $record->account_id=$account->id;
+        //     $record->details_id=$account->details_id;
+        //     $record->user_id=$account->user_id;
+        //     $res=$record->save();
 
-            if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
-            }
-        }
+        //     if ($result && $res) {
+        //         Alert::success("information","Amount allocated successfully");
+        //         return redirect()->route('cashing')->with("info","allocated successfully");
+        //     }
+        // }
         else{
             return back()->with("info","Error occurred while allocating cash");
         }

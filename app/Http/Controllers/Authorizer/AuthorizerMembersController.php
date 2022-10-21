@@ -22,7 +22,7 @@ class AuthorizerMembersController extends Controller
     }
 
     public function unapproved_members(){
-        $member=User::where('role',3)->where('is_approved',0)->paginate(6);
+        $member=User::where('is_approved',0)->paginate(6);
         return view('authorizer.authorizer-memberspending',compact('member'));
     }
 

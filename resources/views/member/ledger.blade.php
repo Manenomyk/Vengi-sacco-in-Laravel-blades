@@ -23,12 +23,14 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+    @include('layouts.nav')
+    @section('navigation')
 
-    </x-app-layout>
+@include('layouts.member-sidebar')
 
-    @section('clerk-sidebar')
+ @section('member-sidebar')
+
+ @endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -72,7 +74,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
                                 @foreach ($general_ledgers as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
@@ -105,7 +106,7 @@
                 {{ $general_ledgers->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

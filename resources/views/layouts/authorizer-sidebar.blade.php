@@ -44,7 +44,7 @@
             <li>
               <a href="{{ url('auth-table-banking') }}">
                 <i class='bx bx-coin-stack' ></i>
-                <span class="links_name">table banking</span>
+                <span class="links_name">Table banking loans</span>
               </a>
             </li>
             <li>
@@ -56,7 +56,7 @@
             <li>
               <a href="{{ url('auth-normal-share') }}">
                 <i class='bx bx-cog' ></i>
-                <span class="links_name">Normal Shares</span>
+                <span class="links_name">Normal loans</span>
               </a>
             </li>
             <li>

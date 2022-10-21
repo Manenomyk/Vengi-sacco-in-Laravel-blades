@@ -23,12 +23,14 @@
 
 <body>
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+  @include('layouts.nav')
+  @section('navigation')
 
-    </x-app-layout>
+@include('layouts.admin-sidebar')
 
-    @section('clerk-sidebar')
+@section('admin-sidebar')
+
+@endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -49,31 +51,28 @@
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Share Accounts</b></h3>
+                    <h3 class="top-header"><b>Reports</b></h3>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
-                                    <th>Account Type</th>
-                                    <th>Interest</th>
-                                    <th>Duration</th>
-                                    <th>amount</th>
-                                    <th>Date Opened</th>
-                                    <th>status</th>
+                                    <th>Account type</th>
+                                    <th>Type</th>
+                                    <th> Amount</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @foreach ($normal_report as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
-                                        <td>{{ $item->interest }}</td>
-                                        <td>{{ $item->duration }}</td>
+                                        <td>
+                                          @if ($item->type==0)
+                                          debit
+                                          @else
+                                          credit
+                                        @endif
+                                      </td>
                                         <td>
                                           @if ($item->amount_without_interest==null)
                                           0
@@ -81,24 +80,17 @@
                                           {{ $item->amount_without_interest }}
                                         @endif
                                         </td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>
-                                          @if ($item->is_approved==0)
-                                          pending
-                                          @elseif ($item->is_approved==1)
-                                          Approved
-                                        @endif
-                                        </td>
+                                        <td>{{ $item->created_at->toDayDateTimeString() }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-                {{ $share_accounts->onEachSide(2)->links() }}
+                {{-- {{ $normal_shares->onEachSide(2)->links() }} --}}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

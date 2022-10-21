@@ -23,12 +23,14 @@
 
 <body>
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+  @include('layouts.nav')
+  @section('navigation')
 
-    </x-app-layout>
+@include('layouts.member-sidebar')
 
-    @section('clerk-sidebar')
+@section('member-sidebar')
+
+@endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -54,9 +56,6 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
                                     <th>Duration</th>
@@ -68,9 +67,6 @@
                             <tbody>
                                 @foreach ($share_accounts as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
@@ -98,7 +94,7 @@
                 {{ $share_accounts->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

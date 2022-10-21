@@ -32,13 +32,13 @@
             <li>
               <a href="{{ url('get-emergency') }}" class="sidebarBtn">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> Emergency</span>
+                <span class="links_name"> Emergency loans</span>
               </a>
             </li>
             <li>
               <a href="{{ url('table-banking') }}" class="sidebarBtn">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> Table Banking</span>
+                <span class="links_name"> Table Banking loans</span>
               </a>
             </li>
             <li>
@@ -50,7 +50,7 @@
             <li>
               <a href="{{ url('normal-share') }}" class="sidebarBtn">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> Normal Shares</span>
+                <span class="links_name"> Normal loans</span>
               </a>
             </li>
             <li>
@@ -74,7 +74,7 @@
             <li>
               <a href="{{ url('account-number') }}" class="sidebarBtn">
                 <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Transact</span>
+                <span class="links_name">Transaction Processing</span>
               </a>
             </li>
             <li class="log_out">

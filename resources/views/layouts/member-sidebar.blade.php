@@ -24,15 +24,33 @@
               </a>
             </li>
             <li>
-              <a href="{{ url('member-shares') }}">
+              <a href="{{ url('member-emergency') }}">
                 <i class='bx bx-box' ></i>
-                <span class="links_name">My shares</span>
+                <span class="links_name">My emergency loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('member-loans') }}">
+              <a href="{{ url('member-table-banking') }}">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name">My loans</span>
+                <span class="links_name">My table banking loans</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('member-share-account') }}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">My shares account</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('member-normal-share') }}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">My normal loans</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('member-inst-shares') }}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">My institutional loans</span>
               </a>
             </li>
             <li class="log_out">

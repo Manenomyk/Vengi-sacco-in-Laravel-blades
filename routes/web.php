@@ -16,10 +16,10 @@ use App\Http\Controllers\Clerk\LegderController;
 use App\Http\Controllers\Clerk\MemberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Member\MemberDisplayController;
 use App\Http\Controllers\Member\MembersDashboardController;
-use App\Http\Controllers\Member\MembersMyloansController;
-use App\Http\Controllers\Member\MembersMysharesController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Request;
 use Laravel\Jetstream\Rules\Role;
 
@@ -35,7 +35,7 @@ use Laravel\Jetstream\Rules\Role;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return redirect()->route('login');
 });
 
 Route::get('homepage',[HomeController::class,'CheckUser']);
@@ -58,45 +58,45 @@ Route::middleware(['auth'])->group(function () {
     //clerk
     //Account type controller
     Route::controller(AccountType::class)->group(function(){
-        Route::get('get-account-types','index')->middleware('can:clerk');
-        Route::get('add-account-type','create')->middleware('can:clerk');
-        Route::post('store-account-type','store')->middleware('can:clerk');
+        Route::get('get-account-types','index');
+        Route::get('add-account-type','create');
+        Route::post('store-account-type','store');
     });
 
     Route::controller(MemberController::class)->group(function(){
-        Route::get('members','index')->middleware('can:clerk');
-        Route::get('add-member','create')->middleware('can:clerk');
-        Route::post('store-user','store')->middleware('can:clerk');
+        Route::get('members','index');
+        Route::get('add-member','create');
+        Route::post('store-user','store');
     });
 
     Route::controller(AccountController::class)->group(function(){
-        Route::get('create-account/{id}','create')->middleware('can:clerk');
-        Route::post('store-opened-account','store')->middleware('can:clerk');
-        Route::get('account-number','get_number_page')->name('cashing')->middleware('can:clerk');
-        Route::post('search-number','search_number')->middleware('can:clerk');
-        Route::post('store-allocation','store_allocation')->middleware('can:clerk');
+        Route::get('create-account/{id}','create');
+        Route::post('store-opened-account','store');
+        Route::get('account-number','get_number_page')->name('cashing');
+        Route::post('search-number','search_number');
+        Route::post('store-allocation','store_allocation');
     });
 
     Route::controller(DisplayController::class)->group(function(){
-        Route::get('get-emergency','get_emergency')->middleware('can:clerk');
-        Route::get('table-banking','table_banking_loans')->middleware('can:clerk');
-        Route::get('share-account','share_accounts')->middleware('can:clerk');
-        Route::get('normal-share','normal_shares')->middleware('can:clerk');
-        Route::get('inst-shares','institutional_shares')->middleware('can:clerk');
+        Route::get('get-emergency','get_emergency');
+        Route::get('table-banking','table_banking_loans');
+        Route::get('share-account','share_accounts');
+        Route::get('normal-share','normal_shares');
+        Route::get('inst-shares','institutional_shares');
 
     });
 
     Route::controller(LegderController::class)->group(function(){
-        Route::get('create-ledger','create')->middleware('can:clerk');
-        Route::get('gen-ledger','gen_ledgers')->middleware('can:clerk');
-        Route::post('reg-ledger','store')->middleware('can:clerk');
-        Route::get('fund-ledger/{id}','edit')->middleware('can:clerk');
-        Route::post('fund/{id}','update')->middleware('can:clerk');
+        Route::get('create-ledger','create');
+        Route::get('gen-ledger','gen_ledgers');
+        Route::post('reg-ledger','store');
+        Route::get('fund-ledger/{id}','edit');
+        Route::post('fund/{id}','update');
     });
 
 
     Route::controller(DashBoardController::class)->group(function(){
-        Route::get('clerk-dash','index')->middleware('can:clerk');
+        Route::get('clerk-dash','index');
     });
 
 
@@ -158,12 +158,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('member-dashboard','index');
     });    
 
-    Route::controller(MembersMyloansController::class)->group(function(){
-        Route::get('member-loans','index');
-    });
-
-    Route::controller(MembersMysharesController::class)->group(function(){
-        Route::get('member-shares','index');
+    Route::controller(MemberDisplayController::class)->group(function(){
+        Route::get('member-emergency','emergency');
+        Route::get('member-table-banking','table');
+        Route::get('member-share-account','share');
+        Route::get('member-normal-share','normal');
+        Route::get('member-inst-shares','inst');
     });
 
     //pdf controller
@@ -174,6 +174,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('download-members-pdf','download_pdf_members');
         Route::post('view-loans-pdf','view_pdf_loans');
         Route::post('download-loans-pdf','download_pdf_loans');
+    });
+
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('sample-report','emergency');
     });
 
 

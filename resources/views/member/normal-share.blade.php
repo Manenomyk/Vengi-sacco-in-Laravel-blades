@@ -22,13 +22,14 @@
 </head>
 
 <body>
+  @include('layouts.nav')
+  @section('navigation')
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+@include('layouts.member-sidebar')
 
-    </x-app-layout>
+@section('member-sidebar')
 
-    @section('clerk-sidebar')
+@endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
@@ -49,14 +50,11 @@
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Share Accounts</b></h3>
+                    <h3 class="top-header"><b>Normal Loans</b></h3>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
                                     <th>Duration</th>
@@ -66,11 +64,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @foreach ($normal_shares as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
@@ -84,10 +79,10 @@
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                           @if ($item->is_approved==0)
-                                          pending
-                                          @elseif ($item->is_approved==1)
-                                          Approved
-                                        @endif
+                                            pending
+                                            @elseif ($item->is_approved==1)
+                                            Approved
+                                          @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -95,10 +90,10 @@
                         </table>
                     </div>
                 </div>
-                {{ $share_accounts->onEachSide(2)->links() }}
+                {{ $normal_shares->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>

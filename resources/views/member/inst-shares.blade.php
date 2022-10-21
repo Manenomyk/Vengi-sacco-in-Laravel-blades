@@ -9,54 +9,62 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      .sach-form{
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 10px;
-      }
-      .space-content{
-        display: flex;
-        justify-content: space-between;
-      }
-     </style>
+        .sach-form {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+
+        .space-content {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 
 <body>
 
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
+    @include('layouts.nav')
+    @section('navigation')
 
-    </x-app-layout>
+@include('layouts.member-sidebar')
 
-    @section('clerk-sidebar')
+ @section('member-sidebar')
+
+ @endsection
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
-                  <div class="pdf" style="display: flex; flex-direction:row; ">
-                    <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
+                    <div class="pdf" style="display: flex; flex-direction:row; ">
+                        <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data"
+                            target="blank">
+                            @csrf
+                            <button type="submit"
+                                style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
+                                pdf</button>
+                        </form>
+                        <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data"
+                            target="blank">
+                            @csrf
+                            <button type="submit"
+                                style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> download
+                                pdf</button>
+                        </form>
+                    </div>
+                    <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
+                        class="sach-form">
+                        @csrf
+                        <input type="text" name="name" placeholder="search users..." />
+                        <button type="submit" style="background-color: #0A2558; color:white">search</button>
                     </form>
-                    <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
-                    </form>
-                  </div>
-                  <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
-                    @csrf
-                    <input type="text" name="name" placeholder="search users..."/>
-                    <button type="submit" style="background-color: #0A2558; color:white" >search</button>
-                  </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Share Accounts</b></h3>
+                    <h3 class="top-header"><b>Institutional Shares</b></h3>
+
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Member</th>
-                                    <th>Account Number</th>
-                                    <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
                                     <th>Duration</th>
@@ -66,11 +74,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @foreach ($institutional_shares as $item)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
@@ -95,10 +100,10 @@
                         </table>
                     </div>
                 </div>
-                {{ $share_accounts->onEachSide(2)->links() }}
+                {{ $institutional_shares->onEachSide(2)->links() }}
             </div>
         </section>
-    @endsection
+    
 </body>
 
 </html>
