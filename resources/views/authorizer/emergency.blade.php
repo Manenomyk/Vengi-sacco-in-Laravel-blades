@@ -83,6 +83,7 @@
                             <thead>
                                 <tr>
                                     <th>Member</th>
+                                    <th>Account Number</th>
                                     <th>Id Number</th>
                                     <th>Account Type</th>
                                     <th>Interest</th>
@@ -97,6 +98,7 @@
                                 @foreach ($emergency_loans as $item)
                                     <tr>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->id_number }}</td>
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>

@@ -30,7 +30,7 @@
                     <span class="links_name">All members</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('technician/details*') ? 'active' : '' }}">
                 <a href="{{ url('admin-emergency') }}">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Emergency loans</span>

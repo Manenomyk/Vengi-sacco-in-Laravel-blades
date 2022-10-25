@@ -18,61 +18,61 @@
         </div>
           <ul class="nav-links">
             <li>
-              <a href="{{ url('clerk-dash') }}" class="sidebarBtn active">
+              <a href="{{ url('clerk-dash') }}" class="{{ request()->is('clerk-dash') ? 'active' : '' }}">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('get-account-types') }}" class="sidebarBtn">
+              <a href="{{ url('get-account-types') }}"  class="{{ request()->is('get-account-types') ? 'active' : '' }}">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">Account types</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('get-emergency') }}" class="sidebarBtn">
+              <a href="{{ url('get-emergency') }}"  class="{{ request()->is('get-emergency') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> Emergency loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('table-banking') }}" class="sidebarBtn">
+              <a href="{{ url('table-banking') }}"  class="{{ request()->is('table-banking') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> Table Banking loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('share-account') }}" class="sidebarBtn">
+              <a href="{{ url('share-account') }}"  class="{{ request()->is('share-account') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> Share account</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('normal-share') }}" class="sidebarBtn">
+              <a href="{{ url('normal-share') }}"  class="{{ request()->is('normal-share') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> Normal loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('inst-shares') }}" class="sidebarBtn">
+              <a href="{{ url('inst-shares') }}"  class="{{ request()->is('inst-shares') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> Institutional Shares</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('gen-ledger') }}" class="sidebarBtn">
+              <a href="{{ url('gen-ledger') }}"  class="{{ request()->is('gen-ledger') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name"> General Ledger</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('members') }}" class="sidebarBtn">
+              <a href="{{ url('members') }}"  class="{{ request()->is('members') ? 'active' : '' }}">
                 <i class='bx bx-coin-stack' ></i>
                 <span class="links_name">Members</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('account-number') }}" class="sidebarBtn">
+              <a href="{{ url('account-number') }}"  class="{{ request()->is('account-number') ? 'active' : '' }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Transaction Processing</span>
               </a>
