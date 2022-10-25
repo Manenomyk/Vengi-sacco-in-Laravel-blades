@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Clerk;
 
+use App\Models\User;
+use App\Models\NormalShare;
+use App\Models\ShareAccount;
 use Illuminate\Http\Request;
+use App\Models\EmergencyLoan;
 use App\Models\GeneralLedger;
+use App\Models\TableBankingLoan;
+use App\Models\InstitutionalShare;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,10 +20,17 @@ class LegderController extends Controller
     }
 
     public function gen_ledgers(){
-       
+
+        $emergency=EmergencyLoan::sum('amount_without_interest');
+        $normal=NormalShare::sum('amount_without_interest');
+        $table=TableBankingLoan::sum('amount_without_interest');
+
+        $inst_share=InstitutionalShare::where('is_approved',1)->sum('amount_without_interest');
+        $share=ShareAccount::where('is_approved',1)->sum('amount_without_interest');
+
         $general_ledgers = GeneralLedger::paginate();
 
-        return view('clerk.ledger',compact('general_ledgers'));
+        return view('clerk.ledger',compact('general_ledgers','emergency','normal','table','inst_share','share'));
 
     }
     public function store(Request $request){

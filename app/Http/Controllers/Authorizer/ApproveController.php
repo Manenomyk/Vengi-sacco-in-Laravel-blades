@@ -22,7 +22,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","Share Account Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -30,7 +30,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","Share Account Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }
@@ -43,7 +43,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","Emergency loan Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -51,7 +51,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","Emergency loan Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }
@@ -64,7 +64,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","Table banking loan Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -72,7 +72,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","Table banking loan Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }
@@ -86,7 +86,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","Normal loan  Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -94,7 +94,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","Normal loan Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }
@@ -108,7 +108,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","Institutional share account Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -116,7 +116,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","Institutional account Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }
@@ -130,7 +130,7 @@ class ApproveController extends Controller
             $approve->is_approved="1";
             $result=$approve->update();
             if($result){
-                Alert::success("Message","Approved successfully");
+                Alert::success("Message","General ledger Approved successfully");
                 return back()->with("message", "Approved successfully");
             }
         }
@@ -138,7 +138,7 @@ class ApproveController extends Controller
         else{
             $result=$approve->delete();
             if($result){
-                Alert::success("Message","Declined successfully");
+                Alert::success("Message","General ledger Declined successfully");
                 return back()->with("message", "Declined successfully");
             }
         }

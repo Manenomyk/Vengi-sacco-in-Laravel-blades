@@ -64,7 +64,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Share Account opened Successfully, Account number: $acc_inst->id");
+                Alert::success("information","Institutional share Account opened Successfully, Account number: $acc_inst->id");
                 return back()->with("info","Institutional Share Account Opened Successfully, Account Number: $acc_inst->id");
             }
         }
@@ -83,7 +83,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Share Account opened Successfully, Account number: $acc_norm->id");
+                Alert::success("information","Normal loans Account opened Successfully, Account number: $acc_norm->id");
                 return back()->with("info","Normal Share Account Opened Successfully, Account Number: $acc_norm->id");
             }
         }
@@ -101,7 +101,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Share Account opened Successfully, Account number: $acc_table->id");
+                Alert::success("information","Table banking Account opened Successfully, Account number: $acc_table->id");
                 return back()->with("info","Table Banking Loan Account Opened Successfully, Account Number: $acc_table->id");
             }
         }
@@ -119,26 +119,8 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Share Account opened Successfully, Account number: $acc_emerg->id");
+                Alert::success("information","Emergency loan account opened Successfully, Account number: $acc_emerg->id");
                 return back()->with("info","Emergency Loan Account Opened Successfully, Account Number: $acc_emerg->id");
-            }
-        }
-        else{
-            $general_ledger= new GeneralLedger();
-            $general_ledger->user_id=$req->input('user_id');
-            $general_ledger->details_id=$req->input('account_type');
-
-            $result=$general_ledger->save();
-            $acc_gen=GeneralLedger::where('user_id',$req->user_id)->first();
-
-            $record->details_id=$req->input('account_type');
-            $record->user_id=$req->input('account_type');
-            $record->account_id=$acc_gen->id;
-            $res=$record->save();
-            
-            if ($result && $res){
-                Alert::success("information","Share Account opened Successfully, Account number: $acc_gen->id");
-                return back()->with("info","Normal Share Account Opened Successfully, Account Number: $acc_gen->id");
             }
         }
     }
@@ -228,7 +210,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
+                Alert::success("information","Share Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
@@ -254,7 +236,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
+                Alert::success("information","Institutional share Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
@@ -289,7 +271,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
+                Alert::success("information","Normal Share Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
@@ -324,7 +306,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
+                Alert::success("information","Table banking loan Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
@@ -357,36 +339,10 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Amount allocated successfully");
+                Alert::success("information","Emergency loan Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
-        // elseif (600000<=$number && $number<=699999) {
-        //     $account=GeneralLedger::where('id',$number)->first();
-        //     $account->type=$request->input('type');
-        //      if($request->type==1){
-        //         $money=$request->amount+$account->amount_without_interest;
-        //     }
-        //     elseif($request->type==0){
-        //         $money=$account->amount_without_interest-$request->amount;
-        //     }
-        //     $account->amount_without_interest=$money;
-        //     $result=$account->save();
-
-        //     $record=new Record();
-
-        //     $record->amount_without_interest=$request->input('amount');
-        //     $record->type=$request->input('type');
-        //     $record->account_id=$account->id;
-        //     $record->details_id=$account->details_id;
-        //     $record->user_id=$account->user_id;
-        //     $res=$record->save();
-
-        //     if ($result && $res) {
-        //         Alert::success("information","Amount allocated successfully");
-        //         return redirect()->route('cashing')->with("info","allocated successfully");
-        //     }
-        // }
         else{
             return back()->with("info","Error occurred while allocating cash");
         }

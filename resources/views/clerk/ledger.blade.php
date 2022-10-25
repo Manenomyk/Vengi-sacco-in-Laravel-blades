@@ -73,6 +73,41 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>Not available</td>
+                                    <td>Shares Account</td>
+                                    <td>{{ $share }}</td>
+                                    <td>Not available</td>
+                                    <td>Updated</td>
+                                </tr>
+                                <tr>
+                                    <td>Not available</td>
+                                    <td>Institutinal Share</td>
+                                    <td>{{ $inst_share }}</td>
+                                    <td>Not available</td>
+                                    <td>Updated</td>
+                                </tr>
+                                <tr>
+                                    <td>Not available</td>
+                                    <td>Normal loans</td>
+                                    <td>{{ $normal }}</td>
+                                    <td>Not available</td>
+                                    <td>Updated</td>
+                                </tr>
+                                <tr>
+                                    <td>Not available</td>
+                                    <td>Emergency loans</td>
+                                    <td>{{ $emergency }}</td>
+                                    <td>Not available</td>
+                                    <td>Updated</td>
+                                </tr>
+                                <tr>
+                                    <td>Not available</td>
+                                    <td>Table banking loans</td>
+                                    <td>{{ $table }}</td>
+                                    <td>Not available</td>
+                                    <td>Updated</td>
+                                </tr>
+                                <tr>
                                 @foreach ($general_ledgers as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>

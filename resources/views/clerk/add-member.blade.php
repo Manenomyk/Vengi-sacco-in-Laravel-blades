@@ -31,7 +31,7 @@
             <div class="home-content" style="display: flex; justify-content:center;">
                 <div class="addcontainer">
                     <div class="adddetails">
-                        <h1><b>Add Member</b></h1>
+                        <h1><b>Register a New Member</b></h1>
                         @if (session()->has('message'))
                             <div class="success-here">
                                 {{ session()->get('message') }}

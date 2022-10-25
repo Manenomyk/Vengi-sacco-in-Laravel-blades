@@ -77,18 +77,13 @@
                 <span class="links_name">Transaction Processing</span>
               </a>
             </li>
-            <li class="log_out">
-                  <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-jet-dropdown-link href="{{ route('logout') }}"
-                             @click.prevent="$root.submit();" style="color: white">
-                             <i class='bx bx-log-out'></i>
-                        {{ __('Log Out') }}
-                    </x-jet-dropdown-link>
-                </form>
-              
+            <li>
+              <a href="{{ url('account-number') }}"  class="{{ request()->is('account-number') ? 'active' : '' }}">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Trial Balance</span>
+              </a>
             </li>
+          
           </ul>
       </div>
 

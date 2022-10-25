@@ -44,11 +44,11 @@ class MemberController extends Controller
         $result=$user->save();
 
         if($result){
-            Alert::success('Information', 'User created successfully');
-            return back()->with("message","User created successfully");
+            Alert::success('Information', 'Member added created successfully');
+            return back()->with("message","Member created successfully");
         }
         else{
-            return back()->with("issue","Error creating user");
+            return back()->with("issue","Error adding member");
         }
     }
 }
