@@ -25,14 +25,10 @@ class HomeController extends Controller
 
         if($user==3){
             return view('member.member-dashboard');
-            // return redirect()->route('member.dash');
+           
         }
         elseif($user==2){
             $members=User::where('role',3)->count();
-            // select date_format(order_date,'%H %p') as hour,
-            // sum(amount) as total_sales
-            // from sales
-            // group by date_format(order_date,'%H %p');
             $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
             $dis_normal=NormalShare::where('is_approved',0)->count();
             $dis_table=TableBankingLoan::where('is_approved',0)->count();
@@ -52,42 +48,44 @@ class HomeController extends Controller
             $shares=$inst_share+$share;
     
             return view('authorizer.authorizer-dashboard',compact('members','shares','loans','dis_total','emergency','normal','table','inst_share','share'));
-            // return redirect()->route('authorizer.dash');
         }
         elseif($user==1){
             $members=User::where('role',3)->count();
-
-            // select date_format(order_date,'%H %p') as hour,
-            // sum(amount) as total_sales
-            // from sales
-            // group by date_format(order_date,'%H %p');
             $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
             $dis_normal=NormalShare::where('is_approved',0)->count();
             $dis_table=TableBankingLoan::where('is_approved',0)->count();
             $dis_share=ShareAccount::where('is_approved',0)->count();
             $dis_inst=InstitutionalShare::where('is_approved',0)->count();
             $dis_user=User::where('is_approved',0)->count();
-            $dis_total=$dis_table+$dis_emergency+$dis_table+$dis_share+$dis_inst+$dis_user;
     
     
             $emergency=EmergencyLoan::sum('amount_without_interest');
             $normal=NormalShare::sum('amount_without_interest');
             $table=TableBankingLoan::sum('amount_without_interest');
-            $loans=$emergency+$normal+$table;
+           
     
             $inst_share=InstitutionalShare::where('is_approved',1)->sum('amount_without_interest');
             $share=ShareAccount::where('is_approved',1)->sum('amount_without_interest');
             $shares=$inst_share+$share;
     
-            return view('clerk.clerk-dashboard',compact('members','shares','loans','dis_total','emergency','normal','table','inst_share','share'));
-            // return redirect()->route('clerk.dash');
+            return view('clerk.clerk-dashboard',compact(
+                'members',
+                'emergency',
+                'normal',
+                'table',
+                'inst_share',
+                'share',
+                'dis_emergency',
+                'dis_normal',
+                'dis_table',
+                'dis_share',
+                'dis_inst',
+                'dis_user'
+            ));
+            
         }
-        else{
+        elseif($user==1){
             $members=User::where('role',3)->count();
-            // select date_format(order_date,'%H %p') as hour,
-            // sum(amount) as total_sales
-            // from sales
-            // group by date_format(order_date,'%H %p');
             $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
             $dis_normal=NormalShare::where('is_approved',0)->count();
             $dis_table=TableBankingLoan::where('is_approved',0)->count();
@@ -107,7 +105,6 @@ class HomeController extends Controller
             $shares=$inst_share+$share;
     
             return view('admin.admin-dashboard',compact('members','shares','loans','dis_total','emergency','normal','table','inst_share','share'));
-            // return redirect()->route('clerk.dash');
         }
     }
 }

@@ -14,9 +14,6 @@
    </head>
    
     <body>
-        {{-- @include('layouts.nav')
-        @section('navigation')
-        @endsection --}}
 
     @extends('layouts.clerk-sidebar')
     <x-app-layout>
@@ -31,7 +28,7 @@
           <div class="overview-boxes">
             <div class="box">
               <div class="right-side">
-                <div class="box-topic">Total Members</div>
+                <div class="box-topic">Total Present Members</div>
                 <div class="number">{{ $members }}</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
@@ -42,8 +39,8 @@
             </div>
             <div class="box">
               <div class="right-side">
-                <div class="box-topic">Total Shares</div>
-                <div class="number">{{ $shares }}</div>
+                <div class="box-topic">Pending Shares Account</div>
+                <div class="number">{{ $dis_share }}</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
                   <span class="text">Up from yesterday</span>
@@ -53,8 +50,8 @@
             </div>
             <div class="box">
               <div class="right-side">
-                <div class="box-topic">Total Loans</div>
-                <div class="number">{{ $loans }}</div>
+                <div class="box-topic">Pending Emergency Loans</div>
+                <div class="number">{{ $dis_emergency }}</div>
                 <div class="indicator">
                   <i class='bx bx-up-arrow-alt'></i>
                   <span class="text">Up from yesterday</span>
@@ -64,8 +61,53 @@
             </div>
             <div class="box">
               <div class="right-side">
+                <div class="box-topic">Pending Normal Loans</div>
+                <div class="number">{{ $dis_normal }}</div>
+                <div class="indicator">
+                  <i class='bx bx-down-arrow-alt down'></i>
+                  <span class="text">Down From Today</span>
+                </div>
+              </div>
+              <i class='bx bxs-cart-download cart four' ></i>
+            </div>
+
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Pending Table bank Loans</div>
+                <div class="number">{{ $dis_table }}</div>
+                <div class="indicator">
+                  <i class='bx bx-down-arrow-alt down'></i>
+                  <span class="text">Down From Today</span>
+                </div>
+              </div>
+              <i class='bx bxs-cart-download cart four' ></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Pending Institutional shares</div>
+                <div class="number">{{ $dis_inst }}</div>
+                <div class="indicator">
+                  <i class='bx bx-down-arrow-alt down'></i>
+                  <span class="text">Down From Today</span>
+                </div>
+              </div>
+              <i class='bx bxs-cart-download cart four' ></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Pending Members</div>
+                <div class="number">{{ $dis_user }}</div>
+                <div class="indicator">
+                  <i class='bx bx-down-arrow-alt down'></i>
+                  <span class="text">Down From Today</span>
+                </div>
+              </div>
+              <i class='bx bxs-cart-download cart four' ></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
                 <div class="box-topic">Pending Approvals</div>
-                <div class="number">{{ $dis_total }}</div>
+                <div class="number"></div>
                 <div class="indicator">
                   <i class='bx bx-down-arrow-alt down'></i>
                   <span class="text">Down From Today</span>
@@ -75,34 +117,8 @@
             </div>
           </div>
     
-          <div class="sales-boxes">
-            <div class="recent-sales box">
-              <div class="title">Summary</div>
-              <div class="disp-ledger" >
-                <span>Account</span>  -----------------------------------------------------------  <span>Total</span>
-              </div>
-              <div class="disp-ledger">
-                <span>Table Banking Loans</span>  ---------------------------------------------------  <span>{{ $table }}</span>
-              </div>
-              <div class="disp-ledger">
-                <span>Normal loans</span>  ---------------------------------------------------  <span>{{ $normal }}</span>
-              </div>
-              <div class="disp-ledger">
-                <span>Emergency loans</span>  ---------------------------------------------------  <span>{{ $emergency }}</span>
-              </div>
-              <div class="disp-ledger">
-                <span>Shares Account</span>  ---------------------------------------------------  <span>{{ $share }}</span>
-              </div>
-              <div class="disp-ledger">
-                <span>Institutional Shares</span>  ---------------------------------------------------  <span>{{ $inst_share }}</span>
-              </div>
-             
-            </div>
-            <div class="top-sales box">
-              <div class="title">Doughnuts</div>
+          
 
-            </div>
-          </div>
         </div>
       </section>
       @endsection

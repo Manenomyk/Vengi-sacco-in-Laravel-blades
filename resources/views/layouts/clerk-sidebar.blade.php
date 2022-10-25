@@ -78,9 +78,15 @@
               </a>
             </li>
             <li>
-              <a href="{{ url('account-number') }}"  class="{{ request()->is('account-number') ? 'active' : '' }}">
+              <a href="{{ url('clerk/reports') }}"  class="{{ request()->is('clerk/reports') ? 'active' : '' }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Trial Balance</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('clerk/reports/page') }}"  class="{{ request()->is('clerk/reports/page*') ? 'active' : '' }}">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Generate Reports</span>
               </a>
             </li>
           

@@ -47,7 +47,7 @@
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <label for="email">email</label>
-                            <input class="forminput" type="text" name="email" value="{{ old('email') }}">
+                            <input class="forminput" type="email" name="email" value="{{ old('email') }}">
                             @error('email')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror

@@ -137,7 +137,6 @@
                         </table>
                     </div>
                 </div>
-                {{ $general_ledgers->onEachSide(2)->links() }}
             </div>
         </section>
     @endsection

@@ -10,6 +10,7 @@ use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
 use App\Http\Controllers\Authorizer\AuthorizerMembersController;
 use App\Http\Controllers\Clerk\AccountController;
 use App\Http\Controllers\Clerk\AccountType;
+use App\Http\Controllers\Clerk\ClerkReportController;
 use App\Http\Controllers\Clerk\DashBoardController;
 use App\Http\Controllers\Clerk\DisplayController;
 use App\Http\Controllers\Clerk\LegderController;
@@ -97,6 +98,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashBoardController::class)->group(function(){
         Route::get('clerk-dash','index');
+    });
+
+
+    Route::controller(ClerkReportController::class)->group(function(){
+        Route::get('clerk/reports','index');
+        Route::get('clerk/reports/page','get_page');
+        Route::post('clerk/reports/page/generate','generate_reports');
     });
 
 

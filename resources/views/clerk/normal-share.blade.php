@@ -49,7 +49,7 @@
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Normal Shares</b></h3>
+                    <h3 class="top-header"><b>Normal loans</b></h3>
                     <div class="table">
                         <table>
                             <thead>

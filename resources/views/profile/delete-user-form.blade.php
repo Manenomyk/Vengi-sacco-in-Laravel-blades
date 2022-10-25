@@ -1,3 +1,6 @@
+@if (Auth::user()->role==3)
+
+ @elseif (Auth::user()->role==0 || Auth::user()->role==1 || Auth::user()->role==2)
 <x-jet-action-section>
     <x-slot name="title">
         {{ __('Delete Account') }}
@@ -50,3 +53,5 @@
         </x-jet-dialog-modal>
     </x-slot>
 </x-jet-action-section>
+
+@endif

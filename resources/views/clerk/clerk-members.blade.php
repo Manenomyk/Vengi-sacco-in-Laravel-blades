@@ -63,7 +63,7 @@
                           <div class="btn open-account"> <a href="{{ url('add-member') }}">+</a></div>
                       </div>
                     </div>
-                    <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
+                    <form action="#" method="post" enctype="multipart/form-data"
                         class="sach-form">
                         @csrf
                         <input type="text" name="name" placeholder="search users..." />
