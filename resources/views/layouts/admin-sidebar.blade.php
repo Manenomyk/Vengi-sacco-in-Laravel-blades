@@ -57,7 +57,7 @@
             <li>
                 <a href="{{ url('admin-inst-shares') }}">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Institutinal Shares</span>
+                    <span class="links_name">Institutional Shares</span>
                 </a>
             </li>
             <li>

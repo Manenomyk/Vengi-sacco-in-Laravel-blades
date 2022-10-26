@@ -28,12 +28,19 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
           //authorizations on users creation
-          Gate::define('clerk', function (User $user) {
-            return  $user->role_id ===1;
+          Gate::define('admin', function (User $user) {
+            return  $user->role==0;
         });
-        Gate::define('operate-users', function (User $user) {
-            return  $user->role_id ===2;
+        Gate::define('clerk', function (User $user) {
+            return  $user->role==1;
         });
+        Gate::define('authorizer', function (User $user) {
+            return  $user->role==2;
+        });
+        Gate::define('member', function (User $user) {
+            return  $user->role==3;
+        });
+
 
         //authorizations on share
         Gate::define('see-shares', function (User $user) {

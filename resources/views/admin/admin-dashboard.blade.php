@@ -170,7 +170,7 @@
           <div class="top-sales box">
             <div class="center-report">
               <div class="div-table">
-                  <div class="title">Pending Reports</div>
+                  <div class="title">Pending Status</div>
                   <div class="table">
                       <div class="tr">
                           <div class="td">Pending Type</div>

@@ -44,7 +44,7 @@
             <li>
               <a href="{{ url('share-account') }}"  class="{{ request()->is('share-account') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> Share account</span>
+                <span class="links_name"> Shares account</span>
               </a>
             </li>
             <li>

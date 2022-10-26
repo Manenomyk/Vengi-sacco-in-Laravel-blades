@@ -69,7 +69,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    {{-- <th>Id</th> --}}
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Id number</th>
@@ -80,7 +80,7 @@
                             <tbody>
                                 @foreach ($member as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        {{-- <td>{{ $item->id }}</td> --}}
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->id_number }}</td>
@@ -88,7 +88,7 @@
                                         <td>
                                             {{ $item->gender }}
                                         </td>
-                                        <td><a href="{{ url('create-account/' . $item->id) }}" class="open-account" >Open Account</a></td>
+                                        <td><a href="{{ url('create-account/' . $item->id) }}" class="open-account" >Open New Account</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

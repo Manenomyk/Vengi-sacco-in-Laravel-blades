@@ -38,10 +38,7 @@
                 @csrf
                 <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
               </form>
-              <form action="{{ url('download-loans-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                @csrf
-                <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
-              </form>
+            
               <div class="button" style="margin-left: 10px;">
                 <div class="btn"> <a href="{{ url('add-account-type') }}">+</a></div>
             </div>
