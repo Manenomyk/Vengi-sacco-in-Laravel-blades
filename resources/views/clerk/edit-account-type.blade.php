@@ -31,7 +31,7 @@
             <div class="home-content" style="display: flex; justify-content:center;">
                 <div class="addcontainer">
                     <div class="adddetails">
-                        <h1><b>Add Account Type</b></h1>
+                        <h1><b>Edit Account Type</b></h1>
                         @if (session()->has('message'))
                             <div class="success-here">
                                 {{ session()->get('message') }}
@@ -42,21 +42,26 @@
                                 {{ session()->get('issue') }}
                             </div>
                         @endif
-                        <form action="{{ url('store-account-type') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('clerk/account-type/update/') }}" method="POST" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
 
-                            <label for="amount">Account Type Name</label>
-                            <input class="forminput" type="text" name="account_type_name" value="{{ old('account_type_name') }}">
+                            <label for="account_type_name"></label>
+                            <select class="forminput" name="account_type_name" value="{{ old('account_type_name') }}">
+                                <option value="">Select account type</option>
+                                @foreach ($account_type as $item)
+                                <option value={{ $item->id }}>{{ $item->account_type }}</option>
+                                @endforeach
+                            </select>
                             @error('account_type_name')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
-                            <label for="amount">Interest Rate</label>
+                            <label for="amount">New Interest Rate</label>
                             <input class="forminput" type="text" name="interest_rate" value="{{ old('interest_rate') }}">
                             @error('interest_rate')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
-                            <label for="amount">Duration</label>
+                            <label for="amount">New Duration in Months</label>
                             <input class="forminput" type="text" name="duration" value="{{ old('duration') }}">
                             @error('duration')
                                 <div class="errors-here">{{ $message }}</div>

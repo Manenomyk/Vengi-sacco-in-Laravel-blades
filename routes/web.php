@@ -60,8 +60,8 @@ Route::middleware(['auth'])->group(function () {
     //Account type controller
     Route::controller(AccountType::class)->group(function(){
         Route::get('get-account-types','index');
-        Route::get('add-account-type','create');
-        Route::post('store-account-type','store');
+        Route::get('clerk/account-type/edit','edit');
+        Route::post('clerk/account-type/update/','update');
     });
 
     Route::controller(MemberController::class)->group(function(){
@@ -176,12 +176,15 @@ Route::middleware(['auth'])->group(function () {
 
     //pdf controller
     Route::controller(PdfController::class)->group(function(){
-        Route::post('view-shares-pdf','view_pdf_shares');
-        Route::post('download-shares-pdf','download_pdf_shares');
-        Route::post('view-members-pdf','view_pdf_members');
-        Route::post('download-members-pdf','download_pdf_members');
-        Route::post('view-loans-pdf','view_pdf_loans');
-        Route::post('download-loans-pdf','download_pdf_loans');
+        Route::post('view-account-type','account_types');
+        Route::post('view-emergency-pdf','emergency');
+        Route::post('view-table-pdf','table');
+        Route::post('view-shares-pdf','shares');
+        Route::post('view-normal-pdf','normal');
+        Route::post('view-inst-pdf','inst');
+        Route::post('view-members-pdf','member');
+        Route::post('view-trial-pdf','trial');
+        Route::post('view-generated-pdf','generated');
     });
 
     Route::controller(ReportController::class)->group(function(){

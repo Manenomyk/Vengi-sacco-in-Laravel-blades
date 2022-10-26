@@ -33,25 +33,19 @@
             <div class="home-content">
                 <div class="space-content">
                     <div class="pdf" style="display: flex; flex-direction:row; ">
-                        <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data"
+                        <form action="" method="post" enctype="multipart/form-data"
                             target="blank">
                             @csrf
                             <button type="submit"
                                 style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
                                 pdf</button>
                         </form>
-                        <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data"
-                            target="blank">
-                            @csrf
-                            <button type="submit"
-                                style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> download
-                                pdf</button>
-                        </form>
+                       
                         <div class="button" style="margin-left: 10px;">
                             <div class="btn open-account"> <a href="{{ url('create-ledger') }}">+</a></div>
                         </div>
                     </div>
-                    <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
+                    <form action="" method="post" enctype="multipart/form-data"
                         class="sach-form">
                         @csrf
                         <input type="text" name="name" placeholder="search users..." />

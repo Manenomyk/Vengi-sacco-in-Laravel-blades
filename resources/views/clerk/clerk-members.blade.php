@@ -52,13 +52,6 @@
                                 style="margin-left: 10px; background-color: rgb(109, 207, 109); " class="open-account"> view
                                 pdf</button>
                         </form>
-                        <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data"
-                            target="blank">
-                            @csrf
-                            <button type="submit"
-                                style="margin-left: 10px; background-color: rgb(109, 207, 109); " class="open-account"> download
-                                pdf</button>
-                        </form>
                         <div class="button" style="margin-left: 10px;">
                           <div class="btn open-account"> <a href="{{ url('add-member') }}">+</a></div>
                       </div>

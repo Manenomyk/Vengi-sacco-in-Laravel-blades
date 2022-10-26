@@ -34,14 +34,11 @@
         <div class="home-content">
           <div class="space-content">
             <div class="pdf" style="display: flex; flex-direction:row; ">
-              <form action="{{ url('view-loans-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
+              <form action="{{ url('view-account-type') }}" method="post" enctype="multipart/form-data" target="blank">
                 @csrf
                 <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
               </form>
-              <form action="{{ url('download-loans-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                @csrf
-                <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
-              </form>
+               <a href="{{ url('clerk/account-type/edit') }}"><button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > Edit Accounts</button></a>
             </div>
            
           </div>
@@ -55,7 +52,6 @@
                             <th>Account Type</th>
                             <th>Interest </th>
                             <th>Duration in Months</th>
-                            <th>status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,13 +62,6 @@
                         <td>{{ $item->interest }} %</td>
                         <td>
                          {{ $item->duration }}
-                        </td>
-                        <td>
-                          @if ( $item->is_approved ==0 )
-                          Pending
-                          @else
-                            Approved
-                          @endif
                         </td>
                     </tr>
                    
