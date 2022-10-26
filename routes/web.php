@@ -1,29 +1,30 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\AdminDisplayController;
-use App\Http\Controllers\Admin\AdminLogsController;
-use App\Http\Controllers\Admin\AdminMembersController;
-use App\Http\Controllers\Authorizer\ApproveController;
-use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
-use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
-use App\Http\Controllers\Authorizer\AuthorizerMembersController;
-use App\Http\Controllers\Clerk\AccountController;
+use Laravel\Jetstream\Rules\Role;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
+use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Clerk\AccountType;
-use App\Http\Controllers\Clerk\ClerkReportController;
-use App\Http\Controllers\Clerk\ClerkSearchController;
-use App\Http\Controllers\Clerk\DashBoardController;
-use App\Http\Controllers\Clerk\DisplayController;
 use App\Http\Controllers\Clerk\LegderController;
 use App\Http\Controllers\Clerk\MemberController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Clerk\AccountController;
+use App\Http\Controllers\Clerk\DisplayController;
+use App\Http\Controllers\Admin\AdminLogsController;
+use App\Http\Controllers\Clerk\DashBoardController;
+use App\Http\Controllers\Admin\AdminReportController;
+use App\Http\Controllers\Clerk\ClerkReportController;
+use App\Http\Controllers\Clerk\ClerkSearchController;
+use App\Http\Controllers\Admin\AdminDisplayController;
+use App\Http\Controllers\Admin\AdminMembersController;
+use App\Http\Controllers\Authorizer\ApproveController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Member\MemberDisplayController;
 use App\Http\Controllers\Member\MembersDashboardController;
-use App\Http\Controllers\PdfController;
-use App\Http\Controllers\ReportController;
-use Illuminate\Support\Facades\Request;
-use Laravel\Jetstream\Rules\Role;
+use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
+use App\Http\Controllers\Authorizer\AuthorizerMembersController;
+use App\Http\Controllers\Authorizer\AuthorizerDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -164,6 +165,12 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('get-logs',[AdminLogsController::class,'logs']);
+
+    Route::controller(AdminReportController::class)->group(function(){
+        Route::get('admin/reports/trial','index');
+        Route::get('admin/reports/page','get_page');
+        Route::post('admin/reports/page/generate','generate_reports');
+    });
 
      //member
      Route::controller(MembersDashboardController::class)->group(function(){

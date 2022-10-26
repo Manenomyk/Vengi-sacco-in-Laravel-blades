@@ -69,8 +69,8 @@
                            
                             <div style="display: flex; justify-content:right; ">
                                 <button type="submit"
-                                    style="background-color: #0A2558; color:white; padding:8px 0px; width:100px; border-radius:10px;">Add
-                                    loans</button>
+                                    style="background-color: #0A2558; color:white; padding:8px 0px; width:100px; border-radius:10px;">Submit
+                                    </button>
                             </div>
                         </form>
 

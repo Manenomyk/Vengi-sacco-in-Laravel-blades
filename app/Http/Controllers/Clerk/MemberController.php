@@ -22,7 +22,7 @@ class MemberController extends Controller
     public function store(Request $req){
         $validated=$req->validate([
             'name'=>'required|string',
-            'email'=>'required|unique:users,email',
+            'email'=>'required|unique:users,email|email',
             'role'=>'required',
             'id_number'=>'required|numeric|digits_between:6,12',
             'location'=>'required',

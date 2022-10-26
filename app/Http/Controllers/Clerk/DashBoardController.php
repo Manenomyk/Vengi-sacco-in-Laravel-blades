@@ -32,9 +32,9 @@ class DashBoardController extends Controller
         
 
 
-        $emergency=EmergencyLoan::sum('amount_without_interest');
-        $normal=NormalShare::sum('amount_without_interest');
-        $table=TableBankingLoan::sum('amount_without_interest');
+        $emergency=EmergencyLoan::where('is_approved',1)->sum('amount_without_interest');
+        $normal=NormalShare::where('is_approved',1)->sum('amount_without_interest');
+        $table=TableBankingLoan::where('is_approved',1)->sum('amount_without_interest');
       
         $inst_share=InstitutionalShare::where('is_approved',1)->sum('amount_without_interest');
         $share=ShareAccount::where('is_approved',1)->sum('amount_without_interest');

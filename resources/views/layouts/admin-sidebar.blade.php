@@ -67,22 +67,24 @@
                 </a>
             </li>
             <li>
+                <a href="{{ url('admin/reports/trial') }}">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">trial Balance</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ url('sample-report') }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Reports</span>
                 </a>
             </li>
-            <li class="log_out">
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();"
-                        style="color: white">
-                        <i class='bx bx-log-out'></i>
-                        {{ __('Log Out') }}
-                    </x-jet-dropdown-link>
-                </form>
+            <li>
+                <a href="{{ url('admin/reports/page') }}">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Generate Statements</span>
+                </a>
             </li>
+          
         </ul>
     </div>
 

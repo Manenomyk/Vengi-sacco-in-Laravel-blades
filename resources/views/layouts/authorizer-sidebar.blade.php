@@ -65,7 +65,7 @@
                 <span class="links_name">Institutional Shares</span>
               </a>
             </li>
-            <li>
+            {{-- <li>
               <a href="{{ url('auth-gen-ledger') }}">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">General Ledger</span>
@@ -82,7 +82,7 @@
                 </x-jet-dropdown-link>
             </form>
             
-          </li>
+          </li> --}}
           </ul>
       </div>
 

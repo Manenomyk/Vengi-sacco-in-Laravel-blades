@@ -43,20 +43,14 @@
                             style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
                             pdf</button>
                     </form>
-                    <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data"
-                        target="blank">
-                        @csrf
-                        <button type="submit"
-                            style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> download
-                            pdf</button>
-                    </form>
+                  
                 </div>
-                <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
+                {{-- <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
                     class="sach-form">
                     @csrf
                     <input type="text" name="name" placeholder="search users" />
                     <button type="submit" style="background-color: #0A2558; color:white">search</button>
-                </form>
+                </form> --}}
             </div>
         
 

@@ -198,6 +198,7 @@ class AccountController extends Controller
             }
            
             $account->amount_without_interest=$money;
+            $account->is_approved=0;
             $result=$account->save();
 
             $record=new Record();
@@ -224,6 +225,7 @@ class AccountController extends Controller
                 $money=$account->amount_without_interest-$request->amount;
             }
             $account->amount_without_interest=$money;
+            $account->is_approved=0;
             $result=$account->save();
 
             $record=new Record();
@@ -258,7 +260,7 @@ class AccountController extends Controller
                 $account->amount_without_interest=$money;
             }
             
-           
+            $account->is_approved=0;
             $result=$account->save();
 
             $record=new Record();
@@ -271,7 +273,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Normal Share Amount allocated successfully");
+                Alert::success("information","Normal Loan Amount allocated successfully");
                 return redirect()->route('cashing')->with("info","allocated successfully");
             }
         }
@@ -293,6 +295,7 @@ class AccountController extends Controller
             } else {
                 $account->amount_without_interest=$money;
             }
+            $account->is_approved=0;
             
             $result=$account->save();
 
@@ -327,6 +330,7 @@ class AccountController extends Controller
             } else {
                 $account->amount_without_interest=$money;
             }
+            $account->is_approved=0;
             $result=$account->save();
 
             $record=new Record();
