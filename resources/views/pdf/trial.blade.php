@@ -3,24 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .sach-form {
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 10px;
-        }
-
-        .space-content {
-            display: flex;
-            justify-content: space-between;
-        }
-
+    *{
+        font-family: 'Nunito', sans-serif;
+        font-size: 12px;
+    }
         .table {
             display: table;
+            width: 90%;
             border-collapse: collapse;
         }
 
@@ -70,25 +61,7 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
-
-    </x-app-layout>
-
-    @section('clerk-sidebar')
-        <section class="home-section">
-            <div class="home-content">
-                <div class="space-content">
-                    <div class="pdf" style="display: flex; flex-direction:row; ">
-                        <form action="{{ url('view-trial-pdf') }}" method="post" enctype="multipart/form-data"
-                            target="blank">
-                            @csrf
-                            <button type="submit"
-                                style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
-                                pdf</button>
-                        </form>
-                    </div>
-                </div>
+             
                 <div class="center-report">
                     <div class="div-table">
                         <div class="title">Trial Balance</div>
@@ -145,9 +118,7 @@
                 </div>
                
 
-            </div>
-        </section>
-    @endsection
+           
 </body>
 
 </html>

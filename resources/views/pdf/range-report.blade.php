@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('cssFiles/clerkmembers.css') }}">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .sach-form {
@@ -79,17 +75,10 @@
 </head>
 
 <body>
-    @extends('layouts.clerk-sidebar')
-    <x-app-layout>
-
-    </x-app-layout>
-
-    @section('clerk-sidebar')
-        <section class="home-section">
-            <div class="home-content">
+  
                 <div class="space-content">
                     <div class="pdf" style="display: flex; flex-direction:row; ">
-                        <form action="{{ url('view-generated-pdf') }}" method="post" enctype="multipart/form-data"
+                        <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data"
                             target="blank">
                             @csrf
                             <button type="submit"
@@ -139,9 +128,7 @@
                 </div>
              
 
-            </div>
-        </section>
-    @endsection
+           
 </body>
 
 </html>

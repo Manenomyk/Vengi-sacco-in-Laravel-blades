@@ -45,12 +45,6 @@
                             <div class="btn open-account"> <a href="{{ url('create-ledger') }}">+</a></div>
                         </div>
                     </div>
-                    <form action="" method="post" enctype="multipart/form-data"
-                        class="sach-form">
-                        @csrf
-                        <input type="text" name="name" placeholder="search users..." />
-                        <button type="submit" style="background-color: #0A2558; color:white">search</button>
-                    </form>
                 </div>
                 <div class="container">
                     <h3 class="top-header"><b>General Ledgers</b></h3>

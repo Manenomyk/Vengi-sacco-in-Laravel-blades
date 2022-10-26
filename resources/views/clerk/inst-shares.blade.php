@@ -43,12 +43,12 @@
                         </form>
                        
                     </div>
-                    <form action="" method="post" enctype="multipart/form-data"
+                    {{-- <form action="" method="post" enctype="multipart/form-data"
                         class="sach-form">
                         @csrf
                         <input type="text" name="name" placeholder="search users..." />
                         <button type="submit" style="background-color: #0A2558; color:white">search</button>
-                    </form>
+                    </form> --}}
                 </div>
                 <div class="container">
                     <h3 class="top-header"><b>Institutional Shares</b></h3>

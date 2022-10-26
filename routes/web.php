@@ -11,6 +11,7 @@ use App\Http\Controllers\Authorizer\AuthorizerMembersController;
 use App\Http\Controllers\Clerk\AccountController;
 use App\Http\Controllers\Clerk\AccountType;
 use App\Http\Controllers\Clerk\ClerkReportController;
+use App\Http\Controllers\Clerk\ClerkSearchController;
 use App\Http\Controllers\Clerk\DashBoardController;
 use App\Http\Controllers\Clerk\DisplayController;
 use App\Http\Controllers\Clerk\LegderController;
@@ -57,7 +58,6 @@ Route::middleware(['auth'])->group(function () {
 
 
     //clerk
-    //Account type controller
     Route::controller(AccountType::class)->group(function(){
         Route::get('get-account-types','index');
         Route::get('clerk/account-type/edit','edit');
@@ -105,6 +105,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('clerk/reports','index');
         Route::get('clerk/reports/page','get_page');
         Route::post('clerk/reports/page/generate','generate_reports');
+    });
+
+    Route::controller(ClerkSearchController::class)->group(function(){
+        Route::post('clerk/search/members','members');
     });
 
 

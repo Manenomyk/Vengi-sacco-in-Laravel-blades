@@ -37,11 +37,11 @@
                       <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
                     </form>
                   </div>
-                  <form action="" method="post" enctype="multipart/form-data" class="sach-form"> 
+                  {{-- <form action="" method="post" enctype="multipart/form-data" class="sach-form"> 
                     @csrf
                     <input type="text" name="name" placeholder="search users..."/>
                     <button type="submit" style="background-color: #0A2558; color:white" >search</button>
-                  </form>
+                  </form> --}}
                 </div>
                 <div class="container">
                     <h3 class="top-header"><b>Table Banking Loans</b></h3>
