@@ -89,13 +89,13 @@
             <div class="home-content">
                 <div class="space-content">
                     <div class="pdf" style="display: flex; flex-direction:row; ">
-                        <form action="{{ url('view-generated-pdf') }}" method="post" enctype="multipart/form-data"
+                        {{-- <form action="{{ url('view-generated-pdf') }}" method="post" enctype="multipart/form-data"
                             target="blank">
                             @csrf
                             <button type="submit"
                                 style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
                                 pdf</button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
                 <div class="center-report">

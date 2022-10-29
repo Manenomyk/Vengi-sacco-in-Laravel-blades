@@ -94,10 +94,10 @@
                         <div class="title">Trial Balance</div>
                         <div class="table">
                             <div class="tr">
-                                <div class="td">Credit Type</div>
-                                <div class="td">Credit Value</div>
-                                <div class="td">Debit Type</div>
-                                <div class="td">Debit Value</div>
+                                <div class="td">Asset Type</div>
+                                <div class="td">Asset Value</div>
+                                <div class="td">Liability Type</div>
+                                <div class="td">Liability Value</div>
                             </div>
                             <div class="tr">
                                 <div class="td">Normal Loans</div>
@@ -120,16 +120,14 @@
                             <div class="tr">
                                 @foreach ($general_ledgers as $item)
                                 @if ($item->amount>=0)
-                                
                                     <div class="td"> {{ $item->name }}</div>
                                     <div class="td"> {{ $item->amount }}</div>
-                              
                                 @endif
                                 @endforeach
                                 @foreach ($general_ledgers as $item)
                                 @if ($item->amount<0)
                                     <div class="td"> {{ $item->name }}</div>
-                                    <div class="td"> {{ $item->amount }}</div> 
+                                    <div class="td"> {{ $item->amount }}</div>
                                 @endif
                                 @endforeach
                             </div>

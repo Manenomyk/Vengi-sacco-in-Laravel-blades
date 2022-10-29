@@ -117,7 +117,7 @@
 
                                         </td>
                                         <td>
-                                          <a href="{{ url('fund-ledger/'.$item->id) }}"> Allocate Amount</a>
+                                          <a href="{{ url('fund-ledger/'.$item->id) }}"> Post Amount</a>
                                         </td>
                                     </tr>
                                 @endforeach

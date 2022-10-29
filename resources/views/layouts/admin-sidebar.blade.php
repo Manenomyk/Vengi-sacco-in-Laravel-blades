@@ -63,7 +63,7 @@
             <li>
                 <a href="{{ url('get-logs') }}">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">View User Logs</span>
+                    <span class="links_name">View System Logs</span>
                 </a>
             </li>
             <li>

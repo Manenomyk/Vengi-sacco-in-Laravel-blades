@@ -47,8 +47,6 @@ Route::middleware([
 
 
 Route::middleware(['auth'])->group(function () {
-
-
     //clerk
     Route::controller(AccountType::class)->group(function(){
         Route::get('get-account-types','index')->middleware('can:clerk');

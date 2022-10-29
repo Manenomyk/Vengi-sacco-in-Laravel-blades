@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}" >
     <link rel="stylesheet" href="{{ asset('cssFiles/clerkmembers.css') }}" >
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -23,7 +22,7 @@
       <section class="home-section">
         <div class="home-content">
           <div class="container" >
-            <h3 class="top-header"><b>User Logs</b></h3>
+            <h3 class="top-header"><b>System Logs</b></h3>
             <div class="table">
                 <table>
                     <thead>
