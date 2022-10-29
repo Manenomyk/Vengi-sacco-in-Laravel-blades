@@ -8,43 +8,15 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     public function emergency(){
-        $normal_report=Record::join('account_details','account_details.id','=','records.details_id')
-        ->join('normal_shares','normal_shares.id','=','records.account_id')
+        $all_reports=Record::join('account_details','account_details.id','=','records.details_id')
         ->select(
             'account_details.account_type',
             'records.type',
             'records.amount_without_interest',
             'records.created_at'
         )
-        ->get();
-        // $shares_report=Record::join('account_details','account_details.id','=','records.details_id')
-        // ->join('normal_shares','normal_shares.id','=','records.account_id')
-        // ->select(
-        //     'account_details.account_type',
-        //     'records.type',
-        //     'records.amount_without_interest',
-        //     'records.created_at'
-        // )
-        // ->get();
-        // $normal_report=Record::join('account_details','account_details.id','=','records.details_id')
-        // ->join('normal_shares','normal_shares.id','=','records.account_id')
-        // ->select(
-        //     'account_details.account_type',
-        //     'records.type',
-        //     'records.amount_without_interest',
-        //     'records.created_at'
-        // )
-        // ->get();
-        // $normal_report=Record::join('account_details','account_details.id','=','records.details_id')
-        // ->join('normal_shares','normal_shares.id','=','records.account_id')
-        // ->select(
-        //     'account_details.account_type',
-        //     'records.type',
-        //     'records.amount_without_interest',
-        //     'records.created_at'
-        // )
-        // ->get();
+        ->paginate(8);
 
-        return view('admin.report',compact('normal_report'));
+        return view('admin.report',compact('all_reports'));
     }
 }

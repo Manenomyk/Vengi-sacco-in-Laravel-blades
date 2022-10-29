@@ -142,6 +142,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(AdminMembersController::class)->group(function(){
         Route::any('admin-members','index')->middleware('can:admin');
         Route::get('admin-unapproved-members','unapproved_members')->middleware('can:admin');
+        Route::get('admin-member-report/{id}','member_report')->middleware('can:admin');
+        Route::post('admin-member-remove/{id}','destroy')->middleware('can:admin');
     });
 
     Route::controller(AdminDisplayController::class)->group(function(){
@@ -152,6 +154,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin-inst-shares','admin_inst')->middleware('can:admin');
 
     });
+
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('all-reports','emergency')->middleware('can:admin');
+    });
+
 
     Route::get('get-logs',[AdminLogsController::class,'logs'])->middleware('can:admin');
 
@@ -187,9 +194,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('view-generated-pdf','generated');
     });
 
-    Route::controller(ReportController::class)->group(function(){
-        Route::get('sample-report','emergency');
-    });
+  
 
 
 });

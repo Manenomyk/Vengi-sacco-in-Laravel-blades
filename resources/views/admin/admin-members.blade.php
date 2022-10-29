@@ -58,20 +58,40 @@
                             <th>Email</th>
                             <th>Id number</th>
                             <th>Location</th>
+                            <th>Approval status</th>
                             <th>Gender</th>
+                            <th>User report</th>
+                            <th>Remove Member</th>
                         </tr>
                     </thead>
                     <tbody>
                       @foreach ($member as $item)
                       <tr>
-                        {{-- <td>{{ $item->id }}</td> --}}
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->id_number }}</td>
                         <td>{{ $item->location }}</td>
                         <td>
-                           {{ $item->gender }}
+                          @if ($item->is_approved==1)
+                          Approved
+                          @elseif ($item->is_approved==0)
+                          Pending
+                        @endif
                         </td>
+                        <td>{{ $item->gender }}</td>
+                        <td>
+                          <div class="button1">
+                              <a href="{{ url('admin-member-report/'.$item->id) }}"><button class="btn2" type="submit" style="background-color: rgb(109, 207, 109);"> View Report</button></a>
+                           </div>
+                      </td>
+                      <td>
+                        <div class="button1">
+                          <form action="{{ url('admin-member-remove/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button class="btn1" type="submit" style="background-color: rgb(200, 79, 79);" >Delete</button>
+                          </form>
+                        </div>
+                    </td>
                     </tr>
                       @endforeach
                     </tbody>

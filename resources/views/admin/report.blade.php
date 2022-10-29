@@ -39,10 +39,6 @@
                       @csrf
                       <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
                     </form>
-                    <form action="{{ url('download-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;" > download pdf</button>
-                    </form>
                   </div>
                   <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
                     @csrf
@@ -51,7 +47,7 @@
                   </form>
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Reports</b></h3>
+                    <h3 class="top-header"><b>Transaction Reports</b></h3>
                     <div class="table">
                         <table>
                             <thead>
@@ -63,7 +59,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($normal_report as $item)
+                                @foreach ($all_reports as $item)
                                     <tr>
                                         <td>{{ $item->account_type }}</td>
                                         <td>
@@ -87,7 +83,7 @@
                         </table>
                     </div>
                 </div>
-                {{-- {{ $normal_shares->onEachSide(2)->links() }} --}}
+                {{ $all_reports->onEachSide(2)->links() }}
             </div>
         </section>
     

@@ -73,9 +73,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('sample-report') }}">
+                <a href="{{ url('all-reports') }}">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Reports</span>
+                    <span class="links_name">Transation Reports</span>
                 </a>
             </li>
             <li>
