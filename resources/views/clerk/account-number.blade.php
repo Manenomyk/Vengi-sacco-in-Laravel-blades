@@ -43,7 +43,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ url('search-number') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('search-number') }}" method="GET" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
                             <label for="account_number">Account Number</label>

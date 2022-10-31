@@ -77,18 +77,6 @@
                 <span class="links_name">Transaction Processing</span>
               </a>
             </li>
-            {{-- <li>
-              <a href="{{ url('clerk/reports') }}"  class="{{ request()->is('clerk/reports') ? 'active' : '' }}">
-                <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Trial Balance</span>
-              </a>
-            </li> --}}
-            {{-- <li>
-              <a href="{{ url('clerk/reports/page') }}"  class="{{ request()->is('clerk/reports/page*') ? 'active' : '' }}">
-                <i class='bx bx-pie-chart-alt-2' ></i>
-                <span class="links_name">Generate Reports</span>
-              </a>
-            </li> --}}
           
           </ul>
       </div>
@@ -97,30 +85,6 @@
 
       @yield('clerk-sidebar')
     
-      <script>
-    //    let sidebar = document.querySelectorAll(".sidebar");
-    // let sidebarBtn = document.querySelector(".sidebarBtn");
-    // sidebarBtn.onclick = function() {
-    //   sidebar.classList.toggle("active");
-    //   if(sidebar.classList.contains("active")){
-    //   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-    // }else
-    //   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    // }
-
-    let list=document.querySelectorAll('.sidebarBtn');
-    for(let i=0; i<list.length; i++){
-      list[i].onClick=function(){
-        let j=0;
-        while(j < list.length){
-          list[j++].className='list';
-        }
-        list[i].className='list active'
-      }
-    }
-
-     </script>
-   
     
     </body>
     </html>

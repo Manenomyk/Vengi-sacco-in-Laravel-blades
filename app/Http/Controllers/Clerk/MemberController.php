@@ -24,10 +24,10 @@ class MemberController extends Controller
             'name'=>'required|string',
             'email'=>'required|unique:users,email|email',
             'role'=>'required',
-            'id_number'=>'required|numeric|digits_between:6,12',
+            'id_number'=>'required|numeric|digits_between:6,12|unique:users,id_number',
             'location'=>'required',
             'gender'=>'required',
-            'phone_number'=>'required|numeric|digits_between:9,10'
+            'phone_number'=>'required|numeric|digits_between:9,10|unique:users,phone_number'
         ]);
 
         $user= new User();

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('location')->nullable()->default('Machakos');
             $table->string('gender')->nullable()->default('male');
             $table->bigInteger('id_number')->nullable();
-            $table->bigInteger('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->boolean('is_approved')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

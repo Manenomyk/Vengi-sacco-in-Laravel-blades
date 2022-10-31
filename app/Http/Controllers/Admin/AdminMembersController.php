@@ -49,6 +49,7 @@ class AdminMembersController extends Controller
             'records.type',
             'records.due_date',
             'records.created_at',
+            'records.description',
             'records.account_id',
             'account_details.account_type',
             'account_details.duration'

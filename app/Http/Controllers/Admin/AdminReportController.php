@@ -61,6 +61,7 @@ class AdminReportController extends Controller
                 'records.type',
                 'records.amount_without_interest',
                 'records.account_id',
+                'records.description',
                 'users.name',
                 'users.phone_number'
             )
@@ -76,6 +77,7 @@ class AdminReportController extends Controller
             'records.created_at',
             'records.type',
             'records.amount_without_interest',
+            'records.description',
             'records.account_id',
             'users.name',
             'users.phone_number'
@@ -92,6 +94,7 @@ class AdminReportController extends Controller
             'records.created_at',
             'records.type',
             'records.amount_without_interest',
+            'records.description',
             'records.account_id',
             'users.name',
             'users.phone_number'
@@ -108,6 +111,7 @@ class AdminReportController extends Controller
                 'records.created_at',
                 'records.type',
                 'records.amount_without_interest',
+                'records.description',
                 'records.account_id',
                 'users.name',
                 'users.phone_number'
@@ -124,6 +128,7 @@ class AdminReportController extends Controller
                 'records.created_at',
                 'records.type',
                 'records.amount_without_interest',
+                'records.description',
                 'records.account_id',
                 'users.name',
                 'users.phone_number'

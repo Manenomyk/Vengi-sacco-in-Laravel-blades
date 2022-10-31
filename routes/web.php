@@ -63,8 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(AccountController::class)->group(function(){
         Route::get('create-account/{id}','create')->middleware('can:clerk');
         Route::post('store-opened-account','store')->middleware('can:clerk');
-        Route::get('account-number','get_number_page')->name('cashing');
-        Route::post('search-number','search_number')->middleware('can:clerk');
+        Route::get('account-number','get_number_page')->middleware('can:clerk');
+        Route::get('search-number','search_number')->middleware('can:clerk');
         Route::post('store-allocation','store_allocation')->middleware('can:clerk');
     });
 

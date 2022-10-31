@@ -42,6 +42,7 @@ class AccountController extends Controller
 
             $record->details_id=$req->input('account_type');
             $record->user_id=$req->input('account_type');
+            $record->description='This is an account opening action';
             $record->account_id=$acc_share->id;
             $res=$record->save();
             
@@ -60,6 +61,7 @@ class AccountController extends Controller
 
             $record->details_id=$req->input('account_type');
             $record->user_id=$req->input('account_type');
+            $record->description='This is an account opening action';
             $record->account_id=$acc_inst->id;
             $res=$record->save();
 
@@ -79,6 +81,7 @@ class AccountController extends Controller
 
             $record->details_id=$req->input('account_type');
             $record->user_id=$req->input('account_type');
+            $record->description='This is an account opening action';
             $record->account_id=$acc_norm->id;
             $res=$record->save();
 
@@ -97,6 +100,7 @@ class AccountController extends Controller
 
             $record->details_id=$req->input('account_type');
             $record->user_id=$req->input('account_type');
+            $record->description='This is an account opening action';
             $record->account_id=$acc_table->id;
             $res=$record->save();
 
@@ -115,6 +119,7 @@ class AccountController extends Controller
 
             $record->details_id=$req->input('account_type');
             $record->user_id=$req->input('account_type');
+            $record->description='This is an account opening action';
             $record->account_id=$acc_emerg->id;
             $res=$record->save();
 
@@ -180,13 +185,12 @@ class AccountController extends Controller
     public function store_allocation(Request $request){
         $validated=$request->validate([
             'type'=>'required|boolean',
-            'amount'=>'required|numeric'
+            'amount'=>'required|numeric',
+            'description'=>'required|string|max:100'
         ]);
 
         $number=$request->account;
 
-       
-        
         if(100000<=$number && $number<=199999){
             $account=ShareAccount::where('id',$number)->first();
             $account->type=$request->input('type');
@@ -205,6 +209,7 @@ class AccountController extends Controller
 
             $record->amount_without_interest=$request->input('amount');
             $record->type=$request->input('type');
+            $record->description=$request->input('description');
             $record->account_id=$account->id;
             $record->details_id=$account->details_id;
             $record->user_id=$account->user_id;
@@ -212,7 +217,7 @@ class AccountController extends Controller
 
             if ($result && $res) {
                 Alert::success("information","Share Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
+                return back()->with("info","allocated successfully");
             }
         }
         elseif (200000<=$number && $number<=299999) {
@@ -232,6 +237,7 @@ class AccountController extends Controller
 
             $record->amount_without_interest=$request->input('amount');
             $record->type=$request->input('type');
+            $record->description=$request->input('description');
             $record->account_id=$account->id;
             $record->details_id=$account->details_id;
             $record->user_id=$account->user_id;
@@ -239,7 +245,7 @@ class AccountController extends Controller
 
             if ($result && $res) {
                 Alert::success("information","Institutional share Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
+                return back()->with("info","allocated successfully");
             }
         }
         elseif (300000<=$number && $number<=399999) {
@@ -267,6 +273,7 @@ class AccountController extends Controller
 
             $record->amount_without_interest=$request->input('amount');
             $record->type=$request->input('type');
+            $record->description=$request->input('description');
             $record->account_id=$account->id;
             $record->details_id=$account->details_id;
             $record->user_id=$account->user_id;
@@ -274,7 +281,7 @@ class AccountController extends Controller
 
             if ($result && $res) {
                 Alert::success("information","Normal Loan Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
+                return back()->with("info","allocated successfully");
             }
         }
         elseif (400000<=$number && $number<=499999) {
@@ -287,7 +294,6 @@ class AccountController extends Controller
             elseif($request->type==0){
                 $money=$account->amount_without_interest-$request->amount;
             }
-            // $account->amount_without_interest=$money;
 
             if ($account->amount_without_interest==null) {
                 $interested=$money*(100+$interest->interest)/100;
@@ -303,6 +309,7 @@ class AccountController extends Controller
 
             $record->amount_without_interest=$request->input('amount');
             $record->type=$request->input('type');
+            $record->description=$request->input('description');
             $record->account_id=$account->id;
             $record->details_id=$account->details_id;
             $record->user_id=$account->user_id;
@@ -310,7 +317,7 @@ class AccountController extends Controller
 
             if ($result && $res) {
                 Alert::success("information","Table banking loan Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
+                return back()->with("info","allocated successfully");
             }
         }
         elseif (500000<=$number && $number<=599999) {
@@ -323,7 +330,6 @@ class AccountController extends Controller
             elseif($request->type==0){
                 $money=$account->amount_without_interest-$request->amount;
             }
-            // $account->amount_without_interest=$money;
             if ($account->amount_without_interest==null) {
                 $interested=$money*(100+$interest->interest)/100;
                 $account->amount_without_interest=$interested;
@@ -337,6 +343,7 @@ class AccountController extends Controller
 
             $record->amount_without_interest=$request->input('amount');
             $record->type=$request->input('type');
+            $record->description=$request->input('description');
             $record->account_id=$account->id;
             $record->details_id=$account->details_id;
             $record->user_id=$account->user_id;
@@ -344,7 +351,7 @@ class AccountController extends Controller
 
             if ($result && $res) {
                 Alert::success("information","Emergency loan Amount allocated successfully");
-                return redirect()->route('cashing')->with("info","allocated successfully");
+                return back()->with("info","allocated successfully");
             }
         }
         else{

@@ -115,6 +115,7 @@
                                 <div class="td">Type</div>
                                 <div class="td">Amount</div>
                                 <div class="td">Datetime</div>
+                                <div class="td">Transaction Description</div>
                             </div>
                             @foreach ($records as $item)
                                 <div class="tr">
@@ -133,6 +134,7 @@
                                       @endif
                                     </div>
                                     <div class="td">{{ $item->created_at->toDayDateTimeString() }}</div>
+                                    <div class="td">{{ $item->description }}</div>
                                 </div>
                             @endforeach
                         </div>

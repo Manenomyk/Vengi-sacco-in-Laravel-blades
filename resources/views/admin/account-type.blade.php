@@ -55,28 +55,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Id</th>
+                         
                             <th>Account Type</th>
                             <th>Interest </th>
                             <th>Duration in Months</th>
-                            <th>status</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
                       @foreach ($account_type as $item)
                       <tr>
-                        <td>{{ $item->id }}</td>
+                        
                         <td>{{ $item->account_type }}</td>
                         <td>{{ $item->interest }} %</td>
                         <td>
                          {{ $item->duration }}
-                        </td>
-                        <td>
-                          @if ( $item->is_approved ==0 )
-                          Pending
-                          @else
-                            Approved
-                          @endif
                         </td>
                     </tr>
                    

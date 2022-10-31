@@ -28,7 +28,7 @@ class HomeController extends Controller
            
         }
         elseif($user==2){
-            $members=User::where('role',3)->count();
+            $members=User::where('role',3)->where('is_approved',1)->count();
             $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
             $dis_normal=NormalShare::where('is_approved',0)->count();
             $dis_table=TableBankingLoan::where('is_approved',0)->count();
@@ -63,7 +63,7 @@ class HomeController extends Controller
             ));
         }
         elseif($user==1){
-            $members=User::where('role',3)->count();
+            $members=User::where('role',3)->where('is_approved',1)->count();
             $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
             $dis_normal=NormalShare::where('is_approved',0)->count();
             $dis_table=TableBankingLoan::where('is_approved',0)->count();
@@ -98,7 +98,7 @@ class HomeController extends Controller
             
         }
         elseif($user==0){
-            $members=User::where('role',3)->count();
+        $members=User::where('role',3)->where('is_approved',1)->count();
         $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
         $dis_normal=NormalShare::where('is_approved',0)->count();
         $dis_table=TableBankingLoan::where('is_approved',0)->count();

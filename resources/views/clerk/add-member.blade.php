@@ -53,16 +53,15 @@
                             @enderror
                             <label for="role"></label>
                             <select class="forminput" name="role" value="{{ old('role') }}">
-                                <option value="">Select role</option>
+                                <option value="3">Member</option>
                                 <option value="0">Administrator</option>
                                 <option value="1">Clerk</option>
                                 <option value="2">Authorizer</option>
-                                <option value="3">Member</option>
                             </select>
                             @error('role')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
-                            <label for="id_number">id number</label>
+                            <label for="id_number">id number/passport</label>
                             <input class="forminput" type="text" name="id_number" value="{{ old('id_number') }}">
                             @error('id_number')
                                 <div class="errors-here">{{ $message }}</div>

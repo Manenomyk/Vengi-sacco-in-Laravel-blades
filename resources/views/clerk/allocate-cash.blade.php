@@ -44,7 +44,6 @@
                             <ul>
                                 <li><b><span>Name:</span> </b> {{ $user->name }}</li>
                                 <li><b><span>Location:</span></b> {{ $user->location }}</li>
-                                {{-- <li><b><span>Gender:</span></b> {{ $user->gender }}</li> --}}
                                 <li><b><span>Id Number:</span></b> {{ $user->id_number }}</li>
                                 <li><b><span>Phone Number:</span></b> {{ $user->phone_number }}</li>
                                 <li><b><span>Account Type:</span></b> {{ $details->account_type }}</li>
@@ -56,7 +55,7 @@
 
                             </ul>
                         </div>
-                        <form action="{{ url('store-allocation') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('store-allocation/') }}" method="POST" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
 
@@ -74,6 +73,10 @@
                             @error('amount')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
+                            <textarea name="description" cols="30" ></textarea>
+                            @error('description')
+                            <div class="errors-here">{{ $message }}</div>
+                        @enderror
                             <input type="hidden" name="member" value={{ $user->id }}>
                             <input type="hidden" name="account" value={{ $account->id }}>
                             <div style="display: flex; justify-content:right; ">

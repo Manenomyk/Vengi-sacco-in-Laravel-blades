@@ -43,12 +43,12 @@
            
           </div>
           <div class="container" >
-            <h3 class="top-header"><b>Loans allocated</b></h3>
+            <h3 class="top-header"><b>Account Types</b></h3>
             <div class="table">
                 <table>
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            
                             <th>Account Type</th>
                             <th>Interest </th>
                             <th>Duration in Months</th>
@@ -57,7 +57,6 @@
                     <tbody>
                       @foreach ($account_type as $item)
                       <tr>
-                        <td>{{ $item->id }}</td>
                         <td>{{ $item->account_type }}</td>
                         <td>{{ $item->interest }} %</td>
                         <td>
