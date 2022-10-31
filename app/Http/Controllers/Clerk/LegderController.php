@@ -62,26 +62,19 @@ class LegderController extends Controller
         ]);
 
         $ledger=GeneralLedger::find($id);
-        // $cash=GeneralLedger::where('id',600004)->first();
 
         if($request->type==0){
             $final=$ledger->amount-$request->amount;
         }
         elseif ($request->type==1) {
             $final=$ledger->amount+$request->amount;
-            // if($request->amount>$cash->amount){
-            //     return back()->with("message","No enough cash available for allocation");
-            // }
-            // $new_cash=$cash->amount-$request->amount;
-            // $cash->amount=$new_cash;
         }
 
 
         $ledger->amount=$final;
+        $ledger->is_approved=0;
 
         $result=$ledger->save();
-
-        // $res=$cash->save();
 
         if($result){
             Alert::success("Information", "$request->amount allocated successfully. Total: $final");

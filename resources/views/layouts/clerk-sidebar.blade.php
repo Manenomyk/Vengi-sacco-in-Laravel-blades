@@ -83,12 +83,12 @@
                 <span class="links_name">Trial Balance</span>
               </a>
             </li> --}}
-            <li>
+            {{-- <li>
               <a href="{{ url('clerk/reports/page') }}"  class="{{ request()->is('clerk/reports/page*') ? 'active' : '' }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Generate Reports</span>
               </a>
-            </li>
+            </li> --}}
           
           </ul>
       </div>

@@ -51,6 +51,8 @@
 }
 .sidebar .nav-links li a.active{
   background: #081D45;
+  border: 1px solid gray;
+  color: #E2B842;
 }
 .sidebar .nav-links li a:hover{
   background: #081D45;

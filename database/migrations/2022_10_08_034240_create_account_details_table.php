@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('account_type');
             $table->integer('interest');
             $table->integer('duration');
-            $table->boolean('is_approved')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

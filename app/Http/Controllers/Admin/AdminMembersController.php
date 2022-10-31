@@ -66,10 +66,9 @@ class AdminMembersController extends Controller
         $share=ShareAccount::where('user_id',$id)->delete();
         $table=TableBankingLoan::where('user_id',$id)->delete();
         $user=User::where('id',$id)->delete();
-
-     
-            Alert::success("message","User Has been archived Successfully");
-            return back();
+        Alert::success("message","User Has been archived Successfully");
+        
+        return back();
         
     }
 

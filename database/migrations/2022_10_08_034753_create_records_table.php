@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('type')->default(1);
             $table->boolean('is_approved')->default(0);
+            $table->string('description');
             $table->bigInteger('amount_without_interest')->nullable();
             $table->bigInteger('amount_with_interest')->nullable();
             $table->unsignedBigInteger('account_id');

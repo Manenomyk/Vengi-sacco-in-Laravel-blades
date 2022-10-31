@@ -65,24 +65,12 @@
                 <span class="links_name">Institutional Shares</span>
               </a>
             </li>
-            {{-- <li>
+            <li>
               <a href="{{ url('auth-gen-ledger') }}">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">General Ledger</span>
               </a>
             </li>
-            <li class="log_out">
-              <form method="POST" action="{{ route('logout') }}" x-data>
-                @csrf
-
-                <x-jet-dropdown-link href="{{ route('logout') }}"
-                         @click.prevent="$root.submit();" style="color: white">
-                         <i class='bx bx-log-out'></i>
-                    {{ __('Log Out') }}
-                </x-jet-dropdown-link>
-            </form>
-            
-          </li> --}}
           </ul>
       </div>
 

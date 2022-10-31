@@ -22,7 +22,7 @@ class DashBoardController extends Controller
      */
     public function index()
     {
-        $members=User::where('role',3)->count();
+        $members=User::where('role',3)->where('is_approved',1)->count();
         $dis_emergency=EmergencyLoan::where('is_approved',0)->count();
         $dis_normal=NormalShare::where('is_approved',0)->count();
         $dis_table=TableBankingLoan::where('is_approved',0)->count();

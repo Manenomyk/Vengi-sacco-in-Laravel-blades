@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+
     <link rel="stylesheet" href="{{ asset('cssFiles/style.css') }}">
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
 
+</style>
 
 <body>
     <div class="sidebar">
@@ -19,67 +19,67 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="{{ url('admin-dashboard') }}" class="active">
+                <a href="{{ url('admin-dashboard') }}" class="{{ request()->is('admin-dashboard') ? 'active' : '' }}">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin-members') }}">
+                <a href="{{ url('admin-members') }}" class="{{ request()->is('admin-members') ? 'active' : '' }}" >
                     <i class='bx bx-box'></i>
                     <span class="links_name">All members</span>
                 </a>
             </li>
-            <li class="{{ request()->is('technician/details*') ? 'active' : '' }}">
-                <a href="{{ url('admin-emergency') }}">
+            <li>
+                <a href="{{ url('admin-emergency') }}" class="{{ request()->is('admin-emergency') ? 'active' : '' }}">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Emergency loans</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin-normal-share') }}">
+                <a href="{{ url('admin-normal-share') }}"  class="{{ request()->is('admin-normal-share') ? 'active' : '' }}">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Normal loans</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin-table-banking') }}">
+                <a href="{{ url('admin-table-banking') }}" class="{{ request()->is('admin-table-banking') ? 'active' : '' }}">
                     <i class='bx bx-coin-stack'></i>
                     <span class="links_name">Table banking loans</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin-share-account') }}">
+                <a href="{{ url('admin-share-account') }}" class="{{ request()->is('admin-share-account') ? 'active' : '' }}">
                     <i class='bx bx-book-alt'></i>
                     <span class="links_name">Shares accounts</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin-inst-shares') }}">
+                <a href="{{ url('admin-inst-shares') }}" class="{{ request()->is('admin-inst-shares') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Institutional Shares</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('get-logs') }}">
+                <a href="{{ url('get-logs') }}"  class="{{ request()->is('get-logs') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">View System Logs</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/reports/trial') }}">
+                <a href="{{ url('admin/reports/trial') }}" class="{{ request()->is('admin/reports/trial') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">trial Balance</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('all-reports') }}">
+                <a href="{{ url('all-reports') }}" class="{{ request()->is('all-reports') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Transation Reports</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/reports/page') }}">
+                <a href="{{ url('admin/reports/page') }}"  class="{{ request()->is('admin/reports/page') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Generate Statements</span>
                 </a>
