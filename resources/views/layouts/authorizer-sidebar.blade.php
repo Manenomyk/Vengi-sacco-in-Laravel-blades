@@ -18,55 +18,55 @@
         </div>
           <ul class="nav-links">
             <li>
-              <a href="{{ url('authorizer-dashboard') }}" class="active">
+              <a href="{{ url('authorizer-dashboard') }}" class="{{ request()->is('authorizer-dashboard') ? 'active' : '' }}">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-members') }}">
+              <a href="{{ url('authorizer-members') }}" class="{{ request()->is('authorizer-members') ? 'active' : '' }}">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">All members</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('authorizer-unapproved-members') }}">
+              <a href="{{ url('authorizer-unapproved-members') }}" class="{{ request()->is('authorizer-unapproved-members') ? 'active' : '' }}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name">Pending Members</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-emergency') }}">
+              <a href="{{ url('auth-emergency') }}" class="{{ request()->is('auth-emergency') ? 'active' : '' }}">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Emergency loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-table-banking') }}">
+              <a href="{{ url('auth-table-banking') }}" class="{{ request()->is('auth-table-banking') ? 'active' : '' }}">
                 <i class='bx bx-coin-stack' ></i>
                 <span class="links_name">Table banking loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-share-account') }}">
+              <a href="{{ url('auth-share-account') }}" class="{{ request()->is('auth-share-account') ? 'active' : '' }}">
                 <i class='bx bx-book-alt' ></i>
                 <span class="links_name">Shares Accounts</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-normal-share') }}">
+              <a href="{{ url('auth-normal-share') }}" class="{{ request()->is('auth-normal-share') ? 'active' : '' }}">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Normal loans</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-inst-shares') }}">
+              <a href="{{ url('auth-inst-shares') }}" class="{{ request()->is('auth-inst-shares') ? 'active' : '' }}">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Institutional Shares</span>
               </a>
             </li>
             <li>
-              <a href="{{ url('auth-gen-ledger') }}">
+              <a href="{{ url('auth-gen-ledger') }}" class="{{ request()->is('auth-gen-ledger') ? 'active' : '' }}">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">General Ledger</span>
               </a>
@@ -77,19 +77,6 @@
      
 
       @yield('authorizer-sidebar')
-    
-      <script>
-       let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function() {
-      sidebar.classList.toggle("active");
-      if(sidebar.classList.contains("active")){
-      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-    }else
-      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-     </script>
-    
     </body>
     </html>
 

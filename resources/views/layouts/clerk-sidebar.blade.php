@@ -80,11 +80,7 @@
           
           </ul>
       </div>
-
-     
-
-      @yield('clerk-sidebar')
-    
+    @yield('clerk-sidebar')   
     
     </body>
     </html>
