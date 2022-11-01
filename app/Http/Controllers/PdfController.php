@@ -155,19 +155,24 @@ class PdfController extends Controller
 
     public function trial()
     {
-        $emergency = EmergencyLoan::where('is_approved', 1)->sum('amount_without_interest');
-        $normal = NormalShare::where('is_approved', 1)->sum('amount_without_interest');
-        $table = TableBankingLoan::where('is_approved', 1)->sum('amount_without_interest');
+        $emergency=EmergencyLoan::where('is_approved',1)->sum('amount_without_interest');
+        $normal=NormalShare::where('is_approved',1)->sum('amount_without_interest');
+        $table=TableBankingLoan::where('is_approved',1)->sum('amount_without_interest');
 
-        $inst_share = InstitutionalShare::where('is_approved', 1)->sum('amount_without_interest');
-        $share = ShareAccount::where('is_approved', 1)->sum('amount_without_interest');
+        $inst_share=InstitutionalShare::where('is_approved',1)->sum('amount_without_interest');
+        $share=ShareAccount::where('is_approved',1)->sum('amount_without_interest');
 
         $general_ledgers = GeneralLedger::all();
+        $positive = GeneralLedger::where('amount','>=',0)->sum('amount');
+        $negative = GeneralLedger::where('amount','<',0)->sum('amount');
+       
+        $loans_sum=$emergency+$normal+$table;
+        $shares_sum=$inst_share+$share;
 
-        $loans_sum = $emergency + $normal + $table;
-        $shares_sum = $inst_share + $share;
+        $final_assets=($loans_sum*-1)+$positive;
+        $final_liability=$shares_sum+($negative*-1);
 
-        $pdf = PDF::loadView('pdf.trial', compact('emergency', 'normal' , "table" , "inst_share", "share", "general_ledgers","loans_sum","shares_sum"));
+        $pdf = PDF::loadView('pdf.trial', compact('emergency', 'normal' , "table" , "inst_share", "share", "general_ledgers","final_assets","final_liability"));
 
         return $pdf->download('vengi-sacco-members.pdf');
     }

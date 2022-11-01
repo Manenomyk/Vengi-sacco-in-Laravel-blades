@@ -24,18 +24,24 @@ class AdminReportController extends Controller
         $share=ShareAccount::where('is_approved',1)->sum('amount_without_interest');
 
         $general_ledgers = GeneralLedger::all();
-
+        $positive = GeneralLedger::where('amount','>=',0)->sum('amount');
+        $negative = GeneralLedger::where('amount','<',0)->sum('amount');
+       
         $loans_sum=$emergency+$normal+$table;
         $shares_sum=$inst_share+$share;
 
-        return view('admin.trial',compact('general_ledgers',
+        $final_assets=($loans_sum*-1)+$positive;
+        $final_liability=$shares_sum+($negative*-1);
+
+        return view('admin.trial',compact(
+        'general_ledgers',
         'emergency',
         'normal',
         'table',
         'inst_share',
         'share',
-        'loans_sum',
-        'shares_sum',
+        'final_assets',
+        'final_liability',
     ));
     }
     public function get_page(){

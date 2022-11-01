@@ -15,6 +15,7 @@
         .table {
             display: table;
             border-collapse: collapse;
+            width: 700px;
         }
 
         .table .tr {

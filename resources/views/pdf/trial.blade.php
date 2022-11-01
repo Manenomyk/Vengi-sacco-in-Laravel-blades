@@ -11,7 +11,7 @@
     }
         .table {
             display: table;
-            width: 90%;
+            width: 700px;
             border-collapse: collapse;
         }
 
@@ -62,60 +62,67 @@
 
 <body>
              
-                <div class="center-report">
-                    <div class="div-table">
-                        <div class="title">Trial Balance</div>
-                        <div class="table">
-                            <div class="tr">
-                                <div class="td">Credit Type</div>
-                                <div class="td">Credit Value</div>
-                                <div class="td">Debit Type</div>
-                                <div class="td">Debit Value</div>
-                            </div>
-                            <div class="tr">
-                                <div class="td">Normal Loans</div>
-                                <div class="td">{{ $normal }}</div>
-                                <div class="td">Shares Account</div>
-                                <div class="td">{{ $share }}</div>
-                            </div>
-                            <div class="tr">
-                                <div class="td">Emergency Loans</div>
-                                <div class="td">{{ $emergency }}</div>
-                                <div class="td">Institutional Shares</div>
-                                <div class="td">{{ $inst_share }}</div>
-                            </div>
-                            <div class="tr">
-                                <div class="td">Table Banking Loans</div>
-                                <div class="td">{{ $table }}</div>
-                                <div class="td">null</div>
-                                <div class="td">null</div>
-                            </div>
-                            <div class="tr">
-                                @foreach ($general_ledgers as $item)
-                                @if ($item->amount>=0)
-                                
-                                    <div class="td"> {{ $item->name }}</div>
-                                    <div class="td"> {{ $item->amount }}</div>
-                              
-                                @endif
-                                @endforeach
-                                @foreach ($general_ledgers as $item)
-                                @if ($item->amount<0)
-                                    <div class="td"> {{ $item->name }}</div>
-                                    <div class="td"> {{ $item->amount }}</div> 
-                                @endif
-                                @endforeach
-                            </div>
-                            <div class="tr">
-                                <div class="td">Total</div>
-                                <div class="td">{{ $loans_sum }}</div>
-                                <div class="td">Total</div>
-                                <div class="td">{{ $shares_sum }}</div>
-                            </div>
-                        </div>
-                    </div>
-    
+    <div class="center-report">
+        <div class="div-table">
+            <h2>Vengi Sacco Report</h2>
+            <h2>{{ now()->toDateTimeString() }}</h2>
+            <div class="title"><b>Trial Balance<b></div>
+            <div class="table">
+                <div class="tr">
+                    <div class="td">Asset Type</div>
+                    <div class="td">Asset Value</div>
+                    <div class="td">Liability Type</div>
+                    <div class="td">Liability Value</div>
                 </div>
+                <div class="tr">
+                    <div class="td">Normal Loans</div>
+                    <div class="td">{{ $normal }}</div>
+                    <div class="td">Shares Account</div>
+                    <div class="td">{{ $share }}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Emergency Loans</div>
+                    <div class="td">{{ $emergency }}</div>
+                    <div class="td">Institutional Shares</div>
+                    <div class="td">{{ $inst_share }}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Table Banking Loans</div>
+                    <div class="td">{{ $table }}</div>
+                    <div class="td">null</div>
+                    <div class="td">null</div>
+                </div>
+
+                @foreach ($general_ledgers as $item)
+                    @if ($item->amount >= 0)
+                        <div class="tr">
+                            <div class="td"> {{ $item->name }}</div>
+                            <div class="td"> {{ $item->amount }}</div>
+                            <div class="td">null</div>
+                            <div class="td"> null</div>
+                        </div>
+                    @endif
+                @endforeach
+                @foreach ($general_ledgers as $item)
+                    @if ($item->amount < 0)
+                        <div class="tr">
+                            <div class="td"> null</div>
+                            <div class="td"> null</div>
+                            <div class="td"> {{ $item->name }}</div>
+                            <div class="td"> {{ $item->amount }}</div>
+                        </div>
+                    @endif
+                @endforeach
+                <div class="tr">
+                    <div class="td">Total</div>
+                    <div class="td">{{ $final_assets }}</div>
+                    <div class="td">Total</div>
+                    <div class="td">{{ $final_liability }}</div>
+                </div>
+            </div>
+        </div>
+
+
                
 
            

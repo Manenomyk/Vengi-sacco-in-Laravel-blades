@@ -14,6 +14,7 @@
 
         .table {
             display: table;
+            width: 700px;
             border-collapse: collapse;
         }
 
