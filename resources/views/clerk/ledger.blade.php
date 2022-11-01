@@ -107,7 +107,7 @@
                                                 {{ $item->amount }}
                                             @endif
                                         </td>
-                                        <td>{{ $item->created_at }}</td>
+                                        <td>{{ $item->created_at->toDayDateTimeString() }}</td>
                                         <td>
                                             @if ($item->is_approved == 0)
                                                 pending

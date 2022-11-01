@@ -9,16 +9,17 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      .sach-form{
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 10px;
-      }
-      .space-content{
-        display: flex;
-        justify-content: space-between;
-      }
-     </style>
+        .sach-form {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+
+        .space-content {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,14 +33,17 @@
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
-                  <div class="pdf" style="display: flex; flex-direction:row; ">
-                    <form action="{{ url('view-shares-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
-                      @csrf
-                      <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
-                    </form>
-                   
-                  </div>
-                  {{-- <form action="" method="post" enctype="multipart/form-data" class="sach-form"> 
+                    <div class="pdf" style="display: flex; flex-direction:row; ">
+                        <form action="{{ url('view-shares-pdf') }}" method="post" enctype="multipart/form-data"
+                            target="blank">
+                            @csrf
+                            <button type="submit"
+                                style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
+                                pdf</button>
+                        </form>
+
+                    </div>
+                    {{-- <form action="" method="post" enctype="multipart/form-data" class="sach-form"> 
                     @csrf
                     <input type="text" name="name" placeholder="search users..."/>
                     <button type="submit" style="background-color: #0A2558; color:white" >search</button>
@@ -63,31 +67,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($share_accounts as $item)
+                                @if (count($share_accounts) == 0)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
-                                        <td>{{ $item->account_type }}</td>
-                                        <td>{{ $item->interest }}</td>
-                                        <td>{{ $item->duration }}</td>
-                                        <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
-                                        </td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>
-                                          @if ($item->is_approved==0)
-                                          pending
-                                          @elseif ($item->is_approved==1)
-                                          Approved
-                                        @endif
+                                        <td colspan="6" style="text-align: center"><b>Hey! No shares accounts at the
+                                                moment</b>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach ($share_accounts as $item)
+                                        <tr>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->id_number }}</td>
+                                            <td>{{ $item->account_type }}</td>
+                                            <td>{{ $item->interest }}</td>
+                                            <td>{{ $item->duration }}</td>
+                                            <td>
+                                                @if ($item->amount_without_interest == null)
+                                                    0
+                                                @else
+                                                    {{ $item->amount_without_interest }}
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>
+                                                @if ($item->is_approved == 0)
+                                                    pending
+                                                @elseif ($item->is_approved == 1)
+                                                    Approved
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

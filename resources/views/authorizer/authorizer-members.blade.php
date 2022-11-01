@@ -8,17 +8,18 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <style>
-     .sach-form{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    }
-    .space-content{
-    display: flex;
-    justify-content: space-between;
-    }
-   </style>
+    <style>
+        .sach-form {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+
+        .space-content {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
                             style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
                             pdf</button>
                     </form>
-                  
+
                 </div>
                 {{-- <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
                     class="sach-form">
@@ -52,7 +53,7 @@
                     <button type="submit" style="background-color: #0A2558; color:white">search</button>
                 </form> --}}
             </div>
-        
+
 
             <div class="container">
                 <h3 class="top-header"><b>Sacco members</b></h3>
@@ -60,7 +61,6 @@
                     <table>
                         <thead>
                             <tr>
-                                {{-- <th>Id</th> --}}
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Id number</th>
@@ -70,24 +70,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($member as $item)
+                            @if (count($member) == 0)
                                 <tr>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->id_number }}</td>
-                                    <td>{{ $item->location }}</td>
-                                    <td>
-                                        {{ $item->gender }}
-                                    </td>
-                                    <td>
-                                        @if ($item->is_approved == 1)
-                                            approved
-                                        @else
-                                            pending
-                                        @endif
+                                    <td colspan="6" style="text-align: center"><b>Hey! No pending members at the
+                                            moment</b>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($member as $item)
+                                    <tr>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->id_number }}</td>
+                                        <td>{{ $item->location }}</td>
+                                        <td>
+                                            {{ $item->gender }}
+                                        </td>
+                                        <td>
+                                            @if ($item->is_approved == 1)
+                                                approved
+                                            @else
+                                                pending
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

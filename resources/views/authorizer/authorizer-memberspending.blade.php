@@ -29,7 +29,6 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Id number</th>
@@ -45,7 +44,6 @@
                             @else
                                 @foreach ($member as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->id_number }}</td>

@@ -62,6 +62,9 @@ class LegderController extends Controller
         ]);
 
         $ledger=GeneralLedger::find($id);
+        if($ledger->is_approved==0){
+            return back()->with("message", "Please the previous ledger has not been approved");
+        }
 
         if($request->type==0){
             $final=$ledger->amount-$request->amount;
@@ -69,7 +72,6 @@ class LegderController extends Controller
         elseif ($request->type==1) {
             $final=$ledger->amount+$request->amount;
         }
-
 
         $ledger->amount=$final;
         $ledger->is_approved=0;

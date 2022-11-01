@@ -41,7 +41,7 @@
                                 style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view
                                 pdf</button>
                         </form>
-                       
+
                     </div>
                     {{-- <form action="" method="post" enctype="multipart/form-data"
                         class="sach-form">
@@ -69,31 +69,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($institutional_shares as $item)
+                                @if (count($institutional_shares) == 0)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->id_number }}</td>
-                                        <td>{{ $item->account_type }}</td>
-                                        <td>{{ $item->interest }}</td>
-                                        <td>{{ $item->duration }}</td>
-                                        <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
-                                        </td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>
-                                          @if ($item->is_approved==0)
-                                          pending
-                                          @elseif ($item->is_approved==1)
-                                          Approved
-                                        @endif
+                                        <td colspan="6" style="text-align: center"><b>Hey! No institutional shares at the
+                                                moment</b>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach ($institutional_shares as $item)
+                                        <tr>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->id_number }}</td>
+                                            <td>{{ $item->account_type }}</td>
+                                            <td>{{ $item->interest }}</td>
+                                            <td>{{ $item->duration }}</td>
+                                            <td>
+                                                @if ($item->amount_without_interest == null)
+                                                    0
+                                                @else
+                                                    {{ $item->amount_without_interest }}
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>
+                                                @if ($item->is_approved == 0)
+                                                    pending
+                                                @elseif ($item->is_approved == 1)
+                                                    Approved
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
