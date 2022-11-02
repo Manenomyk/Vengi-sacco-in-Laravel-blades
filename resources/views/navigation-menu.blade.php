@@ -5,7 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    Vengi Sacco
+                    <img src="{{ asset('images/logo.jpeg') }}" alt="no logo fount" style="width: 100px; margin-right:10px;">
+                    vengi sacco
                 </div>
 
                 <!-- Navigation Links -->
