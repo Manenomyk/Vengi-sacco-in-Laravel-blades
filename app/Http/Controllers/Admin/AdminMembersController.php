@@ -73,6 +73,22 @@ class AdminMembersController extends Controller
         
     }
 
+    public function archived(){
+
+        $user=User::onlyTrashed()->paginate(10);
+       return view('admin.archive',compact('user'));
+    }
+    public function archived_restore($id){
+        User::where('id', $id)->restore();
+        $emergency=EmergencyLoan::where('user_id',$id)->restore();
+        $inst=InstitutionalShare::where('user_id',$id)->restore();
+        $normal=NormalShare::where('user_id',$id)->restore();
+        $share=ShareAccount::where('user_id',$id)->restore();
+        $table=TableBankingLoan::where('user_id',$id)->restore();
+
+       return back();
+    }
+
    
    
 }

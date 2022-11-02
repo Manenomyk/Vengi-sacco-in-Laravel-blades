@@ -73,6 +73,7 @@
                             @error('amount')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
+                            <label for="description">description</label>
                             <textarea name="description" cols="30" ></textarea>
                             @error('description')
                             <div class="errors-here">{{ $message }}</div>

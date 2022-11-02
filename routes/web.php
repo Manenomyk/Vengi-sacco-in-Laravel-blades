@@ -137,6 +137,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin-unapproved-members','unapproved_members')->middleware('can:admin');
         Route::get('admin-member-report/{id}','member_report')->middleware('can:admin');
         Route::post('admin-member-remove/{id}','destroy')->middleware('can:admin');
+        Route::get('admin/member/archive','archived')->middleware('can:admin');
+        Route::get('admin/member/archive/restore/{id}','archived_restore')->middleware('can:admin');
     });
 
     Route::controller(AdminDisplayController::class)->group(function(){

@@ -21,7 +21,7 @@
       <section class="home-section">
         <div class="home-content">
           <div class="overview-boxes">
-            <div class="box">
+            <div class="box" style="background-color: rgb(139, 158, 177);">
               <div class="right-side">
                 <div class="box-topic">Total Shares</div>
                 <div class="number">{{ $shares }}</div>
@@ -30,9 +30,9 @@
                   <span class="text">Up now</span>
                 </div>
               </div>
-              <i class='bx bx-cart-alt cart'></i>
+              
             </div>
-            <div class="box">
+            <div class="box" style="background-color: dodgerblue;">
               <div class="right-side">
                 <div class="box-topic">Total Institutional Shares</div>
                 <div class="number">{{ $inst_share }}</div>
@@ -41,9 +41,8 @@
                   <span class="text">Up now</span>
                 </div>
               </div>
-              <i class='bx bxs-cart-add cart two' ></i>
             </div>
-            <div class="box">
+            <div class="box" style="background-color: rgb(98, 162, 145);">
               <div class="right-side">
                 <div class="box-topic">Total Normal loans</div>
                 <div class="number">{{ $normal }}</div>
@@ -52,31 +51,29 @@
                   <span class="text">Up now</span>
                 </div>
               </div>
-              <i class='bx bx-cart cart three' ></i>
             </div>
-            <div class="box">
+            <div class="box" style="background-color: rgb(167, 146, 169);">
               <div class="right-side">
                 <div class="box-topic">Total Emergency loans</div>
                 <div class="number">{{ $emergency }}</div>
                 <div class="indicator">
-                  <i class='bx bx-down-arrow-alt down'></i>
-                  <span class="text">Down From Today</span>
+                  <i class='bx bx-up-arrow-alt'></i>
+                  <span class="text">Up Now</span>
                 </div>
               </div>
-              <i class='bx bxs-cart-download cart four' ></i>
             </div>
           </div>
     
           <div class="sales-boxes">
             <div class="recent-sales box">
-              <div class="title">Critical content</div>
+              <div class="title">Summary content</div>
               <div class="sales-details">
                
               </div>
               
             </div>
             <div class="top-sales box">
-              <div class="title">Some Display</div>
+              <div class="title">Pending Display</div>
 
             </div>
           </div>

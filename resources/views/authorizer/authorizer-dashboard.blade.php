@@ -79,49 +79,45 @@
      <section class="home-section">
       <div class="home-content">
         <div class="overview-boxes">
-          <div class="box">
+          <div class="box" style="background-color: rgb(149, 117, 165);">
             <div class="right-side">
               <div class="box-topic">Total Present Members</div>
               <div class="number">{{ $members }}</div>
               <div class="indicator">
                 <i class='bx bx-up-arrow-alt'></i>
-                <span class="text">Up from yesterday</span>
+                <span class="text">Up Now</span>
               </div>
             </div>
-            <i class='bx bx-cart-alt cart'></i>
           </div>
-          <div class="box">
+          <div class="box" style="background-color: rgb(170, 172, 125);">
             <div class="right-side">
               <div class="box-topic">Pending Shares Account</div>
               <div class="number">{{ $dis_share }}</div>
               <div class="indicator">
                 <i class='bx bx-up-arrow-alt'></i>
-                <span class="text">Up from yesterday</span>
+                <span class="text">Up Now</span>
               </div>
             </div>
-            <i class='bx bxs-cart-add cart two' ></i>
           </div>
-          <div class="box">
+          <div class="box" style="background-color: rgb(157, 97, 108);">
             <div class="right-side">
               <div class="box-topic">Pending Emergency Loans</div>
               <div class="number">{{ $dis_emergency }}</div>
               <div class="indicator">
                 <i class='bx bx-up-arrow-alt'></i>
-                <span class="text">Up from yesterday</span>
+                <span class="text">Up Now</span>
               </div>
             </div>
-            <i class='bx bx-cart cart three' ></i>
           </div>
-          <div class="box">
+          <div class="box" style="background-color: rgb(99, 127, 155);">
             <div class="right-side">
               <div class="box-topic">Pending Normal Loans</div>
               <div class="number">{{ $dis_normal }}</div>
               <div class="indicator">
-                <i class='bx bx-down-arrow-alt down'></i>
-                <span class="text">Down From Today</span>
+                <i class='bx bx-up-arrow-alt'></i>
+                <span class="text">Up Now</span>
               </div>
             </div>
-            <i class='bx bxs-cart-download cart four' ></i>
           </div>
 
          

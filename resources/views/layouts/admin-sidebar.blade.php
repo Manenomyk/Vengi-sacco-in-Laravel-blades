@@ -91,6 +91,12 @@
                     <span class="links_name">Legder reports</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('admin/member/archive') }}"  class="{{ request()->is('admin/member/archive') ? 'active' : '' }}">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Archives</span>
+                </a>
+            </li>
           
         </ul>
     </div>
