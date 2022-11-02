@@ -14,7 +14,6 @@ use App\Http\Controllers\Clerk\DisplayController;
 use App\Http\Controllers\Admin\AdminLogsController;
 use App\Http\Controllers\Clerk\DashBoardController;
 use App\Http\Controllers\Admin\AdminReportController;
-use App\Http\Controllers\Clerk\ClerkReportController;
 use App\Http\Controllers\Clerk\ClerkSearchController;
 use App\Http\Controllers\Admin\AdminDisplayController;
 use App\Http\Controllers\Admin\AdminMembersController;
@@ -88,13 +87,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashBoardController::class)->group(function(){
         Route::get('clerk-dash','index')->middleware('can:clerk');
-    });
-
-
-    Route::controller(ClerkReportController::class)->group(function(){
-        Route::get('clerk/reports','index')->middleware('can:clerk');
-        Route::get('clerk/reports/page','get_page')->middleware('can:clerk');
-        Route::post('clerk/reports/page/generate','generate_reports')->middleware('can:clerk');
     });
 
     Route::controller(ClerkSearchController::class)->group(function(){

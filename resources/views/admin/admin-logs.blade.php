@@ -51,7 +51,7 @@
                                             member
                                         @endif
                                     </td>
-                                    <td>{{ $item->subject_type }}</td>
+                                    <td>{{  $item->subject_type}}</td>
                                     <td>{{ $item->event }}</td>
                                     <td>{{ $item->subject_id }}</td>
 

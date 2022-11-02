@@ -16,7 +16,8 @@
         .success-here {
             color: green;
         }
-        .ditails ul li b span{
+
+        .ditails ul li b span {
             font-size: 15px;
         }
     </style>
@@ -40,7 +41,7 @@
                                 {{ session()->get('message') }}
                             </div>
                         @endif
-                        <form action="{{ url('fund/'.$ledger->id) }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ url('fund/' . $ledger->id) }}" method="POST" enctype="multipart/form-data"
                             style="display: flex;flex-direction:column; justify-content:center;">
                             @csrf
 
@@ -53,6 +54,11 @@
                             <label for="amount">Amount</label>
                             <input class="forminput" type="text" name="amount" value="{{ old('amount') }}">
                             @error('amount')
+                                <div class="errors-here">{{ $message }}</div>
+                            @enderror
+                            <label for="description">description</label>
+                            <textarea name="description" cols="30"></textarea>
+                            @error('description')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <div style="display: flex; justify-content:right; ">

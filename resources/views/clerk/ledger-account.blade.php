@@ -16,7 +16,8 @@
         .success-here {
             color: green;
         }
-        .ditails ul li b span{
+
+        .ditails ul li b span {
             font-size: 15px;
         }
     </style>
@@ -47,6 +48,11 @@
                             <label for="amount">Name</label>
                             <input class="forminput" type="text" name="name" value="{{ old('name') }}">
                             @error('name')
+                                <div class="errors-here">{{ $message }}</div>
+                            @enderror
+                            <label for="description">description</label>
+                            <textarea name="description" cols="30"></textarea>
+                            @error('description')
                                 <div class="errors-here">{{ $message }}</div>
                             @enderror
                             <div style="display: flex; justify-content:right; ">
