@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminDisplayController;
 use App\Http\Controllers\Admin\AdminMembersController;
 use App\Http\Controllers\Authorizer\ApproveController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLegderController;
 use App\Http\Controllers\Member\MemberDisplayController;
 use App\Http\Controllers\Member\MembersDashboardController;
 use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
@@ -149,6 +150,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(ReportController::class)->group(function(){
         Route::get('all-reports','emergency')->middleware('can:admin');
+    });
+
+    Route::controller(AdminLegderController::class)->group(function(){
+        Route::get('admin/ledger/reports','index');
     });
 
 

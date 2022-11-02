@@ -85,6 +85,12 @@
                     <span class="links_name">Generate Statements</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('admin/ledger/reports') }}"  class="{{ request()->is('admin/ledger/reports') ? 'active' : '' }}">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Legder reports</span>
+                </a>
+            </li>
           
         </ul>
     </div>

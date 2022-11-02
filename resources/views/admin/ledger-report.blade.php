@@ -34,12 +34,12 @@
         <section class="home-section">
             <div class="home-content">
                 <div class="space-content">
-                  {{-- <div class="pdf" style="display: flex; flex-direction:row; ">
+                  <div class="pdf" style="display: flex; flex-direction:row; ">
                     <form action="{{ url('view-members-pdf') }}" method="post" enctype="multipart/form-data" target="blank">
                       @csrf
                       <button type="submit" style="margin-left: 10px; background-color: rgb(109, 207, 109); padding:8px 10px;"> view pdf</button>
                     </form>
-                  </div> --}}
+                  </div>
                   {{-- <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data" class="sach-form"> 
                     @csrf
                     <input type="text" name="name" placeholder="search users..."/>
@@ -47,21 +47,33 @@
                   </form> --}}
                 </div>
                 <div class="container">
-                    <h3 class="top-header"><b>Transaction Reports</b></h3>
+                    <h3 class="top-header"><b>Ledger Records</b></h3>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Account type</th>
-                                    <th>Type</th>
+                                  <th>Ledger Account Number</th>
+                                    <th>Ledger Name</th>
+                                    <th>Causer Name</th>
                                     <th> Amount</th>
-                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th> Description</th>
+                                    <th> Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($all_reports as $item)
+                                @foreach ($ledger_records as $item)
                                     <tr>
-                                        <td>{{ $item->account_type }}</td>
+                                        <td>{{ $item->ledger_id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->username }}</td>
+                                        <td>
+                                          @if ($item->amount==null)
+                                          0
+                                          @else
+                                          {{ $item->amount }}
+                                        @endif
+                                        </td>
                                         <td>
                                           @if ($item->type==0)
                                           debit
@@ -69,13 +81,8 @@
                                           credit
                                         @endif
                                       </td>
-                                        <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
-                                        </td>
+                                      <td>{{ $item->description }}</td>
+                                       
                                         <td>{{ $item->created_at->toDayDateTimeString() }}</td>
                                     </tr>
                                 @endforeach
@@ -83,7 +90,7 @@
                         </table>
                     </div>
                 </div>
-                {{ $all_reports->onEachSide(2)->links() }}
+                {{ $ledger_records->onEachSide(2)->links() }}
             </div>
         </section>
     
