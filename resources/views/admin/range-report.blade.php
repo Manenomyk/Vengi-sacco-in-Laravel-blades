@@ -102,7 +102,7 @@
                 </div>
                 <div class="center-report">
                     <div class="div-table">
-                        <div class="title">Report</div>
+                        <div class="title"><b>Statement</b></div>
                         @foreach ($records as $item)
                         @if ($loop->first)
                             <div class="title">Name: {{ $item->name }} </div>
@@ -110,31 +110,33 @@
                             <div class="title">Account Number: {{ $item->account_id }} </div>
                         @endif
                         @endforeach
+                        <div class="title">Statement Period From: {{ $start }} To: {{ $end }} </div>
                         <div class="table">
                             <div class="tr">
-                                <div class="td">Type</div>
-                                <div class="td">Amount</div>
                                 <div class="td">Datetime</div>
-                                <div class="td">Transaction Description</div>
+                                <div class="td">Description</div>
+                                <div class="td">Debit</div>
+                                <div class="td">Credit</div>
+                                <div class="td">Balance</div>
                             </div>
                             @foreach ($records as $item)
                                 <div class="tr">
+                                    <div class="td">{{ $item->created_at->toDayDateTimeString() }}</div>
+                                    <div class="td">{{ $item->description }}</div>
                                     <div class="td">
-                                        @if ($item->type == 1)
-                                            credit
-                                        @elseif ($item->type == 0)
-                                            debit
+                                        @if ($item->type == 0)
+                                            {{ $item->amount_without_interest }}
                                         @endif
                                     </div>
                                     <div class="td">
-                                        @if ($item->amount_without_interest==null)
-                                        0
-                                        @else
-                                        {{ $item->amount_without_interest }}
-                                      @endif
+                                        @if ($item->type == 1)
+                                            {{ $item->amount_without_interest }}
+                                        @endif
                                     </div>
-                                    <div class="td">{{ $item->created_at->toDayDateTimeString() }}</div>
-                                    <div class="td">{{ $item->description }}</div>
+                                    <div class="td">
+                                       {{ $item->cf }}
+                                    </div>
+                                    
                                 </div>
                             @endforeach
                         </div>

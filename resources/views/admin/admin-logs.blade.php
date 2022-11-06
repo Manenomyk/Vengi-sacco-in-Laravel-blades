@@ -28,11 +28,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>causer name</th>
-                                <th>causer role</th>
+                                <th>Username</th>
                                 <th>subject model </th>
-                                <th>event</th>
-                                <th>subject user id</th>
+                                <th>Action</th>
                                 <th>date done</th>
                             </tr>
                         </thead>
@@ -40,22 +38,10 @@
                             @foreach ($activity as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
-                                    <td>
-                                        @if ($item->role == 0)
-                                            administrator
-                                        @elseif ($item->role == 1)
-                                            clerk
-                                        @elseif ($item->role == 2)
-                                            authorizer
-                                        @elseif ($item->role == 3)
-                                            member
-                                        @endif
-                                    </td>
                                     <td>{{  $item->subject_type}}</td>
                                     <td>{{ $item->event }}</td>
-                                    <td>{{ $item->subject_id }}</td>
 
-                                    <td>{{ $item->created_at }}</td>
+                                    <td>{{ $item->created_at->toDayDateTimeString() }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

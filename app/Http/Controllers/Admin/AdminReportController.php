@@ -54,6 +54,9 @@ class AdminReportController extends Controller
             'end_date'=>'required'
         ]);
 
+        $start=$request->start_date;
+        $end=$request->end_date;
+
         $number=$request->account_number;
 
         if(100000<=$number && $number<=199999){
@@ -69,9 +72,13 @@ class AdminReportController extends Controller
                 'records.account_id',
                 'records.description',
                 'users.name',
-                'users.phone_number'
+                'users.phone_number',
+                DB::raw('sum(records.amount_without_interest) over (order by records.id) as cf')
             )
             ->get();
+
+         
+           
         }
         elseif (200000<=$number && $number<=299999) {
             $records=Record::join('users','users.id','=','records.user_id')
@@ -86,7 +93,8 @@ class AdminReportController extends Controller
             'records.description',
             'records.account_id',
             'users.name',
-            'users.phone_number'
+            'users.phone_number',
+            DB::raw('sum(records.amount_without_interest) over (order by records.id) as cf')
         )
         ->get();
         }
@@ -103,7 +111,8 @@ class AdminReportController extends Controller
             'records.description',
             'records.account_id',
             'users.name',
-            'users.phone_number'
+            'users.phone_number',
+            DB::raw('sum(records.amount_without_interest) over (order by records.id) as cf')
         )
         ->get();
         }
@@ -120,7 +129,8 @@ class AdminReportController extends Controller
                 'records.description',
                 'records.account_id',
                 'users.name',
-                'users.phone_number'
+                'users.phone_number',
+                DB::raw('sum(records.amount_without_interest) over (order by records.id) as cf')
             )
             ->get();
         }
@@ -137,7 +147,8 @@ class AdminReportController extends Controller
                 'records.description',
                 'records.account_id',
                 'users.name',
-                'users.phone_number'
+                'users.phone_number',
+                DB::raw('sum(records.amount_without_interest) over (order by records.id) as cf')
             )
             ->get();
         }
@@ -145,6 +156,6 @@ class AdminReportController extends Controller
             return back()->with("info","Such account does not exist");
         }
 
-        return view('admin.range-report',compact('records'));
+        return view('admin.range-report',compact('records', 'start', 'end',));
     }
 }

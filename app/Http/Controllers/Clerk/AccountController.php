@@ -206,8 +206,14 @@ class AccountController extends Controller
             $result=$account->save();
 
             $record=new Record();
-
-            $record->amount_without_interest=$request->input('amount');
+            if($request->type==0){
+                
+                $record->amount_without_interest=$request->amount*-1;
+            }
+            elseif ($request->type==1) {
+                $record->amount_without_interest=$request->input('amount');
+            }
+           
             $record->type=$request->input('type');
             $record->description=$request->input('description');
             $record->account_id=$account->id;
@@ -235,7 +241,13 @@ class AccountController extends Controller
 
             $record=new Record();
 
-            $record->amount_without_interest=$request->input('amount');
+            if($request->type==0){
+                
+                $record->amount_without_interest=$request->amount*-1;
+            }
+            elseif ($request->type==1) {
+                $record->amount_without_interest=$request->input('amount');
+            }
             $record->type=$request->input('type');
             $record->description=$request->input('description');
             $record->account_id=$account->id;
@@ -271,7 +283,13 @@ class AccountController extends Controller
 
             $record=new Record();
 
-            $record->amount_without_interest=$request->input('amount');
+            if($request->type==0){
+                
+                $record->amount_without_interest=$request->amount*-1;
+            }
+            elseif ($request->type==1) {
+                $record->amount_without_interest=$request->input('amount');
+            }
             $record->type=$request->input('type');
             $record->description=$request->input('description');
             $record->account_id=$account->id;
@@ -307,7 +325,13 @@ class AccountController extends Controller
 
              $record=new Record();
 
-            $record->amount_without_interest=$request->input('amount');
+             if($request->type==0){
+                
+                $record->amount_without_interest=$request->amount*-1;
+            }
+            elseif ($request->type==1) {
+                $record->amount_without_interest=$request->input('amount');
+            }
             $record->type=$request->input('type');
             $record->description=$request->input('description');
             $record->account_id=$account->id;
@@ -341,7 +365,13 @@ class AccountController extends Controller
 
             $record=new Record();
 
-            $record->amount_without_interest=$request->input('amount');
+            if($request->type==0){
+                
+                $record->amount_without_interest=$request->amount*-1;
+            }
+            elseif ($request->type==1) {
+                $record->amount_without_interest=$request->input('amount');
+            }
             $record->type=$request->input('type');
             $record->description=$request->input('description');
             $record->account_id=$account->id;
