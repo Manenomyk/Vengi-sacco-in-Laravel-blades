@@ -6,7 +6,16 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <img src="{{ asset('images/logo.jpeg') }}" alt="no logo fount" style="width: 100px; margin-right:10px;">
-                    vengi sacco
+                    vengi sacco,
+                    @if (Auth::user()->role==0)
+                         admin
+                        @elseif (Auth::user()->role==1)
+                         clerk
+                         @elseif (Auth::user()->role==2)
+                         Authorizer
+                         @elseif (Auth::user()->role==3)
+                         member
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->

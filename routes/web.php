@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdminMembersController;
 use App\Http\Controllers\Authorizer\ApproveController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLegderController;
+use App\Http\Controllers\Admin\BackupController;
 use App\Http\Controllers\Member\MemberDisplayController;
 use App\Http\Controllers\Member\MembersDashboardController;
 use App\Http\Controllers\Authorizer\AuthorizerDisplayController;
@@ -158,7 +159,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/ledger/reports','index');
     });
 
-
+    Route::controller(BackupController::class)->group(function(){
+        Route::get('admin/data/backup','index');
+    });
     Route::get('get-logs',[AdminLogsController::class,'logs'])->middleware('can:admin');
 
     Route::controller(AdminReportController::class)->group(function(){

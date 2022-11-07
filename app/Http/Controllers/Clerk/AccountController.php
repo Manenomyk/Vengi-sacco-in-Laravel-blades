@@ -47,7 +47,7 @@ class AccountController extends Controller
             $res=$record->save();
             
             if ($result && $res){
-                Alert::html("information","<b>Share Account opened Successfully, Account number: $acc_share->id<b>","success");
+                Alert::info('message',"Share Account opened Successfully, Account number: $acc_share->id");
                 return back()->with("info","Share Account Opened Successfully, Account Number: $acc_share->id");
             }
         } 
@@ -66,7 +66,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Institutional share Account opened Successfully, Account number: $acc_inst->id");
+                Alert::info("information","Institutional share Account opened Successfully, Account number: $acc_inst->id");
                 return back()->with("info","Institutional Share Account Opened Successfully, Account Number: $acc_inst->id");
             }
         }
@@ -86,7 +86,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Normal loans Account opened Successfully, Account number: $acc_norm->id");
+                Alert::info("information","Normal loans Account opened Successfully, Account number: $acc_norm->id");
                 return back()->with("info","Normal Share Account Opened Successfully, Account Number: $acc_norm->id");
             }
         }
@@ -105,7 +105,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Table banking Account opened Successfully, Account number: $acc_table->id");
+                Alert::info("information","Table banking Account opened Successfully, Account number: $acc_table->id");
                 return back()->with("info","Table Banking Loan Account Opened Successfully, Account Number: $acc_table->id");
             }
         }
@@ -124,7 +124,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res){
-                Alert::success("information","Emergency loan account opened Successfully, Account number: $acc_emerg->id");
+                Alert::info("information","Emergency loan account opened Successfully, Account number: $acc_emerg->id");
                 return back()->with("info","Emergency Loan Account Opened Successfully, Account Number: $acc_emerg->id");
             }
         }
@@ -222,7 +222,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Share Amount allocated successfully");
+                Alert::info("information","Share Amount allocated successfully");
                 return back()->with("info","allocated successfully");
             }
         }
@@ -256,7 +256,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Institutional share Amount allocated successfully");
+                Alert::info("information","Institutional share Amount allocated successfully");
                 return back()->with("info","allocated successfully");
             }
         }
@@ -298,7 +298,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Normal Loan Amount allocated successfully");
+                Alert::info("information","Normal Loan Amount allocated successfully");
                 return back()->with("info","allocated successfully");
             }
         }
@@ -340,7 +340,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Table banking loan Amount allocated successfully");
+                Alert::info("information","Table banking loan Amount allocated successfully");
                 return back()->with("info","allocated successfully");
             }
         }
@@ -380,7 +380,7 @@ class AccountController extends Controller
             $res=$record->save();
 
             if ($result && $res) {
-                Alert::success("information","Emergency loan Amount allocated successfully");
+                Alert::info("information","Emergency loan Amount allocated successfully");
                 return back()->with("info","allocated successfully");
             }
         }

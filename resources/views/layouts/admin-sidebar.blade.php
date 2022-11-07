@@ -10,14 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
-
+button{
+    color: whitesmoke;
+    background-color: green;
+    padding: 6px 8px;
+    margin-left: 20%;
+}
 </style>
 
 <body>
     <div class="sidebar">
-        <div class="logo-details">
+        {{-- <div class="logo-details">
             <span class="logo_name">Welcome, Admin</span>
-        </div>
+        </div> --}}
         <ul class="nav-links">
             <li>
                 <a href="{{ url('admin-dashboard') }}" class="{{ request()->is('admin-dashboard') ? 'active' : '' }}">
@@ -96,6 +101,11 @@
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Archives</span>
                 </a>
+            </li>
+            <li>
+               <a href="{{ url('admin/data/backup') }}">
+                <button> Backup data</button>
+               </a>
             </li>
           
         </ul>
