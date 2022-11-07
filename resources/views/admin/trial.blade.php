@@ -110,31 +110,31 @@
                         <div class="tr">
                             <div class="td">Not available</div>
                             <div class="td">Normal Loans</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                             <div class="td">{{ $normal }}</div>
                         </div>
                         <div class="tr">
                             <div class="td">Not available</div>
                             <div class="td">Shares Account</div>
                             <div class="td">{{ $share }}</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                         </div>
                         <div class="tr">
                             <div class="td">Not available</div>
                             <div class="td">Emergency Loans</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                             <div class="td">{{ $emergency }}</div>
                         </div>
                         <div class="tr">
                             <div class="td">Not available</div>
                             <div class="td">Institutional Shares</div>
                             <div class="td">{{ $inst_share }}</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                         </div>
                         <div class="tr">
                             <div class="td">Not Available</div>
                             <div class="td">Table Banking Loans</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                             <div class="td">{{ $table }}</div>
                         </div>
                         @foreach ($general_ledgers as $item)
@@ -142,7 +142,7 @@
                                 <div class="tr">
                                     <div class="td"> {{ $item->id }}</div>
                                     <div class="td"> {{ $item->name }}</div>
-                                    <div class="td"> </div>
+                                    <div class="td">_</div>
                                     <div class="td"> {{ $item->amount }}</div>
                                 </div>
                             @endif
@@ -153,13 +153,13 @@
                                     <div class="td"> {{ $item->id }}</div>
                                     <div class="td"> {{ $item->name }}</div>
                                     <div class="td"> {{ $item->amount }}</div>
-                                    <div class="td"> </div>
+                                    <div class="td">_</div>
                                 </div>
                             @endif
                         @endforeach
                         <div class="tr">
                             <div class="td">Total</div>
-                            <div class="td"></div>
+                            <div class="td">_</div>
                             <div class="td">{{ $final_liability }}</div>
                             <div class="td">{{ $final_assets }}</div>
                         </div>

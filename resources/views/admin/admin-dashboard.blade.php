@@ -16,7 +16,7 @@
       }
           .table {
               display: table;
-              width: 90%;
+              width: 100%;
               border-collapse: collapse;
           }
   
@@ -181,7 +181,7 @@
                           <div class="td">{{ $dis_emergency }}</div>   
                       </div>
                       <div class="tr">
-                          <div class="td">Noraml Loans</div>
+                          <div class="td">Normal Loans</div>
                           <div class="td">{{ $dis_normal }}</div>
                       </div>
                       <div class="tr">

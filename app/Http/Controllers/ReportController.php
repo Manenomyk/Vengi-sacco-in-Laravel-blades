@@ -15,7 +15,7 @@ class ReportController extends Controller
             'records.amount_without_interest',
             'records.created_at'
         )
-        ->paginate(8);
+        ->paginate(11);
 
         return view('admin.report',compact('all_reports'));
     }

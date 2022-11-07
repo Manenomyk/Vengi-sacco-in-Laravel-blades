@@ -19,7 +19,6 @@
 
      @endsection
 
-      
       <section class="home-section">
         <div class="home-content">
           <div class="container" >

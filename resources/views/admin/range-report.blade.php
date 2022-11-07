@@ -125,12 +125,12 @@
                                     <div class="td">{{ $item->description }}</div>
                                     <div class="td">
                                         @if ($item->type == 0)
-                                            {{ $item->amount_without_interest }}
+                                            {{ $item->amount_without_interest??"_" }}
                                         @endif
                                     </div>
                                     <div class="td">
                                         @if ($item->type == 1)
-                                            {{ $item->amount_without_interest }}
+                                            {{ $item->amount_without_interest??"_" }}
                                         @endif
                                     </div>
                                     <div class="td">

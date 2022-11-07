@@ -44,12 +44,6 @@
                                 pdf</button>
                         </form>
                     </div>
-                    {{-- <form action="{{ url('admin-members') }}" method="post" enctype="multipart/form-data"
-                        class="sach-form">
-                        @csrf
-                        <input type="text" name="name" placeholder="search users..." />
-                        <button type="submit" style="background-color: #0A2558; color:white">search</button>
-                    </form> --}}
                 </div>
                 <div class="container">
                     <h3 class="top-header"><b>Institutional Shares</b></h3>
@@ -79,11 +73,7 @@
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
                                         <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
+                                          {{ $item->amount_without_interest??"0" }}
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>

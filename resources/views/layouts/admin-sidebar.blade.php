@@ -76,7 +76,7 @@
             <li>
                 <a href="{{ url('all-reports') }}" class="{{ request()->is('all-reports') ? 'active' : '' }}">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Transation Reports</span>
+                    <span class="links_name">Transcation Reports</span>
                 </a>
             </li>
             <li>

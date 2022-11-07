@@ -98,7 +98,7 @@
                 </table>
             </div>
             <div>
-              {{ $member->onEachSide(2)->links() }}
+              {{ $member->onEachSide(3)->links() }}
         </div>
       </section>
     

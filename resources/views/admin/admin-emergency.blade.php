@@ -73,11 +73,7 @@
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
                                         <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
+                                          {{ $item->amount_without_interest??"0" }}
                                         </td>
                                         <td>{{ $item->due_date }}</td>
                                         <td>{{ $item->created_at }}</td>

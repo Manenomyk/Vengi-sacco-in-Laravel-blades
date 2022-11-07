@@ -58,7 +58,6 @@
                                     <th>Interest</th>
                                     <th>Duration</th>
                                     <th>amount</th>
-                                    <th>due_date</th>
                                     <th>Date Opened</th>
                                     <th>status</th>
                                 </tr>
@@ -73,13 +72,9 @@
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
                                         <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
+                                          {{ $item->amount_without_interest??"0" }}
                                         </td>
-                                        <td>{{ $item->due_date }}</td>
+                                      
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->is_approved }}</td>
                                     </tr>

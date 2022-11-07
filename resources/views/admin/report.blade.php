@@ -69,13 +69,7 @@
                                           credit
                                         @endif
                                       </td>
-                                        <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
-                                        </td>
+                                        <td>{{ $item->amount_without_interest??"0" }}</td>
                                         <td>{{ $item->created_at->toDayDateTimeString() }}</td>
                                     </tr>
                                 @endforeach

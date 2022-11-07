@@ -73,13 +73,7 @@
                                         <td>{{ $item->account_type }}</td>
                                         <td>{{ $item->interest }}</td>
                                         <td>{{ $item->duration }}</td>
-                                        <td>
-                                          @if ($item->amount_without_interest==null)
-                                          0
-                                          @else
-                                          {{ $item->amount_without_interest }}
-                                        @endif
-                                        </td>
+                                        <td>{{ $item->amount_without_interest??"0" }}</td>                                     
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                           @if ($item->is_approved==0)
