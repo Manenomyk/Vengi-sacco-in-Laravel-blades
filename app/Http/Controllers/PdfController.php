@@ -22,7 +22,7 @@ class PdfController extends Controller
         $account_type = AccountDetail::all();
 
         $pdf = PDF::loadView('pdf.account-type', array("account_type" => $account_type));
-
+ 
         return $pdf->download('vengi-sacco-account-types.pdf');
     }
 
